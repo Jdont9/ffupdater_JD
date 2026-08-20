@@ -36,12 +36,16 @@ Browser which are better than Google Chrome:
 - [Privacy Browser](https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 - [Thorium](https://github.com/Alex313031/Thorium-Android)
+- [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;
+  requires the TrichromeLibrary entry below to be installed/updated first)
 
 Other applications:
 
 - [FairEmail](https://github.com/M66B/FairEmail)
 - [K-9 Mail](https://k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
+- [TrichromeLibrary](https://gitlab.com/grapheneos/platform_external_vanadium) (shared library dependency
+  of Vanadium, not a standalone app)
 
 FFUpdater checks for updates in the background and downloads them as well. Apps can be updated without user
 interaction with:

@@ -47,11 +47,12 @@ class RootInstaller : AppInstaller {
         val downloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
         require(file.parentFile == downloadFolder) { "Wrong folder: ${file.parentFile}" }
 
-        val invalidChars = """\W""".toRegex()
-        val appName = appImpl.packageName.replace(invalidChars, "_")
-        require(file.name.startsWith(appName)) { "Invalid file prefix: ${file.name}" }
-        require(file.extension == "apk") { "Invalid file suffix: ${file.name}" }
-        require(!file.nameWithoutExtension.contains(invalidChars)) { "Invalid chars in file name: ${file.name}" }
+        val cleanFileName = file.name.trim()
+        
+        require(cleanFileName.endsWith(".apk", ignoreCase = true)) { "Invalid file suffix: $cleanFileName" }
+
+        val safePattern = """^[a-zA-Z0-9_.\-=]+$""".toRegex()
+        require(file.nameWithoutExtension.trim().matches(safePattern)) { "Invalid chars in file name: $cleanFileName" }
     }
 
     private fun hasDangerousCharacter(value: String): Boolean {

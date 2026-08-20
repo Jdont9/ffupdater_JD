@@ -217,4 +217,16 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory app:title="@string/settings__vanadium_category__title">
+
+        <EditTextPreference
+            app:defaultValue="@string/vanadium__android_branch__default"
+            app:dialogMessage="@string/vanadium__android_branch__dialog_message"
+            app:key="vanadium__android_branch"
+            app:singleLineTitle="false"
+            app:useSimpleSummaryProvider="true"
+            app:title="@string/vanadium__android_branch__title" />
+
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
+
 </PreferenceScreen>

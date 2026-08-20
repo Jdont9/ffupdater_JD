@@ -27,6 +27,8 @@ import de.marmaro.krt.ffupdater.app.impl.ThunderbirdBeta
 import de.marmaro.krt.ffupdater.app.impl.ThunderbirdRelease
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
 import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
+import de.marmaro.krt.ffupdater.app.impl.TrichromeLibrary
+import de.marmaro.krt.ffupdater.app.impl.Vanadium
 import de.marmaro.krt.ffupdater.app.impl.Vivaldi
 
 @Keep
@@ -56,6 +58,8 @@ enum class App {
     THUNDERBIRD_BETA,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
+    TRICHROME_LIBRARY, // must keep a lower ordinal than VANADIUM: installationChronology installs it first
+    VANADIUM,
     VIVALDI;
 
     fun findImpl(): AppBase {
@@ -85,6 +89,8 @@ enum class App {
             THUNDERBIRD_BETA -> ThunderbirdBeta
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha
+            TRICHROME_LIBRARY -> TrichromeLibrary
+            VANADIUM -> Vanadium
             VIVALDI -> Vivaldi
         }
     }

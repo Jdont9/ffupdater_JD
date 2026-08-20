@@ -19,7 +19,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.InstallerSettings
 import de.marmaro.krt.ffupdater.settings.NetworkSettings
-import kotlinx.coroutines.CoroutineScope
+import de.marmaro.krt.ffupdater.settings.VanadiumSettingsimport kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -39,6 +39,7 @@ class FFUpdater : Application() {
         ForegroundSettings.init(sharedPreferences)
         InstallerSettings.init(sharedPreferences)
         NetworkSettings.init(sharedPreferences)
+        VanadiumSettings.init(sharedPreferences)
 
         PowerUtil.init(applicationContext)
         FileDownloader.init()

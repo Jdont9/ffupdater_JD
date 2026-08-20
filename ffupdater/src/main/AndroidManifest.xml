@@ -69,6 +69,8 @@
         <package android:name="us.spotco.mulch" />
         <package android:name="us.spotco.mulch_wv" />
         <package android:name="org.ironfoxoss.ironfox" />
+        <package android:name="app.vanadium.browser" />
+        <package android:name="app.vanadium.trichromelibrary" />
     </queries>
 
     <application

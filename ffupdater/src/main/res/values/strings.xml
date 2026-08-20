@@ -193,6 +193,11 @@
     <string name="network__proxy__dialog_message">If you want to use a SOCKS or HTTP proxy, enter the connection details here. Use one of these formats:\n\nSOCKS/HTTP;ip/domain;port\n\nSOCKS/HTTP;ip/domain;port;username;password\n\nFor example: SOCKS;1.2.3.4;22 or HTTP;5.6.7.8;80;user1;pw123 or HTTP;p.webshare.io;80;u;p. Leave it empty if you want to use the system proxy configuration.\n\nLimitation: If you change \'DNS settings\' in the settings to a DNS over HTTPS server, you have to enter the domain of the proxy server. IPs will not work.</string>
     <string name="network__proxy__title">Proxy</string>
     <string name="settings__network_category__title">Network</string>
+
+    <string name="settings__vanadium_category__title">Vanadium</string>
+    <string name="vanadium__android_branch__default">17</string>
+    <string name="vanadium__android_branch__title">GrapheneOS branch</string>
+    <string name="vanadium__android_branch__dialog_message">The GitLab branch of grapheneos/platform_external_vanadium to download TrichromeLibrary/Vanadium from (e.g. \"17\" or \"16-qpr2\"). GrapheneOS opens a new branch for every new Android/OS release; check https://gitlab.com/grapheneos/platform_external_vanadium/-/branches to find the current one and update it here when it changes.</string>
     <string name="settings__device_category__title">Device</string>
     <string name="device__prefer_32bit_apks__summary">Enable if your device is usually low on memory. FFUpdater will then use 32-bit APKs which usually require less memory.</string>
     <string name="device__prefer_32bit_apks__title">Prefer 32-Bit APKs</string>
@@ -247,6 +252,14 @@
     <string name="cromite__title">Cromite</string>
     <string name="cromite__description">Cromite is a Chromium fork based on Bromite with built-in support for ad blocking and an eye for privacy.</string>
     <string name="cromite__warning">- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+
+    <string name="trichrome_library__title">TrichromeLibrary (for Vanadium)</string>
+    <string name="trichrome_library__description">Shared library component required by Vanadium (GrapheneOS\'s hardened Chromium browser). It contains no user-facing app of its own.</string>
+    <string name="trichrome_library__warning">- This is a dependency, not a browser. Install/update it BEFORE Vanadium, otherwise installing or updating Vanadium will fail.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.\n- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+
+    <string name="vanadium__title">Vanadium</string>
+    <string name="vanadium__description">Vanadium is GrapheneOS\'s privacy and security hardened fork of Chromium. It requires TrichromeLibrary to be installed first.</string>
+    <string name="vanadium__warning">- Requires TrichromeLibrary to be installed/updated first, otherwise installation fails.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.\n- Vanadium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="main_activity__unexpected_error">Unexpected error occurred.</string>
     <string name="thorium__title">Thorium Browser for Android</string>
     <string name="thorium__description">The fastest browser on Earth. Chromium fork for Linux named after radioactive element No. 90.</string>

@@ -63,6 +63,8 @@ class CheckReleaseAgeIT {
             TestData(ThunderbirdBeta, 60),
             TestData(TorBrowserAlpha, 60),
             TestData(TorBrowser, 60),
+            TestData(TrichromeLibrary, null),
+            TestData(Vanadium, null),
             TestData(Vivaldi, null),
         )
 
