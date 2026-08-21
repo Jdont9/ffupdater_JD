@@ -11,6 +11,7 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 import de.marmaro.krt.ffupdater.settings.NetworkSettings
+import de.marmaro.krt.ffupdater.settings.VanadiumSettings
 import io.mockk.every
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
@@ -105,6 +106,9 @@ class CheckReleaseAgeIT {
 
         mockkObject(DeviceSettingsHelper)
         every { DeviceSettingsHelper.prefer32BitApks } returns false
+
+        mockkObject(VanadiumSettings)
+        every { VanadiumSettings.androidBranch } returns VanadiumSettings.DEFAULT_BRANCH
 
         mockkObject(DeviceAbiExtractor)
         every { DeviceAbiExtractor.findBestAbi(any(), false) } returns ABI.ARM64_V8A
