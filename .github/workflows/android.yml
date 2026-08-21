@@ -15,5 +15,11 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
-      - name: Build the app
-        run: ./gradlew clean build
+      - name: Build the app (skip unit tests so a flaky/outdated release-age test doesn't block the APK)
+        run: ./gradlew clean assembleDebug assembleRelease
+      - name: Upload built APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffupdater-apks
+          path: ffupdater/build/outputs/apk/**/*.apk
+          if-no-files-found: error

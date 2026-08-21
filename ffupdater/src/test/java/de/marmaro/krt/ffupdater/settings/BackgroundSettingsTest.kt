@@ -232,7 +232,9 @@ class BackgroundSettingsTest : BaseTest() {
                 "THUNDERBIRD_BETA",
                 "TOR_BROWSER",
                 "TOR_BROWSER_ALPHA",
+                "TRICHROME_LIBRARY",
                 "UNGOOGLED_CHROMIUM",
+                "VANADIUM",
                 "VIVALDI",
             )
         ).commit()
