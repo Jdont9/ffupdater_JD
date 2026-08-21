@@ -1,12 +1,14 @@
 package de.marmaro.krt.ffupdater.app.impl
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory
+import de.marmaro.krt.ffupdater.app.entity.InstallationStatus
 import de.marmaro.krt.ffupdater.app.entity.LatestVersion
 import de.marmaro.krt.ffupdater.app.entity.Version
 import de.marmaro.krt.ffupdater.device.ABI
@@ -35,6 +37,13 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
  * between branches before (e.g. "arm64" on branch 16 vs "arm64-multilib" on branch 17). If downloads
  * start failing after changing the branch setting, check whether the path changed too by browsing
  * https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/<branch>/prebuilt !!
+ *
+ * INSTALL-STATUS PIGGYBACKING: as a static shared library, this package can't be queried through the
+ * public PackageManager API once installed (see [isStaticSharedLibrary] and CertificateVerifier.kt),
+ * so the normal "is this app installed?" detection ([InstalledAppsCache]) would always report it as
+ * NOT_INSTALLED and the background updater would never pick it up again after the first install. Since
+ * [Vanadium] cannot run without a correctly-signed TrichromeLibrary already installed, [isInstalled] and
+ * [getInstalledVersion] here simply delegate to Vanadium's (reliable) detection instead.
  */
 @Keep
 object TrichromeLibrary : AppBase() {
@@ -69,5 +78,18 @@ object TrichromeLibrary : AppBase() {
             exactFileSizeBytesOfDownload = null, // not exposed by the raw-file download, unlike GitHub/GitLab release assets
             fileHash = null,
         )
+    }
+
+    // See "INSTALL-STATUS PIGGYBACKING" in the class doc above.
+    override suspend fun isInstalled(context: Context): InstallationStatus {
+        return Vanadium.isInstalled(context)
+    }
+
+    override suspend fun isInstalledWithoutFingerprintVerification(packageManager: PackageManager): Boolean {
+        return Vanadium.isInstalledWithoutFingerprintVerification(packageManager)
+    }
+
+    override suspend fun getInstalledVersion(packageManager: PackageManager): Version? {
+        return Vanadium.getInstalledVersion(packageManager)
     }
 }

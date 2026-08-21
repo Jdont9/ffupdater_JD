@@ -46,7 +46,7 @@ object Vanadium : AppBase() {
     override val description = R.string.vanadium__description
     override val installationWarning = R.string.vanadium__warning
     override val downloadSource = "GitLab"
-    override val icon = R.drawable.ic_logo_chromium
+    override val icon = R.drawable.ic_logo_vanadium
     override val minApiLevel = Build.VERSION_CODES.Q
     override val supportedAbis = listOf(ABI.ARM64_V8A)
     override val signatureHash = "c6adb8b83c6d4c17d292afde56fd488a51d316ff8f2c11c5410223bff8a7dbb3"
