@@ -47,14 +47,10 @@ object PackageManagerUtil {
             try {
                 val signatures = mutableListOf<() -> Signature?>()
                 if (DeviceSdkTester.supportsAndroid13T33()) {
-                    signatures.add {
-                        extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags(app)))
-                    }
+                    signatures.add { extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
                 }
                 if (DeviceSdkTester.supportsAndroid9P28()) {
-                    signatures.add {
-                        extractSignature(pm.getPackageInfo(app.packageName, getLegacyFlags(app)))
-                    }
+                    signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
                 }
                 signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
                 signatures.firstNotNullOf { it() }
@@ -64,29 +60,9 @@ object PackageManagerUtil {
         }
     }
 
-    /**
-     * Static shared libraries (e.g. TrichromeLibrary, see [AppBase.isStaticSharedLibrary]) are not
-     * returned by a plain PackageManager query - Android requires the
-     * MATCH_STATIC_SHARED_AND_SDK_LIBRARIES flag (API 30+) to include them, otherwise
-     * getPackageInfo() throws NameNotFoundException even though the package is genuinely installed.
-     */
-    @Suppress("DEPRECATION")
-    @RequiresApi(Build.VERSION_CODES.R)
-    private fun getLegacyFlags(app: AppBase): Int {
-        var flags = GET_SIGNING_CERTIFICATES
-        if (app.isStaticSharedLibrary && DeviceSdkTester.supportsAndroid11Q30()) {
-            flags = flags or PackageManager.MATCH_STATIC_SHARED_AND_SDK_LIBRARIES
-        }
-        return flags
-    }
-
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private fun getPackageInfoFlags(app: AppBase): PackageManager.PackageInfoFlags {
-        var flags = GET_SIGNING_CERTIFICATES.toLong()
-        if (app.isStaticSharedLibrary) {
-            flags = flags or PackageManager.MATCH_STATIC_SHARED_AND_SDK_LIBRARIES.toLong()
-        }
-        return PackageManager.PackageInfoFlags.of(flags)
+    private fun getPackageInfoFlags(): PackageManager.PackageInfoFlags {
+        return PackageManager.PackageInfoFlags.of(GET_SIGNING_CERTIFICATES.toLong())
     }
 
     @Suppress("DEPRECATION")

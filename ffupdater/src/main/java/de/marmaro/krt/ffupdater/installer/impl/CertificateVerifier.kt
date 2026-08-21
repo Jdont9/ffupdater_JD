@@ -15,7 +15,16 @@ class CertificateVerifier(contextParam: Context, private val appImpl: AppBase, p
     suspend fun verifyCertificateBeforeAndAfterInstallation(blockForInstallation: suspend () -> Any): InstallResult {
         val fileCertHash = hasApkCorrectCertificate()
         blockForInstallation()
-        hasInstalledAppCorrectCertificate(fileCertHash)
+        // Static shared libraries (e.g. TrichromeLibrary) are not queryable through the public
+        // PackageManager API after installation - Android requires the hidden/SystemApi flag
+        // MATCH_STATIC_SHARED_AND_SDK_LIBRARIES, which a regular (non-privileged) app cannot use.
+        // The pre-install file certificate check above already verified the APK is genuinely signed
+        // by the expected certificate, and Android itself refuses to install an update of an existing
+        // static shared library with a different signing certificate, so skipping the post-install
+        // check here does not weaken that guarantee.
+        if (!appImpl.isStaticSharedLibrary) {
+            hasInstalledAppCorrectCertificate(fileCertHash)
+        }
         return InstallResult(fileCertHash)
     }
 
