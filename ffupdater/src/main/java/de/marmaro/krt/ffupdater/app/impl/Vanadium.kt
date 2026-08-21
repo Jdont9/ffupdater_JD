@@ -65,7 +65,7 @@ object Vanadium : AppBase() {
         val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, PATH_IN_REPO)
         return LatestVersion(
             downloadUrl = downloadUrl,
-            version = Version("${commit.version}-${branch}-${commit.commitShortId}"),
+            version = Version(commit.version),
             publishDate = commit.commitCreatedAt,
             exactFileSizeBytesOfDownload = null,
             fileHash = null,

@@ -25,6 +25,7 @@ abstract class AppBase : AppAttributes, ApkDownloader, LatestVersionFetcher, Ins
     override val eolReason: Int? = null
     override val fileNameInZipArchive: String? = null
     override val differentSignatureMessage: Int = R.string.main_activity__app_was_signed_by_different_certificate
+    override val isStaticSharedLibrary: Boolean = false
 
     companion object {
         val ALL_ABIS = listOf(ARM64_V8A, ARMEABI_V7A, ARMEABI, X86_64, X86, MIPS, MIPS64)

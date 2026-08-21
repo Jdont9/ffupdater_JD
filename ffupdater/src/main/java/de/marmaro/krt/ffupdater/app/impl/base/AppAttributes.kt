@@ -24,6 +24,7 @@ interface AppAttributes {
     val fileNameInZipArchive: String?
     val differentSignatureMessage: Int
     val hostnameForInternetCheck: String
+    val isStaticSharedLibrary: Boolean
 
     fun isEol() = (eolReason != null)
 }

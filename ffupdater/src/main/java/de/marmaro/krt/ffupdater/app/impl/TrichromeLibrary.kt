@@ -51,6 +51,7 @@ object TrichromeLibrary : AppBase() {
     override val projectPage = "https://gitlab.com/grapheneos/platform_external_vanadium"
     override val displayCategory = listOf(DisplayCategory.OTHER)
     override val hostnameForInternetCheck = "https://gitlab.com"
+    override val isStaticSharedLibrary = true
 
     private const val PROJECT_PATH = "grapheneos/platform_external_vanadium"
     private const val PATH_IN_REPO = "prebuilt/arm64-multilib/TrichromeLibrary.apk" // TODO verify per branch
@@ -63,7 +64,7 @@ object TrichromeLibrary : AppBase() {
         val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, PATH_IN_REPO)
         return LatestVersion(
             downloadUrl = downloadUrl,
-            version = Version("${commit.version}-${branch}-${commit.commitShortId}"),
+            version = Version(commit.version),
             publishDate = commit.commitCreatedAt,
             exactFileSizeBytesOfDownload = null, // not exposed by the raw-file download, unlike GitHub/GitLab release assets
             fileHash = null,
