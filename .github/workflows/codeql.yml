@@ -14,11 +14,19 @@ name: "CodeQL"
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'ffupdater/**'
+      - 'gradle/**'
+      - 'build.gradle'
+      - 'settings.gradle'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
-  schedule:
-    - cron: '36 1 * * 5'
+    paths:
+      - 'ffupdater/**'
+      - 'gradle/**'
+      - 'build.gradle'
+      - 'settings.gradle'
 
 jobs:
   analyze:
