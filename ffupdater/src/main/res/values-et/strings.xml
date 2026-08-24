@@ -3,7 +3,7 @@
     <string name="action_about_title">Rakenduse teave</string>
     <string name="app_description">Privaatsussõbralike brauserite uuendaja</string>
     <string name="app_icon">rakenduse ikoon</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Rakenduse paigaldamine ei õnnestunud</string>
     <string name="application_successfully_installed">Rakenduse paigaldamine õnnestus</string>
     <string name="available_version">Saadaval: %1$s</string>

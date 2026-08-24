@@ -32,13 +32,8 @@ class BackgroundSettingsTest : BaseTest() {
 
         @JvmStatic
         fun excludedAppsFromBackgroundUpdateCheck_data(): Stream<Arguments> = Stream.of(
-            Arguments.of(App.BRAVE, "BRAVE"),
-            Arguments.of(App.BRAVE_BETA, "BRAVE_BETA"),
-            Arguments.of(App.BRAVE_NIGHTLY, "BRAVE_NIGHTLY"),
             Arguments.of(App.FFUPDATER, "FFUPDATER"),
             Arguments.of(App.FIREFOX_BETA, "FIREFOX_BETA"),
-            Arguments.of(App.FIREFOX_FOCUS, "FIREFOX_FOCUS"),
-            Arguments.of(App.FIREFOX_KLAR, "FIREFOX_KLAR"),
             Arguments.of(App.FIREFOX_NIGHTLY, "FIREFOX_NIGHTLY"),
             Arguments.of(App.FIREFOX_RELEASE, "FIREFOX_RELEASE"),
             Arguments.of(App.VIVALDI, "VIVALDI"),
@@ -199,9 +194,6 @@ class BackgroundSettingsTest : BaseTest() {
         sharedPreferences.edit().putStringSet(
             "background__update_check__excluded_apps",
             setOf(
-                "BRAVE",
-                "BRAVE_BETA",
-                "BRAVE_NIGHTLY",
                 "BROMITE",
                 "BROMITE_SYSTEMWEBVIEW",
                 "CHROMIUM",
@@ -211,9 +203,6 @@ class BackgroundSettingsTest : BaseTest() {
                 "FENNEC_FDROID",
                 "FFUPDATER",
                 "FIREFOX_BETA",
-                "FIREFOX_FOCUS",
-                "FIREFOX_FOCUS_BETA",
-                "FIREFOX_KLAR",
                 "FIREFOX_NIGHTLY",
                 "FIREFOX_RELEASE",
                 "ICERAVEN",
@@ -226,7 +215,6 @@ class BackgroundSettingsTest : BaseTest() {
                 "MULCH_SYSTEMWEBVIEW",
                 "MULL_FROM_REPO",
                 "ORBOT",
-                "PRIVACY_BROWSER",
                 "THORIUM",
                 "THUNDERBIRD",
                 "THUNDERBIRD_BETA",

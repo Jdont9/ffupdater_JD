@@ -3,7 +3,7 @@
     <string name="action_about_title">Относно FFUpdater</string>
     <string name="app_description">Приложение за обновяване на поверителни четци</string>
     <string name="app_icon">пиктограма на приложение</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Приложението не е инсталирано</string>
     <string name="application_successfully_installed">Приложението е инсталирано</string>
     <string name="available_version">Налично: %1$s</string>

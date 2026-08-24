@@ -3,7 +3,7 @@
     <string name="action_about_title">FFUpdater Hakkında</string>
     <string name="app_description">Gizlilik dostu tarayıcılar için bir güncelleyici</string>
     <string name="app_icon">uygulama simgesi</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Uygulama kurulumu başarısız oldu</string>
     <string name="application_successfully_installed">Uygulama başarıyla kuruldu</string>
     <string name="available_version">Kullanılabilir: %1$s</string>

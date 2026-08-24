@@ -3,7 +3,7 @@
     <string name="action_about_title">关于 FFUpdater</string>
     <string name="app_description">为隐私友好型浏览器打造的升级器</string>
     <string name="app_icon">应用图标</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">应用程序安装未成功</string>
     <string name="application_successfully_installed">已成功安装应用程序</string>
     <string name="available_version">可用版本：%1$s</string>

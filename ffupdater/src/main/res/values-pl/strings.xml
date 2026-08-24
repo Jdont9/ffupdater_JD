@@ -3,7 +3,7 @@
     <string name="action_about_title">O FFUpdater</string>
     <string name="app_description">Aktualizator dla przeglądarek chroniących prywatność</string>
     <string name="app_icon">ikona aplikacji</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Instalacja aplikacji nie powiodła się</string>
     <string name="application_successfully_installed">Aplikacja została zainstalowana pomyślnie</string>
     <string name="available_version">Dostępne: %1$s</string>

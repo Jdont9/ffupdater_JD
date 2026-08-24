@@ -3,7 +3,7 @@
     <string name="action_about_title">Om FFUpdater</string>
     <string name="app_description">Opdateringsværktøj til privatlivsvenlige browsere</string>
     <string name="app_icon">appikon</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Appinstallation mislykkedes</string>
     <string name="available_version">Tilgængelig: %1$s</string>
     <string name="notification__error__text">Rapportér venligst denne fejl. Klik for at se fejlrapporten.</string>

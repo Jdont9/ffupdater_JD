@@ -3,7 +3,7 @@
     <string name="action_about_title">O FFUpdateru</string>
     <string name="app_description">Aktualizátor pro prohlížeče šetrný k soukromí</string>
     <string name="app_icon">ikona aplikace</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Instalace aplikace se nezdařila</string>
     <string name="application_successfully_installed">Aplikace byla úspěšně nainstalována</string>
     <string name="available_version">K dispozici: %1$s</string>

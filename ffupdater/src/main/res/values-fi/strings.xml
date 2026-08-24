@@ -2,7 +2,7 @@
 <resources>
     <string name="action_about_title">Tietoa sovelluksesta</string>
     <string name="app_description">Päivittäjä yksityisyyttä arvostaville selaimille</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="app_icon">sovelluskuvake</string>
     <string name="application_installation_was_not_successful">Sovelluksen asennus ei onnistunut</string>
     <string name="application_successfully_installed">Sovellus asennettu onnistuneesti</string>

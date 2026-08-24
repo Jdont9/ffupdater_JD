@@ -3,7 +3,7 @@
     <string name="action_about_title">À propos de FFUpdater</string>
     <string name="app_description">Gestionnaire de mises à jour pour les navigateurs respectueux de la vie privée</string>
     <string name="app_icon">Icône de l\'application</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">L\'installation de l\'application n\'a pas réussi</string>
     <string name="application_successfully_installed">L\'application a été installée avec succès</string>
     <string name="available_version">Disponible : %1$s</string>

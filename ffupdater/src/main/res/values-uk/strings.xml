@@ -3,7 +3,7 @@
     <string name="action_about_title">Про FFUpdater</string>
     <string name="app_description">Оновлювач для конфіденційних браузерів</string>
     <string name="app_icon">піктограма застосунка</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Встановлення застосунка не вдалося</string>
     <string name="application_successfully_installed">Застосунок успішно встановлено</string>
     <string name="available_version">Доступно: %1$s</string>

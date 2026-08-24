@@ -3,7 +3,7 @@
     <string name="action_about_title">FFUpdater について</string>
     <string name="app_description">プライバシーを重視したブラウザー用のアップデーター</string>
     <string name="app_icon">アプリアイコン</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">アプリをインストールできませんでした</string>
     <string name="application_successfully_installed">アプリを正常にインストールしました</string>
     <string name="available_version">利用可能: %1$s</string>

@@ -3,7 +3,9 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# Firefox-Updater
+# JDupdater
+
+> **This is a personal fork of [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater)**, maintained by me for my own devices. It adds support for GrapheneOS Vanadium/TrichromeLibrary and removes a few browsers I don't use. Large parts of this fork (new app integrations, CI/build fixes, this README section, etc.) were written with the help of the AI assistant Claude (Anthropic) rather than entirely by hand. Use at your own risk; it's not affiliated with or endorsed by the upstream FFUpdater project.
 
 Installs and updates the following browsers:
 
@@ -14,8 +16,6 @@ Software from Mozilla or based on Firefox:
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
   ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
-- [Firefox Focus](https://play.google.com/store/apps/details?id=org.mozilla.focus), Firefox Focus Beta,
-  [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
   ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
@@ -26,14 +26,10 @@ Software from Mozilla or based on Firefox:
 
 Browser which are better than Google Chrome:
 
-- [Brave Private Browser](https://play.google.com/store/apps/details?id=com.brave.browser&hl=en_US),
-  [Brave Browser (Beta)](https://play.google.com/store/apps/details?id=com.brave.browser_beta&gl=US),
-  [Brave Browser (Nightly)](https://play.google.com/store/apps/details?id=com.brave.browser_nightly&gl=US)
   ([GitHub Repository](https://github.com/brave/brave-browser))
 - [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
-- [Privacy Browser](https://f-droid.org/en/packages/com.stoutner.privacybrowser.standard/)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 - [Thorium](https://github.com/Alex313031/Thorium-Android)
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;

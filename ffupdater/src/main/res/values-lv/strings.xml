@@ -2,7 +2,7 @@
 <resources>
     <string name="action_about_title">Par FFUpdater</string>
     <string name="app_icon">lietotnes ikona</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Neizdevās uzstādīt lietotni</string>
     <string name="application_successfully_installed">Lietotne veiksmīgi uzstādīta</string>
     <string name="brave_beta__title">Brave Beta</string>

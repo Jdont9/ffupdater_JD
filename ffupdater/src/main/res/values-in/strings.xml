@@ -2,7 +2,7 @@
 <resources>
     <string name="app_description">Pembaruan untuk peramban ramah privasi</string>
     <string name="app_icon">ikon aplikasi</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_successfully_installed">Aplikasi berhasil terinstal</string>
     <string name="available_version">Tersedia: %1$s</string>
     <string name="notification__error__text">Silahkan melaporkan kesalahan ini. Klik untuk melihat laporan kesalahan.</string>

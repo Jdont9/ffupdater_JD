@@ -3,7 +3,7 @@
     <string name="action_about_title">Az FFUpdater-ről</string>
     <string name="app_description">Frissítő az adatvédelmi barátságos böngészőkhöz</string>
     <string name="app_icon">az alkalmazás ikonja</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Az alkalmazás telepítése nem volt sikeres</string>
     <string name="application_successfully_installed">Az alkalmazás sikeresen telepítve</string>
     <string name="available_version">Elérhető: %1$s</string>

@@ -3,7 +3,7 @@
     <string name="action_about_title">Über FFUpdater</string>
     <string name="app_description">Aktualisierungsprogramm für datenschutzfreundliche Browser</string>
     <string name="app_icon">App-Symbol</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">Installation der App schlug fehl</string>
     <string name="application_successfully_installed">App erfolgreich installiert</string>
     <string name="available_version">Verfügbar: %1$s</string>

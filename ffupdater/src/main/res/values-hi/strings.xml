@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_about_title">FFUpdater के बारे में</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="application_installation_was_not_successful">एप्लिकेशन इंस्टॉलेशन सफल नहीं हुआ</string>
     <string name="available_version">उपलब्ध: %1$s</string>
     <string name="notification__error__text">कृपया इस त्रुटि की रिपोर्ट करें. त्रुटि रिपोर्ट देखने के लिए क्लिक करें।</string>

@@ -71,7 +71,7 @@
     <string name="firefox_klar__description">Firefox Klar được phát triển cho người dùng tại Đức, Áo và Thụy Sĩ nhưng có thể được sử dụng bởi người dùng ở bất kì quốc gia nào. Nó rất giống với Firefox Focus nhưng tên đã bị thay đổi ở các quốc gia nói tiếng Đức để tránh gây hiểu lầm với tạp chí Focus bởi tập đoàn truyền thông Hubert Burda Media. Không giống với Firefox Focus, Firefox Klar có lựa chọn dữ liệu được tắt theo mặc định do các luật về quyền riêng tư chặt chẽ của Đức.</string>
     <string name="crash_report__got_to_notabug_org">Đi đến notabug org</string>
     <string name="application_installation_was_not_successful">Ứng dụng đã không được cài đặt</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="notification__error__channel_descr">Hiện lỗi của trình cập nhật dưới nền</string>
     <string name="available_version">Có sẵn: %1$s</string>
     <string name="brave_nightly__title">Trình duyệt Brave (Nightly)</string>

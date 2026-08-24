@@ -7,7 +7,7 @@
     <string name="app_icon">appikon</string>
     <string name="application_successfully_installed">Applikationsinstallation lyckades</string>
     <string name="crash_report__got_to_notabug_org">Gå till notabug.org</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="available_version">Tillgänglig: %1$s</string>
     <string name="notification__error__text">Rapportera detta fel. Klicka här för att visa felrapporten.</string>
     <string name="brave__title">Brave Private Browser</string>

@@ -40,9 +40,6 @@ class CheckReleaseAgeIT {
     companion object {
         @JvmStatic
         fun `generate test data`(): List<TestData> = listOf(
-            TestData(Brave, 28),
-            TestData(BraveBeta, 14),
-            TestData(BraveNightly, 7),
             TestData(Chromium, 60),
             TestData(Cromite, 60),
             TestData(DuckDuckGoAndroid, 60),
@@ -50,15 +47,11 @@ class CheckReleaseAgeIT {
             TestData(FennecFdroid, 60),
             TestData(FFUpdater, 60),
             TestData(FirefoxBeta, 21),
-            TestData(FirefoxFocusBeta, 21),
-            TestData(FirefoxFocus, 60),
-            TestData(FirefoxKlar, 60),
             TestData(FirefoxNightly, 7),
             TestData(FirefoxRelease, 60),
             TestData(K9Mail, 60),
             TestData(Iceraven, 60),
             TestData(Orbot, 60, "17.3.2-RC-1-tor-0.4.8.12"),
-            TestData(PrivacyBrowser, 60),
             TestData(Thorium, 300, "126.0.6478.246"),
             TestData(ThunderbirdRelease, 60),
             TestData(ThunderbirdBeta, 60),

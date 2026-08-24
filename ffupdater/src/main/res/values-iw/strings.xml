@@ -22,7 +22,7 @@
     <string name="notification__eol_apps__channel_description">ערוץ הודעות לאזהרות על אפליקציות מיושנות.</string>
     <string name="notification__eol_apps__text">יש לך אפליקציות מיושנות שאין להשתמש בהן יותר: %1$s</string>
     <string name="action_about_title">אודות FFUpdater</string>
-    <string name="app_name">FFUpdater</string>
+    <string name="app_name">JDupdater</string>
     <string name="notification__eol_apps__channel_name">התראה על אפליקציות מיושנות</string>
     <string name="notification__error__title">בדיקת עידכונים ברקע נכשלה</string>
     <string name="generic_beta__warning">- זוהי אפליקציית בטא, המיועדת למפתחים ולבודקים. עשוי להכיל באגים שונים שיכולים להשפיע על החוויה שלך.</string>
