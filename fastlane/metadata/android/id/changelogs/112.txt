@@ -1,3 +1,0 @@
-* Terima kasih atas kontribusi Weblate dari: Oğuz Ersen dan 109247019824 
-* Memulihkan Iceraven 
-* Perbaikan UI untuk memungkinkan pengunduhan aplikasi EOL

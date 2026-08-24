@@ -1,9 +1,0 @@
-79.2.4 (174) versija realizēta 2024.06.30
-
-- Paldies nortio par statusa joslas primaryColor krāsas labojumu (Tobi823/ffupdater#609)
-- Paldies chenxiaolong par "atjaunināt īpašumtiesības" iestatījumu, kad uzstāda jaunu lietotni (Tobi823/ffupdater#591)
-- Paldies par Weblate tulkotāju ieguldījumu: Priit Jõerüüt, Cirnos, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) iztulkojis 23.5% (71 no 302 virknēm), Retrial, Flavio F. M., gallegonovato, Scrambled777, 大王叫我来巡山, Kazushi Hayama, Giovanni Donisi, Kirill Isakov, 109247019824
-- Nepārbaudīt atjauninājumus / nelejupielādēt tos, ja ir iespējots enerģijas taupīšanas režīms
-- Vairs neizmanto OkHttp, lai kešotu tīkla atbildes, izmanto pielāgotu datu struktūru
-- Mēģinājums novērst lejupielādes noildzes, palielinot OkHttp noildzes sliekšņus
-- Mēģinājums novērst kļūdu, inicializējot WorkManager, ja tas nav inicializēts (Tobi823/ffupdater#586)

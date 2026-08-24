@@ -1,3 +1,0 @@
-Versión 79.2.2
- - Gracias por las contribuciones de Weblate de: Rheydskey, Scrambled777, gallegonovato y 109247019824
- - Solucionar el problema de descarga de actualizaciones para Firefox Release / Beta / Nightly / Focus / Focus Beta / Klar (Tobi823/ffupdater#589)

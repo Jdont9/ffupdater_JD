@@ -1,2 +1,0 @@
-* Ευχαριστούμε για την συνεισφορά τους ατο Weblate, τους: nautilusx, gallegonovato, Juraj Motz, MkQtS, Retrial και gnu-ewm
- * Διορθώθηκε το πρόγραμμα εγκατάστασης root

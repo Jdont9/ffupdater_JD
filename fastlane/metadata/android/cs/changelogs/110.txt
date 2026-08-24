@@ -1,5 +1,0 @@
-* Děkujeme za přispěvatele Weblate: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS a Hin
-  Weisner
-* Vylepšit text oznámení, když se kontrola aktualizace na pozadí nezdaří pět dní po sobě (stará hodnota: dva dny,
-  ale pro některé uživatele byla příliš nízká).
-*  Vylepšení hlášení o pádu a časového razítka poslední úspěšné kontroly aktualizace na pozadí

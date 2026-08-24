@@ -1,2 +1,0 @@
-* Dank für die Weblate-Beiträge von: Dan, nautilusx, Retrial, gallegonovato, MkQtS und Oğuz Ersen
-* Behebt den Fehler des Root-Installers mit Firefox Nightly

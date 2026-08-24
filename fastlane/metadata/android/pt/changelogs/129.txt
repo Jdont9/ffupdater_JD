@@ -1,2 +1,0 @@
-* Obrigado pela contribuição Weblate de: gallegonovato, MkQtS, Juraj Motuz e Retrial
-* Verificar o tamanho do ficheiro de descarga e exibir aviso + abortar a instalação se o tamanho for diferente (se possível)

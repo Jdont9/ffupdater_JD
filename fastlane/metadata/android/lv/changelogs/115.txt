@@ -1,3 +1,0 @@
-* Paldies par Weblate tulkotāju ieguldījumu: Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
-  Motuz, Giovanni Donisi un Oğuz Ersen
-* Izlabota Kiwi atjaunināšanas kļūda: Ignorēt GitHub izlaidumus bez APK failiem

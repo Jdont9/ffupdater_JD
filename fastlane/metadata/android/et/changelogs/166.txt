@@ -1,4 +1,0 @@
-Rakenduse versioon 79.0.0 (166)
-- tõlgete täiendused - tänud tõlkijatele Weblate's: winver, Juraj Motuz, gallegonovato ja Kazushi Hayama
-- automaatsed uuendused FFUpdater'i paigaldatud või uuendatud rakendustele
-- kasutajaliidese kohendused

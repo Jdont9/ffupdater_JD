@@ -1,1 +1,0 @@
-- oprava falešného upozornění o používaní verze FFUpdateru podepsanou F-Droidem

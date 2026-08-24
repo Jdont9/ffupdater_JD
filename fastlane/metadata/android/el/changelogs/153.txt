@@ -1,2 +1,0 @@
-* Ευχαριστούμε για τις συνεισφορές τους: Gallegonovato, Alexthegib, 109247019824 και Giovanni Donisi
-* Διόρθωση του προγράμματος περιήγησης Tor Alpha (Tobi823/ffupdater#485)

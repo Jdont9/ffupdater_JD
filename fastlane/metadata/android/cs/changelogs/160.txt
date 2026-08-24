@@ -1,1 +1,0 @@
-- nahrazení varargs se seznamem pro opravu reprodukovatelných sestavení

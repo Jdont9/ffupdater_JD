@@ -1,1 +1,0 @@
-* Mejorar la gestión de errores en la actividad principal (Tobi823/ffupdater#376)

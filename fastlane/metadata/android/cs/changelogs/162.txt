@@ -1,1 +1,0 @@
-- aktualizace regexu pro Tor Browser (kvůli pádu aplikace při spuštění)

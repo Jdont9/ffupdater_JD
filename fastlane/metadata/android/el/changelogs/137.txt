@@ -1,2 +1,0 @@
-* Ευχαριστούμε για τις συνεισφορές τους στο Weblate, τους: Dan, nautilusx, Retrial, gallegonovato, MkQtS και Oğuz Ersen
- * Διόρθωση σφάλματος του προγράμματος εγκατάστασης root με το Firefox Nightly

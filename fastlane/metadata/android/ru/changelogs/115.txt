@@ -1,3 +1,0 @@
-* Спасибо авторам Weblate:  Jacek, gallegonovato, atilluF, 109247019824, nautilusx, Juraj
-  Motuz, Giovanni Donisi и Oğuz Ersen
-* Исправлено ошибку обновления Kiwi: игнорирование выпусков GitHub без файлов APK

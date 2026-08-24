@@ -1,3 +1,0 @@
-* Děkujeme za překlady na Weblate od: Kazushi Hayama, nautilusx, gallegonovato a MkQtS
-* Firefox Beta a Firefox Release se nyní stahují z GitHubu
-* Kiwi již není EOL

@@ -1,6 +1,0 @@
-Versioon 79.2.3 (173)
-
-- Tänud kaasautoritele Weblate'ist: Rheydskey, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) tõlgitud 8,2% (25 stringist 302-st), Scrambled777, gallegonovato, 大王叫我来巡山, Eryk Michalak, Oğuz Ersen, Kazushi Hayama and 109247019824
-- Parandasime Firefoxi põhiversiooni allalaadimise probleemid (Tobi823/ffupdater#592)
-- Kui võrguühenduse toimimise baastest annab vea, siis enam ei käivita taustal tehtavat uuenduskontrolli (Tobi823/ffupdater#578)
-- Uuendasime kasutatavaid teeke

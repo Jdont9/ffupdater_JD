@@ -1,1 +1,0 @@
-- uuendasime Tori brauseri tuvastava regulaaravaldise (parandamaks rakenduse kokkujooksmist käivitamisel)

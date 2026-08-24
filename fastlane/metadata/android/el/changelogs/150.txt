@@ -1,2 +1,0 @@
-* Ευχαριστούμε για τις συνεισφορές τους στο Weblate τους: gallegonovato, nautilusx, Juraj Motuz, Retrial και atilluF
-* Διόρθωση "Αποτυχία ελέγχου ενημέρωσης παρασκηνίου" (Tobi823/ffupdater#452)

@@ -1,1 +1,0 @@
-- deshabilitar el Bloque de la información de las dependencias porque F-Droid lo pide y arreglar las compilaciones reproducibles

@@ -1,3 +1,0 @@
-Rakenduse versioon 79.0.1
-- Tänud kaasautoritele Weblate'is: gallegonovato ja Daviteusz
-- Parandasime uue rakenduse paigaldamisel tekkinud kokkujooksmise (Tobi823/ffupdater#538)

@@ -138,7 +138,7 @@ class CrashReportActivity : AppCompatActivity() {
         const val EXTRA_EXCEPTION_LOGS = "exception_logs"
         const val EXTRA_EXCEPTION_EXPLANATION = "exception_explanation"
         val NOTABUG_URI: Uri = Uri.parse("https://notabug.org/Tobiwan/ffupdater/issues")
-        val GITHUB_URI: Uri = Uri.parse("https://github.com/Tobi823/ffupdater/issues")
+        val GITHUB_URI: Uri = Uri.parse("https://github.com/Jdont9/ffupdater_JD/issues")
         val GITLAB_URI: Uri = Uri.parse("https://gitlab.com/Tobiwan/ffupdater_gitlab/-/issues")
 
         fun createIntent(context: Context, throwableAndLogs: ThrowableAndLogs, description: String): Intent {

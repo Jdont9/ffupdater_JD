@@ -1,2 +1,0 @@
-- Дякуємо за внески Weblate від: winver, nautilusx, gallegonovato, Kazushi Hayama та 109247019824
-- Спробуйте виправити відтворювані збірки у F-Droid

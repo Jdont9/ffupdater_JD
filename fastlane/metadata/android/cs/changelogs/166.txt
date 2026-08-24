@@ -1,4 +1,0 @@
-Verze vydání 79.0.0 (166)
-- Děkujeme za překlady na Weblate od: winver, Juraj Motuz, gallegonovato a Kazushi Hayama
-- automatická aktualizace jen aplikací instalovaných nebo aktualizovaných pomocí FFUpdater
-- zlepšení UI

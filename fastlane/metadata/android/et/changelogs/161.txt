@@ -1,2 +1,0 @@
-- Tänud kaasautoritele Weblate'is: winver, nautilusx, gallegonovato, Kazushi Hayama and 109247019824
-- Proovisime parandada korratavat kompileerimist F-Droidi puhul

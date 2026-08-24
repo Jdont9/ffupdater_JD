@@ -1,6 +1,0 @@
-79.2.3 (173) versija realizēta 2024.05.26
-
-- Paldies par Weblate tulkotāju ieguldījumu: Rheydskey, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) iztūlkojis 8.2% (25 no 302 virknēm), Scrambled777, gallegonovato, 大王叫我来巡山, Eryk Michalak, Oğuz Ersen, Kazushi Hayama un 109247019824
-- Novērstas Firefox lejupielādes problēmas (Tobi823/ffupdater#592)
-- Neveica fona atjaunināšanas pārbaudi, ja pamata tīkla pārbaude neizdevās (Tobi823/ffupdater#578)
-- Atjauninātas atkarības

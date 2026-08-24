@@ -1,5 +1,0 @@
-* Un ringraziamento ai collaboratori di Weblate: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS and Hin
-  Weisner
-* Migliorato il testo di notifica quando il controllo degli aggiornamenti in background fallisce per cinque giorni di fila (il vecchio valore era di due
-  giorni, ma era troppo basso per alcuni utenti).
-* Migliorati il rapporto sugli arresti anomali e il timestamp dell'ultimo controllo dell'aggiornamento in background riuscito

@@ -1,1 +1,0 @@
-* Oprava "FFUpdater padá po stažení libovolné apk/při pokusu o instalaci apk" (Tobi823/ffupdater#438)

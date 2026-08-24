@@ -1,3 +1,0 @@
-* 感谢Weblate的贡献者：WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi, MkQtS 以及 Hin Weisner
-* 改进后台更新检查连续五天失败时的通知文本（旧值：两天，但对一些用户来说太低了）。
-* 改进上次成功后台更新检查的崩溃报告和时间戳

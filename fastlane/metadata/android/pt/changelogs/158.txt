@@ -1,1 +1,0 @@
-- correção de um falso aviso sobre a utilização do FFUpdater assinado pelo F-Droid

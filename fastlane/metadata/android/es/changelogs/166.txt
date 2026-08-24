@@ -1,4 +1,0 @@
-Versión 79.0.0 (166)
-- Gracias por las contribuciones en Weblate de: winver, Juraj Motuz, gallegonovato y Kazushi Hayama
-- sólo actualización automática de aplicaciones instaladas o actualizadas por FFUpdater
-- mejorar la interfaz de usuario

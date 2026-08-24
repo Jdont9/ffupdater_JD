@@ -1,5 +1,0 @@
-* Дякуємо за внесок у Weblate: gallegonovato, atilluF, WhiredPlanck, Oğuz Ersen, Juraj Motuz, 109247019824, ppvnf, nautilusx, Giovanni Donisi, Eduardo Malaspina
-* У разі невдалого фонового оновлення (через відсутність взаємодії з користувачем), показувати сповіщення "оновлення доступне"
-* Виправлено збій під час перевірки наявності оновлень Mull (з F-Droid)
-* Додано Fennec з F-Droid
-* Додано Mulch

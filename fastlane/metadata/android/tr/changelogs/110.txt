@@ -1,5 +1,0 @@
-* Weblate üzerinde katkıda bulunanlara teşekkürler: WhiredPlanck, 109247019824, Oğuz Ersen, Giovanni Donisi,
-  MkQtS ve Hin Weisner
-* Arka plan güncelleme denetimi arka arkaya beş gün başarısız olduğunda bildirim metnini iyileştirildi (eski değer: iki
-  gün, ancak bazı kullanıcılar için çok düşüktü).
-* Son başarılı arka plan güncelleme denetiminin çökme raporu ve zaman damgası iyileştirildi

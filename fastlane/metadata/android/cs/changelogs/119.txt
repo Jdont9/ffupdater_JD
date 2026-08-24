@@ -1,1 +1,0 @@
-* Opraven chybný signatureHash pro Mull (verze divestos.org)

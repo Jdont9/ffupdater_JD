@@ -1,1 +1,0 @@
-- atualizar expressão regular para Navegador Tor (para corrigir a trava no início do aplicativo)

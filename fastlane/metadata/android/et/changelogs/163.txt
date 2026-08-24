@@ -1,1 +1,0 @@
-- tõstsime MainActiviy RecylerView teise klassi

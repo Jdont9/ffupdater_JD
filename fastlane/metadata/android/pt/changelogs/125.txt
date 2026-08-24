@@ -1,2 +1,0 @@
-* Obrigado pela contribuição Weblate de: nautilusx, Juraj Motuz, MkQtS, gallegonovato, Retrial
-* Adaptar ao novo esquema de nomes para Firefox Focus e Firefox Klar (Tobi823/ffupdater#307)

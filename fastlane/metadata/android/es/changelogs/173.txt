@@ -1,6 +1,0 @@
-Versión 79.2.3 (173)
-
-- Gracias por las contribuciones Weblate de: Rheydskey, ℂ𝕠𝕠𝕠𝕝 (𝕘𝕚𝕥𝕙𝕦𝕓.𝕔𝕠𝕞/ℂ𝕠𝕠𝕠𝕝) traducido 8,2% (25 de 302 cadenas), Scrambled777, gallegonovato, 大王叫我来巡山, Eryk Michalak, Oğuz Ersen, Kazushi Hayama y 109247019824
-- Solucionar problemas de descarga con Firefox Release (Tobi823/ffupdater#592)
-- No realizar la comprobación de actualización en segundo plano si la prueba de la red no tiene éxito (Tobi823/ffupdater#578)
-- Actualizar dependencias

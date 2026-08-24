@@ -13,7 +13,9 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.github.GithubConsumer
 
 /**
- * https://api.github.com/repos/Tobi823/ffupdater/releases
+ * Personal fork: points to Jdont9/ffupdater_JD instead of the upstream Tobi823/ffupdater, so
+ * self-update checks use this fork's own GitHub Releases.
+ * https://api.github.com/repos/Jdont9/ffupdater_JD/releases
  */
 @Keep
 object FFUpdater : AppBase() {
@@ -26,9 +28,11 @@ object FFUpdater : AppBase() {
     override val minApiLevel = Build.VERSION_CODES.N
     override val supportedAbis = ALL_ABIS
 
-    override val signatureHash = "f4e642bb85cbbcfd7302b2cbcbd346993a41067c27d995df492c9d0d38747e62"
+    // Certificate SHA-256 digest of this fork's own signing key (CN=Julien), verified from the
+    // signed release APK - not the original FFUpdater's certificate.
+    override val signatureHash = "27c12c604f2b778b8fb2f1e6aefa81f1625a80d87a0fd553c3375e541e5804c3"
     override val installableByUser = false
-    override val projectPage = "https://github.com/Tobi823/ffupdater"
+    override val projectPage = "https://github.com/Jdont9/ffupdater_JD"
     override val displayCategory = listOf(OTHER)
     override val differentSignatureMessage = R.string.ffupdater__different_signature_message
     override val hostnameForInternetCheck = "https://api.github.com"
@@ -37,9 +41,9 @@ object FFUpdater : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("Tobi823", "ffupdater", 0),
+            repository = GithubConsumer.GithubRepo("Jdont9", "ffupdater_JD", 0),
             isValidRelease = { !it.isPreRelease },
-            isSuitableAsset = { it.name.endsWith(".apk") },
+            isSuitableAsset = { it.name == "JDupdater-release.apk" },
             requireReleaseDescription = false,
         )
         return LatestVersion(

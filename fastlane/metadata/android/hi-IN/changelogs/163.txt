@@ -1,1 +1,0 @@
-- MainActivity RecyclerView को दूसरी कक्षा में ले जाया गया
