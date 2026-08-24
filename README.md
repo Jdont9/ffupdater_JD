@@ -31,7 +31,6 @@ Browser which are better than Google Chrome:
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
-- [Thorium](https://github.com/Alex313031/Thorium-Android)
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;
   requires the TrichromeLibrary entry below to be installed/updated first)
 

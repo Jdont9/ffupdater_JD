@@ -215,7 +215,6 @@ class BackgroundSettingsTest : BaseTest() {
                 "MULCH_SYSTEMWEBVIEW",
                 "MULL_FROM_REPO",
                 "ORBOT",
-                "THORIUM",
                 "THUNDERBIRD",
                 "THUNDERBIRD_BETA",
                 "TOR_BROWSER",

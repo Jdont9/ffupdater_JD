@@ -15,7 +15,6 @@ import de.marmaro.krt.ffupdater.app.impl.Iceraven
 import de.marmaro.krt.ffupdater.app.impl.Ironfox
 import de.marmaro.krt.ffupdater.app.impl.K9Mail
 import de.marmaro.krt.ffupdater.app.impl.Orbot
-import de.marmaro.krt.ffupdater.app.impl.Thorium
 import de.marmaro.krt.ffupdater.app.impl.ThunderbirdBeta
 import de.marmaro.krt.ffupdater.app.impl.ThunderbirdRelease
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
@@ -39,7 +38,6 @@ enum class App {
     IRONFOX,
     K9MAIL,
     ORBOT,
-    THORIUM,
     THUNDERBIRD,
     THUNDERBIRD_BETA,
     TOR_BROWSER,
@@ -63,7 +61,6 @@ enum class App {
             IRONFOX -> Ironfox
             K9MAIL -> K9Mail
             ORBOT -> Orbot
-            THORIUM -> Thorium
             THUNDERBIRD -> ThunderbirdRelease
             THUNDERBIRD_BETA -> ThunderbirdBeta
             TOR_BROWSER -> TorBrowser

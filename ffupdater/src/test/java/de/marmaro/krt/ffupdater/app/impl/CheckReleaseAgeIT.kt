@@ -52,7 +52,6 @@ class CheckReleaseAgeIT {
             TestData(K9Mail, 60),
             TestData(Iceraven, 60),
             TestData(Orbot, 60, "17.3.2-RC-1-tor-0.4.8.12"),
-            TestData(Thorium, 300, "126.0.6478.246"),
             TestData(ThunderbirdRelease, 60),
             TestData(ThunderbirdBeta, 60),
             TestData(TorBrowserAlpha, 60),
