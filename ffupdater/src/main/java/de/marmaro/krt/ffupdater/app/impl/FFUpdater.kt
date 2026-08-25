@@ -48,7 +48,10 @@ object FFUpdater : AppBase() {
         )
         return LatestVersion(
             downloadUrl = result.url,
-            version = Version(result.tagName),
+            // Git tags are prefixed with "v" (e.g. "v83.0.0") but versionName in build.gradle isn't
+            // ("83.0.0"). Strip the prefix so the version comparison matches correctly, otherwise
+            // JDupdater always thinks an update is available even when it's already up to date.
+            version = Version(result.tagName.removePrefix("v")),
             publishDate = result.releaseDate,
             exactFileSizeBytesOfDownload = result.fileSizeBytes,
             fileHash = null,
