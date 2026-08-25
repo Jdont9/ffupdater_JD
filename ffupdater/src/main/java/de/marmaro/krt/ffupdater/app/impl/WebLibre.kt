@@ -19,18 +19,10 @@ import de.marmaro.krt.ffupdater.network.github.GithubConsumer
  *
  * A privacy-focused Android browser built from scratch on Mozilla's Gecko engine (not a Firefox fork).
  *
- * Includes alpha releases (as requested), not just stable ones: `isValidRelease = { true }` accepts
- * both, and `irrelevantReleasesBetweenRelevant = 1` forces the paginated /releases API instead of
- * /releases/latest, since GitHub's "latest" endpoint never returns a release marked as prerelease
- * (which alpha builds are) - without this, alphas would silently never be picked up.
- *
- * !! Not verified: the WebLibre project mentions stable and alpha can be installed "side by side" as
- * separate apps, which suggests the alpha build might use a different applicationId/package name and/or
- * signing key than the stable build. This entry assumes both channels share the same package name
- * (eu.weblibre.gecko) and certificate. If installing an alpha update ever fails with a signature or
- * package-name mismatch, that's the likely cause - the fix would be to detect the channel from the
- * asset/tag name and adjust packageName/signatureHash accordingly, or split into two separate App
- * entries (stable vs alpha) similar to how Tor Browser / Tor Browser Alpha are separate here. !!
+ * Stable releases only for now. Alpha releases were tried but broke updates - the alpha builds appear
+ * to use a different applicationId/signing key than stable, so mixing both under one App entry with a
+ * single fixed packageName/signatureHash doesn't work. To support alpha again, this would need to become
+ * two separate App entries (stable vs alpha), the same way Tor Browser / Tor Browser Alpha are split here.
  */
 @Keep
 object WebLibre : AppBase() {
@@ -52,8 +44,8 @@ object WebLibre : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val result = GithubConsumer.findLatestRelease(
-            repository = GithubConsumer.GithubRepo("FaFre", "WebLibre", 1),
-            isValidRelease = { true }, // include alpha (prerelease) builds too
+            repository = GithubConsumer.GithubRepo("FaFre", "WebLibre", 0),
+            isValidRelease = { !it.isPreRelease }, // stable only, see class doc
             isSuitableAsset = { it.name.endsWith("arm64-v8a-release.apk") },
             requireReleaseDescription = false,
         )
