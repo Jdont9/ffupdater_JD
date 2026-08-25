@@ -59,6 +59,7 @@ class CheckReleaseAgeIT {
             TestData(TrichromeLibrary, null),
             TestData(Vanadium, null),
             TestData(Vivaldi, null),
+            TestData(WebLibre, 60),
         )
 
         @AfterAll

@@ -22,6 +22,7 @@ import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
 import de.marmaro.krt.ffupdater.app.impl.TrichromeLibrary
 import de.marmaro.krt.ffupdater.app.impl.Vanadium
 import de.marmaro.krt.ffupdater.app.impl.Vivaldi
+import de.marmaro.krt.ffupdater.app.impl.WebLibre
 
 @Keep
 enum class App {
@@ -44,7 +45,8 @@ enum class App {
     TOR_BROWSER_ALPHA,
     TRICHROME_LIBRARY, // must keep a lower ordinal than VANADIUM: installationChronology installs it first
     VANADIUM,
-    VIVALDI;
+    VIVALDI,
+    WEBLIBRE;
 
     fun findImpl(): AppBase {
         return when (this) {
@@ -68,6 +70,7 @@ enum class App {
             TRICHROME_LIBRARY -> TrichromeLibrary
             VANADIUM -> Vanadium
             VIVALDI -> Vivaldi
+            WEBLIBRE -> WebLibre
         }
     }
 

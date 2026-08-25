@@ -5,7 +5,7 @@
 
 # JDupdater
 
-> **This is my personal fork of [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater)**, maintained by me for my own devices. It adds support for GrapheneOS Vanadium/TrichromeLibrary and removes a few browsers I don't use. Large parts of this fork (new app integrations, CI/build fixes, this README section, etc.) were written with the help of the AI assistant Claude (Anthropic) rather than entirely by hand. Use at your own risk; it's not affiliated with or endorsed by the upstream FFUpdater project.
+> **This is a personal fork of [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater)**, maintained by me for my own devices. It adds support for GrapheneOS Vanadium/TrichromeLibrary and removes a few browsers I don't use. Large parts of this fork (new app integrations, CI/build fixes, this README section, etc.) were written with the help of the AI assistant Claude (Anthropic) rather than entirely by hand. Use at your own risk; it's not affiliated with or endorsed by the upstream FFUpdater project.
 
 Installs and updates the following browsers:
 
@@ -31,6 +31,7 @@ Browser which are better than Google Chrome:
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
+- [WebLibre](https://github.com/FaFre/WebLibre) (includes alpha releases)
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;
   requires the TrichromeLibrary entry below to be installed/updated first)
 
