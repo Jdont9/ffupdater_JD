@@ -171,7 +171,9 @@ class MainActivity : AppCompatActivity() {
     private suspend fun showInstalledApps() {
         val context = applicationContext
         val appsWithCorrectSignature = InstalledAppsCache.getInstalledAppsWithCorrectSignature(context)
+            .filter { it.findImpl().visibleToUser }
         val appsWithDifferentSignature = InstalledAppsCache.getInstalledAppsWithDifferentSignature(context)
+            .filter { it.findImpl().visibleToUser }
 
         recyclerViewMutex.withLock {
             recyclerView.notifyInstalledApps(

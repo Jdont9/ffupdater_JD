@@ -25,6 +25,10 @@ interface AppAttributes {
     val differentSignatureMessage: Int
     val hostnameForInternetCheck: String
     val isStaticSharedLibrary: Boolean
+    // If false, this app is never shown to the user (main screen, "Add app"), but is still tracked
+    // normally (background updates, install-status detection). Used for apps that only exist as an
+    // internal prerequisite of another app, e.g. TrichromeLibrary for Vanadium.
+    val visibleToUser: Boolean
 
     fun isEol() = (eolReason != null)
 }

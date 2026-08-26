@@ -44,6 +44,10 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
  * NOT_INSTALLED and the background updater would never pick it up again after the first install. Since
  * [Vanadium] cannot run without a correctly-signed TrichromeLibrary already installed, [isInstalled] and
  * [getInstalledVersion] here simply delegate to Vanadium's (reliable) detection instead.
+ *
+ * NOT USER-VISIBLE / NOT SEPARATELY INSTALLABLE: [visibleToUser] and [installableByUser] are both false,
+ * so this never appears on the main screen or in "Add app". Selecting or updating [Vanadium] transparently
+ * installs/updates this library first - see the chaining logic in DownloadActivity (createIntent()).
  */
 @Keep
 object TrichromeLibrary : AppBase() {
@@ -61,6 +65,8 @@ object TrichromeLibrary : AppBase() {
     override val displayCategory = listOf(DisplayCategory.OTHER)
     override val hostnameForInternetCheck = "https://gitlab.com"
     override val isStaticSharedLibrary = true
+    override val visibleToUser = false
+    override val installableByUser = false
 
     private const val PROJECT_PATH = "grapheneos/platform_external_vanadium"
     private const val PATH_IN_REPO = "prebuilt/arm64-multilib/TrichromeLibrary.apk" // TODO verify per branch

@@ -70,6 +70,9 @@ class DownloadActivity : AppCompatActivity() {
     private lateinit var installer: AppInstaller
     private lateinit var appImpl: AppBase
     private lateinit var gui: GuiHelper
+    // if set, automatically start installing this app right after the current one succeeds - used to
+    // chain TrichromeLibrary -> Vanadium, see createIntent()
+    private var chainToApp: App? = null
 
     // persistent data for already running downloads
     class DownloadViewModel : ViewModel() {
@@ -131,6 +134,7 @@ class DownloadActivity : AppCompatActivity() {
 
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
+        chainToApp = intent.extras?.getString(EXTRA_CHAIN_TO_APP_NAME)?.let { App.valueOf(it) }
         gui = GuiHelper(this)
         installer = AppInstallerFactory.createForegroundAppInstaller(this)
         lifecycle.addObserver(installer)
@@ -165,6 +169,7 @@ class DownloadActivity : AppCompatActivity() {
         }
         app = App.valueOf(appFromExtras)
         appImpl = app.findImpl()
+        chainToApp = intent.extras?.getString(EXTRA_CHAIN_TO_APP_NAME)?.let { App.valueOf(it) }
         gui = GuiHelper(this)
         downloadViewModel.clear()
         lifecycleScope.launch(Dispatchers.Main) {
@@ -395,6 +400,16 @@ class DownloadActivity : AppCompatActivity() {
         deleteCachedApkFileIfSuitable(success)
 
         findViewById<View>(R.id.install_activity__retry_installation).setVisibleOrGone(!success)
+
+        // if this was a prerequisite install (e.g. TrichromeLibrary), automatically continue with the
+        // chained app (e.g. Vanadium) - but only if this step actually succeeded.
+        val next = chainToApp
+        if (success && next != null) {
+            debug("chaining to ${next.name} after successful install")
+            chainToApp = null
+            startActivity(createIntent(this, next))
+            finish()
+        }
     }
 
     @MainThread
@@ -450,12 +465,26 @@ class DownloadActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APP_NAME = "app_name"
+        const val EXTRA_CHAIN_TO_APP_NAME = "chain_to_app_name"
         const val LOG_PREFIX = "DownloadActivity"
 
         /**
-         * Create a new InstallActivity which have to check if app is up-to-date
+         * Create a new InstallActivity which have to check if app is up-to-date.
+         *
+         * Special case: Vanadium requires TrichromeLibrary to already be installed/updated with a
+         * matching version, otherwise its own installation fails. Instead of exposing TrichromeLibrary
+         * as a separate app the user has to remember to install first (see [App.TRICHROME_LIBRARY]'s
+         * visibleToUser = false), selecting or updating Vanadium transparently installs/updates the
+         * library first, and only continues on to Vanadium itself once that succeeds - see
+         * installAppWithResultProcessing()'s chaining logic.
          */
         fun createIntent(context: Context, app: App): Intent {
+            if (app == App.VANADIUM) {
+                val intent = Intent(context, DownloadActivity::class.java)
+                intent.putExtra(EXTRA_APP_NAME, App.TRICHROME_LIBRARY.name)
+                intent.putExtra(EXTRA_CHAIN_TO_APP_NAME, App.VANADIUM.name)
+                return intent
+            }
             val intent = Intent(context, DownloadActivity::class.java)
             intent.putExtra(EXTRA_APP_NAME, app.name)
             return intent
