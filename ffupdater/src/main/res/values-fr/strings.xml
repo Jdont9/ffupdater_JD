@@ -134,6 +134,12 @@
     <string name="vivaldi__description">Vivaldi est un navigateur pratique et très respectueux de la vie privée. Il intègre des nombreuses fonctions dont un bloqueur de pubs et traqueurs (désactivé par défaut) et un traducteur de pages. Des outils judicieux de prise de notes et de capture de page vous feront gagner du temps. En option, vous pouvez afficher les onglets comme sur ordinateurs, des thèmes clair et sombre ou personnaliser l’interface. Téléchargez-le et profitez de ses performances.</string>
     <string name="vivaldi__title">Navigateur Vivaldi</string>
     <string name="vivaldi__warning">- Vivaldi n\'est que partiellement open source. \n- Il utilise également le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
+    <string name="weblibre__title">WebLibre</string>
+    <string name="weblibre__description">WebLibre est un navigateur Android indépendant axé sur la vie privée, construit sur le moteur Gecko de Mozilla et les Mozilla Android Components. Ce n\'est pas un dérivé de Firefox - il combine des réglages de confidentialité stricts par défaut avec des conteneurs d\'onglets, des onglets isolés, un routage Tor et proxy intégré, une compatibilité avec les extensions Firefox, et un moteur de recherche local, exécuté directement sur l\'appareil.</string>
+    <string name="weblibre__warning">- En développement actif avec des mises à jour fréquentes ; quelques imperfections sont possibles.</string>
+    <string name="vanadium__title">Vanadium</string>
+    <string name="vanadium__description">Vanadium est le fork de Chromium de GrapheneOS, durci pour la confidentialité et la sécurité. Le composant TrichromeLibrary nécessaire est installé/mis à jour automatiquement en même temps que Vanadium - aucune étape séparée n\'est nécessaire.</string>
+    <string name="vanadium__warning">- TrichromeLibrary (une bibliothèque partagée nécessaire) est installée/mise à jour automatiquement avec Vanadium - il suffit de sélectionner ou mettre à jour Vanadium normalement.\n- Vanadium est conçu et durci pour GrapheneOS ; l\'utiliser sur d\'autres versions d\'Android fait perdre une partie de ce durcissement.\n- Vanadium utilise le fondement technique de Google Chrome et soutient donc indirectement la position monopolistique du moteur de rendu Chromium.</string>
     <string name="iceraven__warning">- Le développeur ne donne aucune garantie de mises à jour de sécurité ou même de stabilité. \n - Le projet prend du temps à fournir des mises à jour de sécurité.</string>
     <string name="settings__b_f__delete_cache_if_install_successful">Supprimer la mise à jour téléchargée si l\'installation réussit.</string>
     <string name="firefox_release__warning">- Une version améliorée de Firefox est aussi disponible sur F-Droid sous le nom de Fennec F-Droid.</string>
@@ -160,6 +166,10 @@
     <string name="chromium__warning">- Chromium utilise la fondation technique de Google Chrome et supporte donc indirectement la position de monopole du moteur de rendu Chromium.</string>
     <string name="settings__background__update_check__when_device_idle__title">Vérifier les mises à jour seulement si l\'appareil est inactif</string>
     <string name="settings__network_category__title">Réseau</string>
+    <string name="settings__vanadium_category__title">Vanadium</string>
+    <string name="vanadium__android_branch__default">17</string>
+    <string name="vanadium__android_branch__title">Branche GrapheneOS</string>
+    <string name="vanadium__android_branch__dialog_message">La branche GitLab de grapheneos/platform_external_vanadium depuis laquelle télécharger TrichromeLibrary/Vanadium (ex. \"17\" ou \"16-qpr2\"). GrapheneOS ouvre une nouvelle branche à chaque nouvelle version d\'Android/OS ; consultez https://gitlab.com/grapheneos/platform_external_vanadium/-/branches pour trouver la branche actuelle et mettez-la à jour ici lorsqu\'elle change.</string>
     <string name="settings__device_category__title">Appareil</string>
     <string name="network__dns_provider__quad9">DNS sur HTTPS : Quad9</string>
     <string name="chromium__title">Chromium</string>

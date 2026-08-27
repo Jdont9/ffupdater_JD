@@ -95,15 +95,17 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         private fun loadHiddenAppNames() {
+            val visibleApps = App.values().filter { it.findImpl().visibleToUser }
             val hiddenApps = findMultiPref("foreground__hidden_apps")
-            hiddenApps.entries = App.values().map { getString(it.findImpl().title) }.toTypedArray()
-            hiddenApps.entryValues = App.values().map { it.name }.toTypedArray()
+            hiddenApps.entries = visibleApps.map { getString(it.findImpl().title) }.toTypedArray()
+            hiddenApps.entryValues = visibleApps.map { it.name }.toTypedArray()
         }
 
         private fun loadExcludedAppNames() {
+            val visibleApps = App.values().filter { it.findImpl().visibleToUser }
             val excludedApps = findMultiPref("background__update_check__excluded_apps")
-            excludedApps.entries = App.values().map { getString(it.findImpl().title) }.toTypedArray()
-            excludedApps.entryValues = App.values().map { it.name }.toTypedArray()
+            excludedApps.entries = visibleApps.map { getString(it.findImpl().title) }.toTypedArray()
+            excludedApps.entryValues = visibleApps.map { it.name }.toTypedArray()
         }
 
         private fun listenForBackgroundJobRestarts() {

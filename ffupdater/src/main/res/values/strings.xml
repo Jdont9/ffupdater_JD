@@ -153,7 +153,7 @@
     <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="weblibre__title">WebLibre</string>
     <string name="weblibre__description">WebLibre is an independent privacy-focused browser for Android built on Mozilla\'s Gecko engine and Mozilla Android Components. It is not a Firefox fork - it combines strong privacy defaults with tab containers, isolated tabs, built-in Tor and proxy routing, Firefox-compatible extensions, and a local-first, on-device search engine.</string>
-    <string name="weblibre__warning">- Under active development with frequent updates; some rough edges are possible.\n- This includes alpha releases, not just stable ones, which can be less reliable.</string>
+    <string name="weblibre__warning">- Under active development with frequent updates; some rough edges are possible.</string>
     <string name="tor_browser__title">Tor Browser</string>
     <string name="tor_browser__description">Tor Browser for Android is the only official mobile browser supported by the Tor Project, developers of the world’s strongest tool for privacy and freedom online.</string>
     <string name="orbot__description">Orbot is a free proxy app that empowers other apps to use the internet more securely. Orbot uses Tor to encrypt your Internet traffic and then hides it by bouncing through a series of computers around the world. Tor is free software and an open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, confidential business activities and relationships, and state security known as traffic analysis.</string>
@@ -241,12 +241,12 @@
     <string name="cromite__warning">- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
 
     <string name="trichrome_library__title">TrichromeLibrary (for Vanadium)</string>
-    <string name="trichrome_library__description">Shared library component required by Vanadium (GrapheneOS\'s hardened Chromium browser). It contains no user-facing app of its own.</string>
-    <string name="trichrome_library__warning">- This is a dependency, not a browser. Install/update it BEFORE Vanadium, otherwise installing or updating Vanadium will fail.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.\n- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+    <string name="trichrome_library__description">Shared library component required by Vanadium (GrapheneOS\'s hardened Chromium browser). It contains no user-facing app of its own and is installed/updated automatically alongside Vanadium.</string>
+    <string name="trichrome_library__warning">- This is a dependency, not a browser. It is installed/updated automatically whenever Vanadium is.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.</string>
 
     <string name="vanadium__title">Vanadium</string>
-    <string name="vanadium__description">Vanadium is GrapheneOS\'s privacy and security hardened fork of Chromium. It requires TrichromeLibrary to be installed first.</string>
-    <string name="vanadium__warning">- Requires TrichromeLibrary to be installed/updated first, otherwise installation fails.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.\n- Vanadium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
+    <string name="vanadium__description">Vanadium is GrapheneOS\'s privacy and security hardened fork of Chromium. The required TrichromeLibrary component is automatically installed/updated alongside Vanadium - no separate step needed.</string>
+    <string name="vanadium__warning">- TrichromeLibrary (a required shared library) is automatically installed/updated together with Vanadium - just select or update Vanadium as normal.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.\n- Vanadium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="main_activity__unexpected_error">Unexpected error occurred.</string>
     <string name="k9mail__title">K-9 Mail</string>
     <string name="k9mail__description">Full-featured email client</string>

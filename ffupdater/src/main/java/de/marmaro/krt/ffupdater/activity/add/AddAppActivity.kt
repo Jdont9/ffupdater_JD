@@ -64,6 +64,14 @@ class AddAppActivity : AppCompatActivity() {
         val items = mutableListOf<AddRecyclerView.ItemWrapper>()
 
         for (displayCategory in values()) {
+            val categoryApps = installedApps
+                .filter { displayCategory in it.displayCategory }
+                .filter { if (displayCategory == EOL) true else (EOL !in it.displayCategory) }
+                .map { AddRecyclerView.WrappedApp(it.app) }
+            if (categoryApps.isEmpty()) {
+                continue
+            }
+
             val titleText = when (displayCategory) {
                 FROM_MOZILLA -> getString(R.string.add_app_activity__title_from_mozilla)
                 BASED_ON_FIREFOX -> getString(R.string.add_app_activity__title_based_on_firefox)
@@ -74,11 +82,6 @@ class AddAppActivity : AppCompatActivity() {
                 EOL -> getString(R.string.add_app_activity__title_end_of_live_browser)
             }
             items.add(AddRecyclerView.WrappedTitle(titleText))
-
-            val categoryApps = installedApps
-                .filter { displayCategory in it.displayCategory }
-                .filter { if (displayCategory == EOL) true else (EOL !in it.displayCategory) }
-                .map { AddRecyclerView.WrappedApp(it.app) }
             items.addAll(categoryApps)
         }
 
