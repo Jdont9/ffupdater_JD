@@ -170,6 +170,9 @@
     <string name="vanadium__android_branch__default">17</string>
     <string name="vanadium__android_branch__title">Branche GrapheneOS</string>
     <string name="vanadium__android_branch__dialog_message">La branche GitLab de grapheneos/platform_external_vanadium depuis laquelle télécharger TrichromeLibrary/Vanadium (ex. \"17\" ou \"16-qpr2\"). GrapheneOS ouvre une nouvelle branche à chaque nouvelle version d\'Android/OS ; consultez https://gitlab.com/grapheneos/platform_external_vanadium/-/branches pour trouver la branche actuelle et mettez-la à jour ici lorsqu\'elle change.</string>
+    <string name="vanadium__prebuilt_path__default">arm64-multilib</string>
+    <string name="vanadium__prebuilt_path__title">Sous-dossier prebuilt</string>
+    <string name="vanadium__prebuilt_path__dialog_message">Le sous-dossier sous prebuilt/ sur la branche sélectionnée qui contient TrichromeLibrary.apk et TrichromeChrome.apk (ex. \"arm64-multilib\" ou \"arm64\"). Cela a déjà changé entre certaines branches, indépendamment du numéro de branche. Consultez https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/&lt;branch&gt;/prebuilt pour trouver la valeur actuelle.</string>
     <string name="settings__device_category__title">Appareil</string>
     <string name="network__dns_provider__quad9">DNS sur HTTPS : Quad9</string>
     <string name="chromium__title">Chromium</string>

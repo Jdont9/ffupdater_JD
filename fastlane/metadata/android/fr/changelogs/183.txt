@@ -1,0 +1,4 @@
+Version 84.0.1 (183)
+- Ajout des traductions françaises pour Vanadium, WebLibre et TrichromeLibrary
+- Ajout d'une option de réglage pour le sous-dossier prebuilt/ de Vanadium (indépendante de la branche)
+- Nettoyage du README et des fiches F-Droid (liste de navigateurs obsolète, liens cassés, ancien branding)

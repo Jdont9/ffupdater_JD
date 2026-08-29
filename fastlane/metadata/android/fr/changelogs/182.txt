@@ -1,0 +1,4 @@
+Version 84.0.0 (182)
+- Ajout de WebLibre (navigateur Gecko axé vie privée, releases stables uniquement)
+- Suppression de Thorium (fin de vie, plus maintenu en amont)
+- Fusion de TrichromeLibrary dans Vanadium : sélectionner ou mettre à jour Vanadium installe désormais la librairie automatiquement d'abord, TrichromeLibrary n'apparaît plus comme une app séparée

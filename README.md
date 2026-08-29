@@ -1,11 +1,10 @@
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/app/de.marmaro.krt.ffupdater)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # JDupdater
 
-> **This is a personal fork of [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater)**, maintained by me for my own devices. It adds support for GrapheneOS Vanadium/TrichromeLibrary and removes a few browsers I don't use. Large parts of this fork (new app integrations, CI/build fixes, this README section, etc.) were written with the help of the AI assistant Claude (Anthropic) rather than entirely by hand. Use at your own risk; it's not affiliated with or endorsed by the upstream FFUpdater project.
+> **This is a personal fork of [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater)**, maintained by me for my own devices. It adds support for GrapheneOS Vanadium/TrichromeLibrary and removes a few browsers I don't use. Large parts of this fork (new app integrations, CI/build fixes, this README section, etc.) were written with the help of the AI assistant Claude (Anthropic) rather than entirely by hand. Use at your own risk; it's not affiliated with or endorsed by the upstream FFUpdater project. This fork isn't published on F-Droid; grab the APK from the [Releases page](https://github.com/Jdont9/ffupdater_JD/releases) instead.
 
 Installs and updates the following browsers:
 
@@ -16,60 +15,48 @@ Software from Mozilla or based on Firefox:
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
   ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
-  ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
 - [Thunderbird for Android](https://play.google.com/store/apps/details?id=net.thunderbird.android),
   [Thunderbird for Android Beta](https://play.google.com/store/apps/details?id=net.thunderbird.android.beta)
   ([GitHub Repository](https://github.com/thunderbird/thunderbird-android/))
+- [WebLibre](https://github.com/FaFre/WebLibre) (built on Mozilla's Gecko engine, not a Firefox fork)
 
 Browser which are better than Google Chrome:
 
-  ([GitHub Repository](https://github.com/brave/brave-browser))
 - [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
 - [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
-- [WebLibre](https://github.com/FaFre/WebLibre) (includes alpha releases)
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;
-  requires the TrichromeLibrary entry below to be installed/updated first)
+  the required TrichromeLibrary component is installed/updated automatically alongside it, no separate
+  step needed)
 
 Other applications:
 
 - [FairEmail](https://github.com/M66B/FairEmail)
 - [K-9 Mail](https://k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
-- [TrichromeLibrary](https://gitlab.com/grapheneos/platform_external_vanadium) (shared library dependency
-  of Vanadium, not a standalone app)
 
-FFUpdater checks for updates in the background and downloads them as well. Apps can be updated without user
+JDupdater checks for updates in the background and downloads them as well. Apps can be updated without user
 interaction with:
 
 - Android 12 or higher
 - rooted smartphone
 - [Shizuku](https://shizuku.rikka.app/) / [Sui](https://github.com/RikkaApps/Sui) with Android 6 or higher
 
-## Thanks
-
 ## FAQ
 
 - By clicking on the "i"-Icon, you can see the time of the last successful background update check.
-- Please reopen FFUpdater after moving it to the internal/external storage.
-- When the 'power save mode' is activated, FFUpdater's behavior changes. If the mode is on for less than 24
-  hours, FFUpdater will not perform any background update checks. However, if it remains on for longer,
-  FFUpdater will check for updates in the background, but it will not download them in the background.
+- Please reopen JDupdater after moving it to the internal/external storage.
+- When the 'power save mode' is activated, JDupdater's behavior changes. If the mode is on for less than 24
+  hours, JDupdater will not perform any background update checks. However, if it remains on for longer,
+  JDupdater will check for updates in the background, but it will not download them in the background.
 
 ## How to contribute
 
-You can improve the translation on [Weblate](https://hosted.weblate.org/projects/ffupdater). Current progress:
-[<img align="right" src="https://hosted.weblate.org/widgets/ffupdater/-/287x66-white.png" alt="Get involved in translating FFUpdater" />](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
-
-[![Translation status](https://hosted.weblate.org/widgets/ffupdater/-/multi-auto.svg)](https://hosted.weblate.org/engage/ffupdater/?utm_source=widget)
-
-Your translation contribution will be acknowledged in every release changelog.
-
-For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
+This is a personal, single-maintainer fork - the upstream project's [Weblate translation project](https://hosted.weblate.org/projects/ffupdater) and [contribution guide](HOW_TO_CONTRIBUTE.md) apply to [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater), not to this fork. Contributing translations there helps the original project, not this one.
 
 ## Source Code Contributors
 
@@ -139,9 +126,8 @@ For advanced users: [How to contribute](HOW_TO_CONTRIBUTE.md)
 
 ## Git repositories
 
-- Main repository: https://github.com/Tobi823/ffupdater
-- Mirror repository on notabug.org: https://notabug.org/Tobiwan/ffupdater
-- Mirror repository on Gitlab: https://gitlab.com/Tobiwan/ffupdater_gitlab
+- This fork: https://github.com/Jdont9/ffupdater_JD
+- Upstream project: https://github.com/Tobi823/ffupdater
 
 ## License
 

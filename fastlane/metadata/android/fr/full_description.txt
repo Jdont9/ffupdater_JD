@@ -3,27 +3,24 @@ Installe et met à jour les navigateurs suivants :
 Navigateurs de Mozilla ou basés sur Firefox :
 - Fennec F-Droid
 - Firefox Browser, Firefox pour Android Beta, Firefox Nightly
-- Firefox Focus, Firefox Focus Beta, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 - Thunderbird for Android, Thunderbird for Android Beta
+- WebLibre
 
 Navigateurs plus performants que Google Chrome :
-- Brave Private Browser, Brave Browser (Beta), Brave Browser (Nightly)
 - Cromite
-- Chrome
+- Chromium
 - Navigateur DuckDuckGo
-- Privacy Browser (F-Droid)
 - Vivaldi
-- Thorium
+- Vanadium (le Chromium durci de GrapheneOS ; le composant TrichromeLibrary requis est installé
+  automatiquement en même temps)
 
 Autres applications :
 - FairEmail
-- K-9 Mail / Thunderbird Mail
+- K-9 Mail
 - Orbot
 
-FFUpdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou rootés, FFUpdater peut également mettre à jour les applications sans interaction de l'utilisateur.
+JDupdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou rootés, JDupdater peut également mettre à jour les applications sans interaction de l'utilisateur.
 
-Visitez https://notabug.org/Tobiwan/ffupdater/src/master/README.md pour plus d'informations.
-
-Changelogs : https://notabug.org/Tobiwan/ffupdater/src/master/fastlane/metadata/android/en-US/changelogs
+Ceci est un fork personnel de Tobi823/ffupdater, non publié sur F-Droid et non affilié au projet original. Voir https://github.com/Jdont9/ffupdater_JD pour plus d'informations et pour télécharger les releases.

@@ -1,0 +1,2 @@
+Version 83.0.0 (181)
+- Fix version comparison bug: JDupdater's own self-update always showed "update available" even when up to date

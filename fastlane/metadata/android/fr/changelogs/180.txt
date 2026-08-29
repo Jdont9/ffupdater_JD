@@ -1,0 +1,5 @@
+Version 82.0.0 (180)
+- Fork personnel renommé JDupdater (début de la divergence significative)
+- Ajout de Vanadium et TrichromeLibrary (le Chromium durci de GrapheneOS)
+- Suppression de Brave, Brave Beta, Brave Nightly, Firefox Focus, Firefox Focus Beta, Firefox Klar, Privacy Browser
+- Réduction des traductions à l'anglais et au français uniquement

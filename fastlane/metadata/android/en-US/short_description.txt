@@ -1,1 +1,1 @@
-Updater for privacy friendly browsers
+Personal fork: updater for privacy friendly browsers

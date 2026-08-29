@@ -1,0 +1,4 @@
+Version 84.0.1 (183)
+- Add French translations for Vanadium, WebLibre and TrichromeLibrary
+- Add a Settings option for the Vanadium prebuilt/ subfolder (independent from the branch setting)
+- Clean up README and F-Droid metadata (stale browser list, broken links, outdated branding)

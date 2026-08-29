@@ -1,0 +1,2 @@
+Version 83.0.0 (181)
+- Correction d'un bug de comparaison de version : l'auto-mise à jour de JDupdater affichait toujours "mise à jour disponible" même à jour

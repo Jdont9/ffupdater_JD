@@ -1,1 +1,1 @@
-Permet la mise à jour de navigateurs respectueux de la vie privée
+Fork personnel : mise à jour de navigateurs respectueux de la vie privée

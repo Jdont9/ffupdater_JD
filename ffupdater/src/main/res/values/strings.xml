@@ -190,6 +190,9 @@
     <string name="vanadium__android_branch__default">17</string>
     <string name="vanadium__android_branch__title">GrapheneOS branch</string>
     <string name="vanadium__android_branch__dialog_message">The GitLab branch of grapheneos/platform_external_vanadium to download TrichromeLibrary/Vanadium from (e.g. \"17\" or \"16-qpr2\"). GrapheneOS opens a new branch for every new Android/OS release; check https://gitlab.com/grapheneos/platform_external_vanadium/-/branches to find the current one and update it here when it changes.</string>
+    <string name="vanadium__prebuilt_path__default">arm64-multilib</string>
+    <string name="vanadium__prebuilt_path__title">Prebuilt subfolder</string>
+    <string name="vanadium__prebuilt_path__dialog_message">The subfolder under prebuilt/ on the selected branch that contains TrichromeLibrary.apk and TrichromeChrome.apk (e.g. \"arm64-multilib\" or \"arm64\"). This has changed between branches before, independently of the branch number. Browse https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/&lt;branch&gt;/prebuilt to find the current one.</string>
     <string name="settings__device_category__title">Device</string>
     <string name="device__prefer_32bit_apks__summary">Enable if your device is usually low on memory. FFUpdater will then use 32-bit APKs which usually require less memory.</string>
     <string name="device__prefer_32bit_apks__title">Prefer 32-Bit APKs</string>

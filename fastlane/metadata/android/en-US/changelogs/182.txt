@@ -1,0 +1,5 @@
+Version 84.0.0 (182)
+- Add WebLibre (Gecko-based privacy browser, stable releases only)
+- Remove Thorium (end of life, unmaintained upstream)
+- Merge TrichromeLibrary into Vanadium: selecting or updating Vanadium now installs the library
+  automatically first, TrichromeLibrary is no longer shown as a separate app

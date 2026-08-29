@@ -227,6 +227,14 @@
             app:useSimpleSummaryProvider="true"
             app:title="@string/vanadium__android_branch__title" />
 
+        <EditTextPreference
+            app:defaultValue="@string/vanadium__prebuilt_path__default"
+            app:dialogMessage="@string/vanadium__prebuilt_path__dialog_message"
+            app:key="vanadium__prebuilt_path"
+            app:singleLineTitle="false"
+            app:useSimpleSummaryProvider="true"
+            app:title="@string/vanadium__prebuilt_path__title" />
+
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 </PreferenceScreen>

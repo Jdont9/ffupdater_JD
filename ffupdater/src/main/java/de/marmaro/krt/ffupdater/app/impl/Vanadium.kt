@@ -33,10 +33,9 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
  * own kernel/allocator/system patches. Running it standalone on a non-GrapheneOS Android build is
  * possible but loses part of its hardening; Cromite is a reasonable alternative on stock/other ROMs.
  *
- * !! Still TODO / not verified: [PATH_IN_REPO] - the directory layout under prebuilt/ has changed
- * between branches before (e.g. "arm64" on branch 16 vs "arm64-multilib" on branch 17). If downloads
- * start failing after changing the branch setting, check whether the path changed too by browsing
- * https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/<branch>/prebuilt !!
+ * !! Still verify per branch: [VanadiumSettings.prebuiltPath] (see Settings > Vanadium) - the directory
+ * layout under prebuilt/ has changed between branches before (e.g. "arm64" on branch 16 vs
+ * "arm64-multilib" on branch 17). Update it in Settings when it changes. !!
  */
 @Keep
 object Vanadium : AppBase() {
@@ -55,14 +54,14 @@ object Vanadium : AppBase() {
     override val hostnameForInternetCheck = "https://gitlab.com"
 
     private const val PROJECT_PATH = "grapheneos/platform_external_vanadium"
-    private const val PATH_IN_REPO = "prebuilt/arm64-multilib/TrichromeChrome.apk" // TODO verify per branch
 
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val branch = VanadiumSettings.androidBranch
+        val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/TrichromeChrome.apk"
         val commit = GitLabBranchConsumer.findLatestCommitOfBranch(PROJECT_PATH, branch)
-        val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, PATH_IN_REPO)
+        val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, pathInRepo)
         return LatestVersion(
             downloadUrl = downloadUrl,
             version = Version(commit.version),

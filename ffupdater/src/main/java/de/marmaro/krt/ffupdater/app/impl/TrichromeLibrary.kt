@@ -33,10 +33,9 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
  * to auto-detect "the branch matching my device" from outside (branch names aren't strictly numeric,
  * e.g. "default" also exists). Update it in Settings > Vanadium when GrapheneOS moves to a new branch.
  *
- * !! Still TODO / not verified: [PATH_IN_REPO] - the directory layout under prebuilt/ has changed
- * between branches before (e.g. "arm64" on branch 16 vs "arm64-multilib" on branch 17). If downloads
- * start failing after changing the branch setting, check whether the path changed too by browsing
- * https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/<branch>/prebuilt !!
+ * !! Still verify per branch: [VanadiumSettings.prebuiltPath] (see Settings > Vanadium) - the directory
+ * layout under prebuilt/ has changed between branches before (e.g. "arm64" on branch 16 vs
+ * "arm64-multilib" on branch 17). Update it in Settings when it changes. !!
  *
  * INSTALL-STATUS PIGGYBACKING: as a static shared library, this package can't be queried through the
  * public PackageManager API once installed (see [isStaticSharedLibrary] and CertificateVerifier.kt),
@@ -69,14 +68,14 @@ object TrichromeLibrary : AppBase() {
     override val installableByUser = false
 
     private const val PROJECT_PATH = "grapheneos/platform_external_vanadium"
-    private const val PATH_IN_REPO = "prebuilt/arm64-multilib/TrichromeLibrary.apk" // TODO verify per branch
 
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val branch = VanadiumSettings.androidBranch
+        val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/TrichromeLibrary.apk"
         val commit = GitLabBranchConsumer.findLatestCommitOfBranch(PROJECT_PATH, branch)
-        val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, PATH_IN_REPO)
+        val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, pathInRepo)
         return LatestVersion(
             downloadUrl = downloadUrl,
             version = Version(commit.version),
