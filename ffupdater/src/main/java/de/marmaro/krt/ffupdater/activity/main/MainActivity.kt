@@ -13,6 +13,7 @@ import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -171,10 +172,12 @@ class MainActivity : AppCompatActivity() {
     private var advancedSettingsFirstTapTime = 0L
 
     private fun setupAdvancedVanadiumSettingsUnlockGesture(toolbar: MaterialToolbar) {
-        toolbar.setOnClickListener {
+        val onTitleTapped = View.OnClickListener {
             val now = System.currentTimeMillis()
             if (now - advancedSettingsFirstTapTime > 3_000) {
                 advancedSettingsTapCount = 0
+            }
+            if (advancedSettingsTapCount == 0) {
                 advancedSettingsFirstTapTime = now
             }
             advancedSettingsTapCount++
@@ -188,6 +191,19 @@ class MainActivity : AppCompatActivity() {
                     R.string.main_activity__advanced_vanadium_settings_locked
                 }
                 showBriefMessage(message)
+            }
+        }
+
+        // MaterialToolbar consumes taps on its internal title TextView, so a listener
+        // attached only to the toolbar itself is not invoked when the title is tapped.
+        toolbar.setOnClickListener(onTitleTapped)
+        for (index in 0 until toolbar.childCount) {
+            val child = toolbar.getChildAt(index)
+            if (child is TextView && child.text == getString(R.string.app_name)) {
+                child.setOnClickListener(onTitleTapped)
+                child.isClickable = true
+                child.isFocusable = true
+                break
             }
         }
     }
