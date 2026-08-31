@@ -40,7 +40,7 @@ import rikka.shizuku.Shizuku
  * Activity for displaying the settings view.
  */
 @Keep
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +66,25 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
+        return true
+    }
+
+    override fun onPreferenceStartScreen(
+        caller: PreferenceFragmentCompat,
+        preferenceScreen: PreferenceScreen,
+    ): Boolean {
+        val fragment = SettingsFragment().apply {
+            arguments = Bundle().apply {
+                putString(
+                    "androidx.preference.PreferenceFragmentCompat.PREFERENCE_ROOT",
+                    preferenceScreen.key,
+                )
+            }
+        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.settings_activity__main_layout, fragment)
+            .addToBackStack(preferenceScreen.key)
+            .commit()
         return true
     }
 
