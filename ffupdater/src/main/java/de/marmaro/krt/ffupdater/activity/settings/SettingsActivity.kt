@@ -18,6 +18,7 @@ import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
@@ -84,6 +85,18 @@ class SettingsActivity : AppCompatActivity() {
             deleteFileCacheWhenChange32BitAppsPreference()
             setupInstallerValidator()
             setupNetworkSettingsValidator()
+            updateAdvancedVanadiumSettingsVisibility()
+        }
+
+        override fun onResume() {
+            super.onResume()
+            // the unlock gesture lives in MainActivity, so re-check every time this screen becomes visible
+            updateAdvancedVanadiumSettingsVisibility()
+        }
+
+        private fun updateAdvancedVanadiumSettingsVisibility() {
+            findPreference<PreferenceScreen>("vanadium_advanced_settings_screen")?.isVisible =
+                DataStoreHelper.advancedVanadiumSettingsUnlocked
         }
 
         private fun hideOptionsForLowerApis() {

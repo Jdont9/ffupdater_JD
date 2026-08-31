@@ -88,7 +88,10 @@ class MainActivity : AppCompatActivity() {
         swipeContainer.setOnRefreshListener(userRefreshAppList)
         swipeContainer.setColorSchemeResources(holo_blue_light, holo_blue_dark)
 
-        findViewById<MaterialToolbar>(R.id.materialToolbar).setOnMenuItemClickListener {
+        val toolbar = findViewById<MaterialToolbar>(R.id.materialToolbar)
+        setupAdvancedVanadiumSettingsUnlockGesture(toolbar)
+
+        toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.main_view_toolbar__update_all_apps -> {
                     lifecycleScope.launch(Dispatchers.Main) {
@@ -158,6 +161,34 @@ class MainActivity : AppCompatActivity() {
     private fun askForIgnoringBatteryOptimizationIfNecessary() {
         if (DeviceSdkTester.supportsAndroid6M23() && !BackgroundWork.isBackgroundUpdateCheckReliableExecuted()) {
             NotificationBuilder.showBackgroundUpdateCheckUnreliableExecutionNotification(this)
+        }
+    }
+
+    // Tapping the "JDupdater" title in the toolbar 5 times within 3 seconds reveals the advanced
+    // Vanadium settings (GrapheneOS branch / prebuilt subfolder), which are hidden by default since
+    // most users never need to touch them.
+    private var advancedSettingsTapCount = 0
+    private var advancedSettingsFirstTapTime = 0L
+
+    private fun setupAdvancedVanadiumSettingsUnlockGesture(toolbar: MaterialToolbar) {
+        toolbar.setOnClickListener {
+            val now = System.currentTimeMillis()
+            if (now - advancedSettingsFirstTapTime > 3_000) {
+                advancedSettingsTapCount = 0
+                advancedSettingsFirstTapTime = now
+            }
+            advancedSettingsTapCount++
+            if (advancedSettingsTapCount >= 5) {
+                advancedSettingsTapCount = 0
+                val newState = !DataStoreHelper.advancedVanadiumSettingsUnlocked
+                DataStoreHelper.advancedVanadiumSettingsUnlocked = newState
+                val message = if (newState) {
+                    R.string.main_activity__advanced_vanadium_settings_unlocked
+                } else {
+                    R.string.main_activity__advanced_vanadium_settings_locked
+                }
+                showBriefMessage(message)
+            }
         }
     }
 

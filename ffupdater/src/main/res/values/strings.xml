@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_about_title">About FFUpdater</string>
+    <string name="action_about_title">About JDupdater</string>
+    <string name="main_activity__advanced_vanadium_settings_unlocked">Advanced Vanadium settings unlocked</string>
+    <string name="main_activity__advanced_vanadium_settings_locked">Advanced Vanadium settings hidden again</string>
     <string name="app_description">Updater for privacy friendly browsers</string>
     <string name="app_icon">app icon</string>
     <string name="app_name">JDupdater</string>

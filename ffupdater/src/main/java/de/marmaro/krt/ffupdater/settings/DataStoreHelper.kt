@@ -47,6 +47,11 @@ object DataStoreHelper {
         return Duration.ofMillis(System.currentTimeMillis() - ms)
     }
 
+    var advancedVanadiumSettingsUnlocked: Boolean
+        get() = preferences.getBoolean(ADVANCED_VANADIUM_SETTINGS_UNLOCKED, false)
+        set(value) = preferences.edit().putBoolean(ADVANCED_VANADIUM_SETTINGS_UNLOCKED, value).apply()
+
     private const val LAST_APP_BACKGROUND_CHECK = "lastAppBackgroundCheck"
     private const val LAST_BACKGROUND_CHECK_TRIGGER = "lastBackgroundCheckTrigger"
+    private const val ADVANCED_VANADIUM_SETTINGS_UNLOCKED = "advancedVanadiumSettingsUnlocked"
 }
