@@ -96,14 +96,19 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
-            hideOptionsForLowerApis()
-            loadHiddenAppNames()
-            loadExcludedAppNames()
-            listenForBackgroundJobRestarts()
-            listenForThemeChanges()
-            deleteFileCacheWhenChange32BitAppsPreference()
-            setupInstallerValidator()
-            setupNetworkSettingsValidator()
+
+            // These preferences belong to the root screen only. A nested screen
+            // (for example Vanadium) does not contain them.
+            if (rootKey == null) {
+                hideOptionsForLowerApis()
+                loadHiddenAppNames()
+                loadExcludedAppNames()
+                listenForBackgroundJobRestarts()
+                listenForThemeChanges()
+                deleteFileCacheWhenChange32BitAppsPreference()
+                setupInstallerValidator()
+                setupNetworkSettingsValidator()
+            }
             updateAdvancedVanadiumSettingsVisibility()
         }
 
