@@ -17,8 +17,8 @@ import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceScreen
 import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
@@ -40,7 +40,7 @@ import rikka.shizuku.Shizuku
  * Activity for displaying the settings view.
  */
 @Keep
-class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
+class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,25 +69,6 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
         return true
     }
 
-    override fun onPreferenceStartScreen(
-        caller: PreferenceFragmentCompat,
-        preferenceScreen: PreferenceScreen,
-    ): Boolean {
-        val fragment = SettingsFragment().apply {
-            arguments = Bundle().apply {
-                putString(
-                    "androidx.preference.PreferenceFragmentCompat.PREFERENCE_ROOT",
-                    preferenceScreen.key,
-                )
-            }
-        }
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.settings_activity__main_layout, fragment)
-            .addToBackStack(preferenceScreen.key)
-            .commit()
-        return true
-    }
-
     class SettingsFragment : PreferenceFragmentCompat() {
         private fun findSwitchPref(key: String) = findPreference<SwitchPreferenceCompat>(key)!!
         private fun findListPref(key: String) = findPreference<ListPreference>(key)!!
@@ -96,19 +77,14 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
-
-            // These preferences belong to the root screen only. A nested screen
-            // (for example Vanadium) does not contain them.
-            if (rootKey == null) {
-                hideOptionsForLowerApis()
-                loadHiddenAppNames()
-                loadExcludedAppNames()
-                listenForBackgroundJobRestarts()
-                listenForThemeChanges()
-                deleteFileCacheWhenChange32BitAppsPreference()
-                setupInstallerValidator()
-                setupNetworkSettingsValidator()
-            }
+            hideOptionsForLowerApis()
+            loadHiddenAppNames()
+            loadExcludedAppNames()
+            listenForBackgroundJobRestarts()
+            listenForThemeChanges()
+            deleteFileCacheWhenChange32BitAppsPreference()
+            setupInstallerValidator()
+            setupNetworkSettingsValidator()
             updateAdvancedVanadiumSettingsVisibility()
         }
 
@@ -119,8 +95,14 @@ class SettingsActivity : AppCompatActivity(), PreferenceFragmentCompat.OnPrefere
         }
 
         private fun updateAdvancedVanadiumSettingsVisibility() {
-            findPreference<PreferenceScreen>("vanadium_advanced_settings_screen")?.isVisible =
-                DataStoreHelper.advancedVanadiumSettingsUnlocked
+            val unlocked = DataStoreHelper.advancedVanadiumSettingsUnlocked
+            val category = findPreference<PreferenceCategory>("vanadium_advanced_settings_screen")
+            category?.isVisible = unlocked
+            if (category != null) {
+                for (i in 0 until category.preferenceCount) {
+                    category.getPreference(i).isVisible = unlocked
+                }
+            }
         }
 
         private fun hideOptionsForLowerApis() {

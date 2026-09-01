@@ -217,7 +217,7 @@
 
     </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
-    <PreferenceScreen
+    <de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory
         app:key="vanadium_advanced_settings_screen"
         app:isPreferenceVisible="false"
         app:title="@string/settings__vanadium_category__title">
@@ -238,6 +238,6 @@
             app:useSimpleSummaryProvider="true"
             app:title="@string/vanadium__prebuilt_path__title" />
 
-    </PreferenceScreen>
+    </de.marmaro.krt.ffupdater.settings.LongSummaryPreferenceCategory>
 
 </PreferenceScreen>

@@ -1,0 +1,35 @@
+Correctif JDupdater — réglages avancés Vanadium
+================================================
+
+Problème
+--------
+Taper 5 fois sur le titre « JDupdater » débloque bien la section Vanadium
+(le toast s’affiche, le titre « Vanadium » apparaît dans Réglages), mais
+les deux champs (Branche GrapheneOS / Sous-dossier prebuilt) restent
+invisibles. On ne voit qu’un en-tête vide.
+
+Cause
+-----
+Dans root_preferences.xml, les réglages étaient dans un <PreferenceScreen>
+imbriqué. Sans OnPreferenceStartScreenCallback, PreferenceFragmentCompat
+affiche le titre du sous-écran et n’ouvre jamais les enfants.
+
+Correctif
+---------
+1. Remplacer le PreferenceScreen imbriqué par un LongSummaryPreferenceCategory
+   (comme Appareil / Réseau) dans :
+
+   ffupdater/src/main/res/xml/root_preferences.xml
+
+2. Dans SettingsActivity.kt, cacher/afficher cette catégorie (et ses enfants)
+   selon DataStoreHelper.advancedVanadiumSettingsUnlocked.
+
+Fichiers fournis
+----------------
+- root_preferences.xml  → à copier vers
+  ffupdater/src/main/res/xml/root_preferences.xml
+
+- SettingsActivity.kt   → extraits à fusionner dans
+  ffupdater/src/main/java/de/marmaro/krt/ffupdater/activity/settings/SettingsActivity.kt
+
+Le geste 5 taps dans MainActivity.kt n’a pas besoin d’être changé.
