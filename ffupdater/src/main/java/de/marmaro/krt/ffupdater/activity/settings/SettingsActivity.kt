@@ -3,7 +3,6 @@ package de.marmaro.krt.ffupdater.activity.settings
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.Keep
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +10,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
@@ -20,6 +20,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.topjohnwu.superuser.Shell
 import de.marmaro.krt.ffupdater.R
@@ -51,16 +52,13 @@ class SettingsActivity : AppCompatActivity() {
                 .commit()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // I did not understand Android edge-to-edge completely,
-        // but this should prevent elements hidden behind the system bars.
-        // (I'm still frustrated on how complex and "not to the point" the Android documentation is.
-        // And that the code examples require special setups)
-        setOnApplyWindowInsetsListener(findViewById(R.id.settings_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
+        // SET padding (never add to the previous value). Dialog/IME inset callbacks
+        // used to stack status-bar margins and punch a hole under the toolbar.
+        val container = findViewById<View>(R.id.settings_activity__main_layout)
+        setOnApplyWindowInsetsListener(container) { v: View, insets: WindowInsetsCompat ->
             val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                setMargins(leftMargin, topMargin + bars.top, rightMargin, bottomMargin + bars.bottom)
-            }
-            insets
+            v.setPadding(0, bars.top, 0, bars.bottom)
+            WindowInsetsCompat.CONSUMED
         }
     }
 
@@ -75,6 +73,18 @@ class SettingsActivity : AppCompatActivity() {
         private fun findMultiPref(key: String) = findPreference<MultiSelectListPreference>(key)!!
         private fun findTextPref(key: String) = findPreference<EditTextPreference>(key)!!
 
+        // EditTextPreference dialogs (Vanadium branch/prebuilt, DNS, proxy) run in a
+        // DialogFragment. With adjustResize the activity/RecyclerView was measured for the
+        // IME, then never rebound after OK/Cancel — huge blank gaps until you leave and
+        // re-enter Settings. Rebuild the list when that dialog is destroyed.
+        private val preferenceDialogLifecycleCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
+            override fun onFragmentViewDestroyed(fm: FragmentManager, f: Fragment) {
+                if (f.tag == PREFERENCE_DIALOG_FRAGMENT_TAG) {
+                    relayoutPreferenceList()
+                }
+            }
+        }
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
             hideOptionsForLowerApis()
@@ -88,10 +98,37 @@ class SettingsActivity : AppCompatActivity() {
             updateAdvancedVanadiumSettingsVisibility()
         }
 
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            listView.itemAnimator = null
+            parentFragmentManager.registerFragmentLifecycleCallbacks(
+                preferenceDialogLifecycleCallbacks,
+                false
+            )
+        }
+
+        override fun onDestroyView() {
+            parentFragmentManager.unregisterFragmentLifecycleCallbacks(preferenceDialogLifecycleCallbacks)
+            super.onDestroyView()
+        }
+
         override fun onResume() {
             super.onResume()
             // the unlock gesture lives in MainActivity, so re-check every time this screen becomes visible
             updateAdvancedVanadiumSettingsVisibility()
+            relayoutPreferenceList()
+        }
+
+        private fun relayoutPreferenceList() {
+            if (!isAdded || view == null) return
+            val rv: RecyclerView = listView ?: return
+            rv.itemAnimator = null
+            rv.post {
+                if (!isAdded) return@post
+                rv.adapter?.notifyDataSetChanged()
+                rv.invalidateItemDecorations()
+                rv.requestLayout()
+            }
         }
 
         private fun updateAdvancedVanadiumSettingsVisibility() {
@@ -225,6 +262,11 @@ class SettingsActivity : AppCompatActivity() {
                 restartBackgroundJobAfterClosingActivity = false
                 BackgroundWork.forceRestart(requireContext().applicationContext)
             }
+        }
+
+        companion object {
+            private const val PREFERENCE_DIALOG_FRAGMENT_TAG =
+                "androidx.preference.PreferenceFragment.DIALOG"
         }
     }
 }

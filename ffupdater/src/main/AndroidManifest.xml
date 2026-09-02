@@ -92,7 +92,7 @@
             android:name=".activity.settings.SettingsActivity"
             android:label="@string/settings_activity__label"
             android:theme="@style/Theme.Material3.DayNight"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".activity.download.DownloadActivity"
             android:label="@string/download_activity__label"

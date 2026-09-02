@@ -53,6 +53,11 @@ object Vanadium : AppBase() {
     override val displayCategory = listOf(DisplayCategory.GOOD_SECURITY_BROWSER)
     override val hostnameForInternetCheck = "https://gitlab.com"
 
+    // GrapheneOS preinstalls Vanadium (installer = Apps / system), not JDupdater. The APK
+    // JDupdater downloads is the same GrapheneOS-signed build, so background checks and
+    // "update available" notifications must still run.
+    override fun wasInstalledByOtherApp(context: Context): Boolean = false
+
     private const val PROJECT_PATH = "grapheneos/platform_external_vanadium"
 
     @MainThread

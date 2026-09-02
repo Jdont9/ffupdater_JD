@@ -67,6 +67,10 @@ object TrichromeLibrary : AppBase() {
     override val visibleToUser = false
     override val installableByUser = false
 
+    // Same reason as Vanadium: GrapheneOS ships this library itself. Skip the
+    // "installed by another app" filter so background updates still run.
+    override fun wasInstalledByOtherApp(context: Context): Boolean = false
+
     private const val PROJECT_PATH = "grapheneos/platform_external_vanadium"
 
     @MainThread

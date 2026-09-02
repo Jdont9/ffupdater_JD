@@ -1,35 +1,28 @@
-Correctif JDupdater — réglages avancés Vanadium
-================================================
+Correctif JDupdater
+==================
 
-Problème
+1) Champs Vanadium invisibles
+   PreferenceScreen imbriqué → PreferenceCategory (root_preferences.xml).
+
+2) Écran de réglages vide après OK / Annuler
+   Le clavier du dialogue cassait le RecyclerView.
+   - AndroidManifest : SettingsActivity en adjustNothing
+   - SettingsActivity.kt : relayout à la fermeture du dialogue, insets qui
+     ne s’accumulent plus
+
+3) Pas de notification pour une mise à jour Vanadium
+   GrapheneOS installe Vanadium / TrichromeLibrary (installer = Apps / système).
+   JDupdater ignorait alors ces applis en arrière-plan → aucune notif
+   « mise à jour disponible ».
+   Vanadium.kt + TrichromeLibrary.kt : wasInstalledByOtherApp() = false
+   (même signature GrapheneOS que les APK téléchargés par JDupdater).
+
+Fichiers
 --------
-Taper 5 fois sur le titre « JDupdater » débloque bien la section Vanadium
-(le toast s’affiche, le titre « Vanadium » apparaît dans Réglages), mais
-les deux champs (Branche GrapheneOS / Sous-dossier prebuilt) restent
-invisibles. On ne voit qu’un en-tête vide.
+- ffupdater/src/main/res/xml/root_preferences.xml
+- ffupdater/src/main/java/.../activity/settings/SettingsActivity.kt
+- ffupdater/src/main/AndroidManifest.xml
+- ffupdater/src/main/java/.../app/impl/Vanadium.kt
+- ffupdater/src/main/java/.../app/impl/TrichromeLibrary.kt
 
-Cause
------
-Dans root_preferences.xml, les réglages étaient dans un <PreferenceScreen>
-imbriqué. Sans OnPreferenceStartScreenCallback, PreferenceFragmentCompat
-affiche le titre du sous-écran et n’ouvre jamais les enfants.
-
-Correctif
----------
-1. Remplacer le PreferenceScreen imbriqué par un LongSummaryPreferenceCategory
-   (comme Appareil / Réseau) dans :
-
-   ffupdater/src/main/res/xml/root_preferences.xml
-
-2. Dans SettingsActivity.kt, cacher/afficher cette catégorie (et ses enfants)
-   selon DataStoreHelper.advancedVanadiumSettingsUnlocked.
-
-Fichiers fournis
-----------------
-- root_preferences.xml  → à copier vers
-  ffupdater/src/main/res/xml/root_preferences.xml
-
-- SettingsActivity.kt   → extraits à fusionner dans
-  ffupdater/src/main/java/de/marmaro/krt/ffupdater/activity/settings/SettingsActivity.kt
-
-Le geste 5 taps dans MainActivity.kt n’a pas besoin d’être changé.
+Rebuild / réinstalle. Autorise les notifications JDupdater si Android le demande.
