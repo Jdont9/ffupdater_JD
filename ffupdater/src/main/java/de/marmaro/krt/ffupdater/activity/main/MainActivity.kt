@@ -274,7 +274,7 @@ class MainActivity : AppCompatActivity() {
 
     @MainThread
     fun installOrDownloadApp(app: App) {
-        if (isNetworkMeterStatusOk()) {
+        if (isDownloadNetworkMeterStatusOk()) {
             showBriefMessage(R.string.main_activity__no_unmetered_network)
             return
         }
@@ -296,6 +296,12 @@ class MainActivity : AppCompatActivity() {
         DeviceSdkTester.supportsAndroid8Oreo26() && !packageManager.canRequestPackageInstalls()
 
     private fun isNetworkMeterStatusOk() = !ForegroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(this)
+
+    // used before starting an actual app download/install - must check the "download on metered
+    // network" setting, not the "update check on metered network" one (see isNetworkMeterStatusOk()
+    // above, which stays for the update-check use case in fetchLatestUpdates()).
+    private fun isDownloadNetworkMeterStatusOk() =
+        !ForegroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(this)
 
     @UiThread
     private fun showBriefMessage(message: Int) {

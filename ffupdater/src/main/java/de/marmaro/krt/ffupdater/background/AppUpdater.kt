@@ -306,7 +306,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
             installer.startInstallation(applicationContext, file, appImpl)
             appImpl.appWasInstalledCallback(applicationContext, installedAppStatus)
             if (BackgroundSettings.isDeleteUpdateIfInstallSuccessful) {
-                appImpl.getApkCacheFolder(applicationContext)
+                appImpl.deleteFileCache(applicationContext)
             }
             return success(true)
         } catch (e: CancellationException) {
