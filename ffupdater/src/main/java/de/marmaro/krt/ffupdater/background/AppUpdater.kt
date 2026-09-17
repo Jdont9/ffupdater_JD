@@ -200,7 +200,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
         if (!FileDownloader.isUrlAvailable(app.findImpl().hostnameForInternetCheck)) {
             return failure(AppUpdaterRetryableException("Simple network test was not successful."))
         }
-        if (!BackgroundSettings.isUpdateCheckOnMeteredAllowed && isNetworkMetered(applicationContext)) {
+        if (!BackgroundSettings.isDownloadOnMeteredAllowed && isNetworkMetered(applicationContext)) {
             return failure(AppUpdaterRetryableException("No unmetered network available for app download."))
         }
         return success(true)

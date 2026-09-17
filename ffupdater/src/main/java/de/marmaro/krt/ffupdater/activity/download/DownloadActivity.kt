@@ -407,7 +407,11 @@ class DownloadActivity : AppCompatActivity() {
         if (success && next != null) {
             debug("chaining to ${next.name} after successful install")
             chainToApp = null
-            startActivity(createIntent(this, next))
+            // Use createDirectIntent() here, NOT createIntent(): createIntent() has a special case for
+            // App.VANADIUM that rebuilds a "download TrichromeLibrary, then chain to Vanadium" intent -
+            // calling it here would loop back to (re-)downloading TrichromeLibrary instead of actually
+            // starting the download of the chained app (Vanadium) itself.
+            startActivity(createDirectIntent(this, next))
             finish()
         }
     }
@@ -485,6 +489,14 @@ class DownloadActivity : AppCompatActivity() {
                 intent.putExtra(EXTRA_CHAIN_TO_APP_NAME, App.VANADIUM.name)
                 return intent
             }
+            return createDirectIntent(context, app)
+        }
+
+        // Builds a plain intent to download/install exactly the given app, with no chaining and no
+        // special-casing of App.VANADIUM. Used both as the fallback branch of createIntent() and as the
+        // way to actually resume the chained app once the prerequisite (e.g. TrichromeLibrary) finished
+        // installing - see installAppWithResultProcessing().
+        private fun createDirectIntent(context: Context, app: App): Intent {
             val intent = Intent(context, DownloadActivity::class.java)
             intent.putExtra(EXTRA_APP_NAME, app.name)
             return intent
