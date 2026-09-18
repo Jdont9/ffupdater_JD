@@ -71,10 +71,11 @@
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:gravity="center"
-                android:maxLines="1"
+                android:maxLines="2"
+                android:lineSpacingExtra="1dp"
                 android:tag="appAvailableVersion"
+                android:textSize="14sp"
                 android:textColor="?android:attr/textColorSecondary" />
 
             <TextView
