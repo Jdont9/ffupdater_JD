@@ -28,7 +28,7 @@ enum class FontOption(
 
     companion object {
         fun fromPreferenceValue(value: String?): FontOption {
-            return entries.firstOrNull { it.preferenceValue == value } ?: SYSTEM
+            return values().firstOrNull { it.preferenceValue == value } ?: SYSTEM
         }
     }
 }
