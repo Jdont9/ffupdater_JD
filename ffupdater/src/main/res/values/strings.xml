@@ -26,6 +26,7 @@
     <string name="notification__download_running__channel_name">Notification about downloads in the background</string>
     <string name="notification__download_running__title">Downloading app updates</string>
     <string name="app_card__download_the_app">download the app</string>
+    <string name="app_card__update_badge">Update</string>
     <string name="notification__eol_apps__channel_description">Notification channel for warnings about outdated apps.</string>
     <string name="notification__eol_apps__channel_name">Outdated apps notification</string>
     <string name="notification__eol_apps__text">You have outdated apps which should not be used anymore: %1$s</string>
@@ -117,6 +118,10 @@
     <string name="settings__foreground__download__metered__title">Download updates on metered networks</string>
     <string name="settings__foreground__theme_preference__summary">Choose between light and dark theme</string>
     <string name="settings__foreground__theme_preference__title">Choose theme</string>
+    <string name="settings__foreground__font_preference__summary">Choose the font used across the app</string>
+    <string name="settings__foreground__font_preference__title">Choose font</string>
+    <string name="settings__foreground__font_preference__system">System (default)</string>
+    <string name="settings__foreground__font_preference__monte_carlo">Monte Carlo</string>
     <string name="settings__foreground__update_check__metered__summary">Allow update checks on metered networks such as mobile data.</string>
     <string name="settings__foreground__update_check__metered__title">Update checks on metered networks</string>
     <string name="settings__foreground_category__summary">Settings when the user interface is visible.</string>

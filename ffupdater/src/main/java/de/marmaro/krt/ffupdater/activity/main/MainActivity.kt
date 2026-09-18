@@ -51,6 +51,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.notification.NotificationBuilder
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
+import de.marmaro.krt.ffupdater.settings.FontApplier
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.NoUnmeteredNetworkException
 import kotlinx.coroutines.Dispatchers
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FontApplier.applyTo(this)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()

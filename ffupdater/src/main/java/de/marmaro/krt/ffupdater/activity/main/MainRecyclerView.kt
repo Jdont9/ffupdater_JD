@@ -150,6 +150,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         val infoButton: ImageButton = itemView.findViewWithTag("appInfoButton")
         val installedVersion: TextView = itemView.findViewWithTag("appInstalledVersion")
         val availableVersion: TextView = itemView.findViewWithTag("appAvailableVersion")
+        val statusBadge: TextView = itemView.findViewWithTag("appStatusBadge")
         val downloadButton: ImageButton = itemView.findViewWithTag("appDownloadButton")
     }
 
@@ -170,6 +171,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
             configureAvailableVersion(view, appImpl)
         }
         configureDownloadButton(view, appImpl)
+        configureStatusBadge(view, appImpl)
         configureInfoButton(view, appImpl, activity.supportFragmentManager)
         setCardColor(view, appImpl)
     }
@@ -225,6 +227,13 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
         view.downloadButton.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
         view.downloadButton.setOnClickListener { activity.installOrDownloadApp(appImpl.app) }
+    }
+
+    private fun configureStatusBadge(view: AppHolder, appImpl: AppBase) {
+        // quick-scan pill for "update available", separate from the background tint set in
+        // setCardColor() which flags EOL / wrong signature / excluded / not-installed-by-us apps.
+        val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
+        view.statusBadge.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
     }
 
 

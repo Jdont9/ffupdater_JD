@@ -27,6 +27,15 @@
             app:summary="@string/settings__foreground__theme_preference__summary"
             app:title="@string/settings__foreground__theme_preference__title" />
 
+        <ListPreference
+            app:defaultValue="system"
+            app:entries="@array/foreground__font_preference__entries"
+            app:entryValues="@array/foreground__font_preference__values"
+            app:key="foreground__font_preference"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__font_preference__summary"
+            app:title="@string/settings__foreground__font_preference__title" />
+
         <SwitchPreferenceCompat
             app:defaultValue="true"
             app:key="foreground__delete_cache_if_install_successful"

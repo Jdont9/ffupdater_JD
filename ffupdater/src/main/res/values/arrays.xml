@@ -54,6 +54,16 @@
         <item>3</item>
     </string-array>
 
+    <string-array name="foreground__font_preference__entries" tools:ignore="InconsistentArrays">
+        <item>@string/settings__foreground__font_preference__system</item>
+        <item>@string/settings__foreground__font_preference__monte_carlo</item>
+    </string-array>
+
+    <string-array name="foreground__font_preference__values" tools:ignore="InconsistentArrays">
+        <item>system</item>
+        <item>monte_carlo</item>
+    </string-array>
+
     <string-array name="network__dns_provider__entries">
         <item>@string/network__dns_provider__system</item>
         <item>@string/network__dns_provider__digital_society_ch</item>

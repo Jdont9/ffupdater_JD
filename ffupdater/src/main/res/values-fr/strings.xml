@@ -22,6 +22,7 @@
     <string name="notification__download_running__channel_name">Notification des téléchargements en arrière-plan</string>
     <string name="notification__download_running__title">Téléchargement des mises à jour des applications</string>
     <string name="app_card__download_the_app">télécharger l\'application</string>
+    <string name="app_card__update_badge">MàJ</string>
     <string name="notification__error__channel_descr">Afficher les erreurs de vérification des mises à jour en arrière plan</string>
     <string name="notification__error__channel_name">Erreurs de fond</string>
     <string name="firefox_beta__description">Le navigateur Firefox pour Android est incroyablement rapide et protège votre vie privée automatiquement. Des milliers de traqueurs publicitaires vous suivent partout chaque jour et recueillent des informations vous concernant, ce qui ralentit votre vitesse de navigation. Firefox bloque plus de 2000 de ces traqueurs par défaut, vous donnant le respect de la vie privée que vous méritez ainsi que la vitesse qu\'il vous faut, le tout dans un navigateur mobile privé et sécurisé.</string>
@@ -100,6 +101,10 @@
     <string name="settings__foreground__download__metered__title">Télécharger les mises à jour sur les réseaux avec compteur</string>
     <string name="settings__foreground__theme_preference__summary">Choisissez entre un thème clair et un thème sombre</string>
     <string name="settings__foreground__theme_preference__title">Choisissez un thème</string>
+    <string name="settings__foreground__font_preference__summary">Choisissez la police utilisée dans l\'application</string>
+    <string name="settings__foreground__font_preference__title">Choisissez une police</string>
+    <string name="settings__foreground__font_preference__system">Système (par défaut)</string>
+    <string name="settings__foreground__font_preference__monte_carlo">Monte Carlo</string>
     <string name="settings__foreground__update_check__metered__summary">Autorisez les vérifications de mise à jour sur les réseaux avec compteur, comme les données mobiles.</string>
     <string name="settings__foreground__update_check__metered__title">Contrôles de mise à jour sur les réseaux de compteurs</string>
     <string name="settings__foreground_category__summary">Paramètres lorsque l\'interface utilisateur est visible.</string>

@@ -39,6 +39,7 @@ import de.marmaro.krt.ffupdater.BuildConfig.VERSION_NAME
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstallationStatus.INSTALLED
+import de.marmaro.krt.ffupdater.settings.FontApplier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -52,6 +53,7 @@ class CrashReportActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FontApplier.applyTo(this)
         setContentView(R.layout.activity_crash_report)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // I did not understand Android edge-to-edge completely,
