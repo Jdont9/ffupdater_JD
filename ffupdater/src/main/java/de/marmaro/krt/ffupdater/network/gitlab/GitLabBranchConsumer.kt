@@ -2,6 +2,9 @@ package de.marmaro.krt.ffupdater.network.gitlab
 
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
+import com.google.gson.JsonArray
+import com.google.gson.JsonParseException
+import com.google.gson.JsonParser
 import de.marmaro.krt.ffupdater.network.exceptions.InvalidApiResponseException
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkException
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
@@ -24,9 +27,18 @@ object GitLabBranchConsumer {
 
     private val VERSION_IN_COMMIT_TITLE = Regex("""version\s+([0-9]+(?:\.[0-9]+)+)""", RegexOption.IGNORE_CASE)
 
+    /**
+     * If [pathInRepo] is set, only commits that touched this file are considered. This matters because
+     * the HEAD of the branch is often a commit that doesn't update the prebuilt APKs at all (config,
+     * docs, ...), and its title then contains no "version X" (which produced a bogus "0.0.0.0-<sha>"
+     * version and a permanent false "update available").
+     */
     @MainThread
     @Throws(NetworkException::class)
-    suspend fun findLatestCommitOfBranch(projectPath: String, branch: String): Result {
+    suspend fun findLatestCommitOfBranch(projectPath: String, branch: String, pathInRepo: String? = null): Result {
+        if (pathInRepo != null) {
+            return findLatestCommitTouchingPath(projectPath, branch, pathInRepo)
+        }
         val encodedProject = java.net.URLEncoder.encode(projectPath, "UTF-8")
         val url = "https://gitlab.com/api/v4/projects/$encodedProject/repository/branches/$branch"
         val json = FileDownloader.downloadAsJsonObject(url)
@@ -47,6 +59,50 @@ object GitLabBranchConsumer {
             commitShortId = shortId,
             commitCreatedAt = createdAt,
             version = version,
+        )
+    }
+
+    @MainThread
+    @Throws(NetworkException::class)
+    private suspend fun findLatestCommitTouchingPath(projectPath: String, branch: String, pathInRepo: String): Result {
+        val encodedProject = java.net.URLEncoder.encode(projectPath, "UTF-8")
+        val encodedBranch = java.net.URLEncoder.encode(branch, "UTF-8")
+        val encodedPath = java.net.URLEncoder.encode(pathInRepo, "UTF-8")
+        val url = "https://gitlab.com/api/v4/projects/$encodedProject/repository/commits" +
+                "?ref_name=$encodedBranch&path=$encodedPath&per_page=20"
+        val commits: JsonArray = try {
+            JsonParser.parseString(FileDownloader.downloadString(url)).asJsonArray
+        } catch (e: JsonParseException) {
+            throw InvalidApiResponseException("GitLab commits response for '$branch' is not valid JSON.")
+        } catch (e: IllegalStateException) {
+            throw InvalidApiResponseException("GitLab commits response for '$branch' is not a JSON array.")
+        }
+        if (commits.size() == 0) {
+            throw InvalidApiResponseException("GitLab has no commit for '$pathInRepo' on branch '$branch'.")
+        }
+
+        // newest first: take the first commit whose title contains a version
+        for (element in commits) {
+            val commit = element.asJsonObject
+            val title = commit.get("title")?.asString ?: ""
+            val version = VERSION_IN_COMMIT_TITLE.find(title)?.groupValues?.get(1) ?: continue
+            return Result(
+                branch = branch,
+                commitShortId = commit.get("short_id")?.asString ?: "",
+                commitCreatedAt = commit.get("created_at")?.asString ?: "",
+                version = version,
+            )
+        }
+
+        // none of the last commits has a parseable title: fall back to the newest commit for this file
+        val newest = commits[0].asJsonObject
+        val shortId = newest.get("short_id")?.asString
+            ?: throw InvalidApiResponseException("GitLab commit response has no 'short_id'.")
+        return Result(
+            branch = branch,
+            commitShortId = shortId,
+            commitCreatedAt = newest.get("created_at")?.asString ?: "",
+            version = "0.0.0.0-$shortId",
         )
     }
 

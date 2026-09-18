@@ -17,8 +17,15 @@ Correctif JDupdater
    Vanadium.kt + TrichromeLibrary.kt : wasInstalledByOtherApp() = false
    (même signature GrapheneOS que les APK téléchargés par JDupdater).
 
+4) Fausse version « 0.0.0.0-<sha> » et MàJ permanente
+   Le HEAD de la branche GitLab est parfois un commit de config (sans
+   « version X » dans le titre) → version bidon. GitLabBranchConsumer
+   interroge maintenant /repository/commits?path=<APK> : on prend le dernier
+   commit qui a réellement modifié l'APK.
+
 Fichiers
 --------
+- ffupdater/src/main/java/.../network/gitlab/GitLabBranchConsumer.kt
 - ffupdater/src/main/res/xml/root_preferences.xml
 - ffupdater/src/main/java/.../activity/settings/SettingsActivity.kt
 - ffupdater/src/main/AndroidManifest.xml

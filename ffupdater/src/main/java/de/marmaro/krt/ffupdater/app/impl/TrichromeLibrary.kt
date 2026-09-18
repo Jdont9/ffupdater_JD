@@ -78,7 +78,7 @@ object TrichromeLibrary : AppBase() {
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val branch = VanadiumSettings.androidBranch
         val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/TrichromeLibrary.apk"
-        val commit = GitLabBranchConsumer.findLatestCommitOfBranch(PROJECT_PATH, branch)
+        val commit = GitLabBranchConsumer.findLatestCommitOfBranch(PROJECT_PATH, branch, pathInRepo)
         val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, pathInRepo)
         return LatestVersion(
             downloadUrl = downloadUrl,
