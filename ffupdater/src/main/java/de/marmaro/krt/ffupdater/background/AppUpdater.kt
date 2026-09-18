@@ -10,7 +10,6 @@ import androidx.work.CoroutineWorker
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkerParameters
-import de.marmaro.krt.ffupdater.DisplayableException
 import de.marmaro.krt.ffupdater.FFUpdater.Companion.LOG_TAG
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
@@ -224,7 +223,7 @@ class AppUpdater(context: Context, workerParams: WorkerParameters) : CoroutineWo
                     } catch (e: Exception) {
                         return@async failure(e)
                     } finally {
-                        progress.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
+                        progress.close()
                     }
                 }
 

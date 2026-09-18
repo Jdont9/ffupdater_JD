@@ -373,7 +373,7 @@ class DownloadActivity : AppCompatActivity() {
                 } catch (e: Exception) {
                     return@async Result.failure(e)
                 } finally {
-                    channel.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
+                    channel.close()
                     window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
                 }
         }

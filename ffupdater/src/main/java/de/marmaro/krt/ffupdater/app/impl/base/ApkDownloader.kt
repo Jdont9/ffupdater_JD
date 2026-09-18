@@ -37,7 +37,7 @@ interface ApkDownloader : AppAttributes {
             processDownload(context.applicationContext, temp, latestVersion)
         } finally {
             temp.delete()
-            progress.close(RuntimeException("Progress channel was not yet closed. This should never happen"))
+            progress.close()
         }
     }
 

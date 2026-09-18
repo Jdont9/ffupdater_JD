@@ -100,7 +100,7 @@ object FileDownloader {
             throw e
         } finally {
             temp.delete() // If download successful, deleting won't do anything. If download failed, deleting is essential
-            progress.close(DisplayableException("Progress channel was not yet closed. This should never happen"))
+            progress.close()
         }
     }
 
