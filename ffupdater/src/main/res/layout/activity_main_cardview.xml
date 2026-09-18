@@ -3,106 +3,106 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginTop="1dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="2dp"
     android:tag="appCard"
     app:cardBackgroundColor="@color/main_activity__cardview_background_color"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="14dp"
     app:cardElevation="0dp"
-    app:cardUseCompatPadding="false">
+    app:cardUseCompatPadding="false"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/main_activity__cardview_stroke_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="52dp"
-        android:paddingStart="10dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="4dp"
-        android:paddingBottom="6dp">
+        android:minHeight="104dp"
+        android:paddingStart="12dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="12dp">
 
-        <!-- real app icon, just smaller than before for a denser row -->
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:contentDescription="@string/app_icon"
             android:tag="appIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/appTitle"
-            style="@style/TextAppearance.AppCompat.Medium"
+        <LinearLayout
+            android:id="@+id/appTextContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="6dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:tag="appCardTitle"
-            app:layout_constraintEnd_toStartOf="@id/appStatusBadge"
-            app:layout_constraintStart_toEndOf="@id/icon"
-            app:layout_constraintTop_toTopOf="@id/icon" />
-
-        <TextView
-            android:id="@+id/appInstalledVersion"
-            style="@style/TextAppearance.AppCompat.Small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="6dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:tag="appInstalledVersion"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintEnd_toStartOf="@id/appStatusBadge"
-            app:layout_constraintStart_toEndOf="@id/icon"
-            app:layout_constraintTop_toBottomOf="@id/appTitle" />
-
-        <TextView
-            android:id="@+id/appAvailableVersion"
-            style="@style/TextAppearance.AppCompat.Small"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="6dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:tag="appAvailableVersion"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintEnd_toStartOf="@id/appStatusBadge"
-            app:layout_constraintStart_toEndOf="@id/icon"
-            app:layout_constraintTop_toBottomOf="@id/appInstalledVersion" />
-
-        <!-- compact pill shown only when an update is available (see MainRecyclerView.configureStatusBadge) -->
-        <TextView
-            android:id="@+id/appStatusBadge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_status_badge_update"
-            android:paddingStart="8dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="2dp"
-            android:tag="appStatusBadge"
-            android:text="@string/app_card__update_badge"
-            android:textColor="@android:color/white"
-            android:textSize="11sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/icon"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/appInfoButton"
-            app:layout_constraintTop_toTopOf="@id/icon" />
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/appCardTitle"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:tag="appCardTitle" />
+
+            <TextView
+                android:id="@+id/appInstalledVersion"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:tag="appInstalledVersion"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <TextView
+                android:id="@+id/appAvailableVersion"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:tag="appAvailableVersion"
+                android:textColor="?android:attr/textColorSecondary" />
+
+            <TextView
+                android:id="@+id/appStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_status_badge_update"
+                android:paddingStart="8dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="2dp"
+                android:tag="appStatusBadge"
+                android:text="@string/app_card__update_badge"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/appInfoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="2dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_card__information_about_the_app"
+            android:padding="8dp"
             android:tag="appInfoButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/appDownloadButton"
@@ -111,10 +111,11 @@
 
         <ImageButton
             android:id="@+id/appDownloadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/app_card__download_the_app"
+            android:padding="8dp"
             android:tag="appDownloadButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

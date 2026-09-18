@@ -30,7 +30,7 @@
         android:id="@+id/swipeContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".activity.main.MainActivity"
         tools:showIn="@layout/activity_main">
@@ -40,7 +40,10 @@
             android:id="@+id/main_activity__apps"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:clipToPadding="false"
+            android:paddingTop="2dp"
+            android:paddingBottom="12dp" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
