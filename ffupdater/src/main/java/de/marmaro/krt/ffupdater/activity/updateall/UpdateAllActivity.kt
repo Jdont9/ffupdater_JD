@@ -21,7 +21,6 @@ import de.marmaro.krt.ffupdater.device.InstalledAppsCache
 import de.marmaro.krt.ffupdater.installer.AppInstaller
 import de.marmaro.krt.ffupdater.installer.AppInstallerFactory
 import de.marmaro.krt.ffupdater.installer.exceptions.InstallationFailedException
-import de.marmaro.krt.ffupdater.settings.FontApplier
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,7 +33,6 @@ class UpdateAllActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FontApplier.applyTo(this)
         setContentView(R.layout.activity_updateall)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setOnApplyWindowInsetsListener(findViewById(R.id.updateall_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->

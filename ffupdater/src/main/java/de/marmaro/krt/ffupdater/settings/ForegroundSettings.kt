@@ -30,9 +30,6 @@ object ForegroundSettings {
         AppCompatDelegate.MODE_NIGHT_NO
     )
 
-    val fontOption: FontOption
-        get() = FontOption.fromPreferenceValue(preferences.getString("foreground__font_preference", null))
-
     val themePreference: Int
         get() {
             val theme = preferences.getString("foreground__theme_preference", null)?.toIntOrNull()

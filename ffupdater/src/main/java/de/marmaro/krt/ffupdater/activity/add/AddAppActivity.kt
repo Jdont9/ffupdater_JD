@@ -21,7 +21,6 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_SECURITY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
-import de.marmaro.krt.ffupdater.settings.FontApplier
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,7 +33,6 @@ class AddAppActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // edge to edge is already supported by this layout
         super.onCreate(savedInstanceState)
-        FontApplier.applyTo(this)
         setContentView(R.layout.activity_add_app)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

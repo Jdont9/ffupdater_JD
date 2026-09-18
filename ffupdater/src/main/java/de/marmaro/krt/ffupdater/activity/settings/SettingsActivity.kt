@@ -30,7 +30,6 @@ import de.marmaro.krt.ffupdater.device.DeviceSdkTester
 import de.marmaro.krt.ffupdater.installer.entity.Installer
 import de.marmaro.krt.ffupdater.network.file.FileDownloader
 import de.marmaro.krt.ffupdater.settings.DataStoreHelper
-import de.marmaro.krt.ffupdater.settings.FontApplier
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.settings.NetworkSettings.DnsProvider.CUSTOM_SERVER
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +45,6 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FontApplier.applyTo(this)
         setContentView(R.layout.activity_settings)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         if (savedInstanceState == null) { //https://stackoverflow.com/a/60348385
@@ -94,7 +92,6 @@ class SettingsActivity : AppCompatActivity() {
             loadExcludedAppNames()
             listenForBackgroundJobRestarts()
             listenForThemeChanges()
-            listenForFontChanges()
             deleteFileCacheWhenChange32BitAppsPreference()
             setupInstallerValidator()
             setupNetworkSettingsValidator()
@@ -181,16 +178,6 @@ class SettingsActivity : AppCompatActivity() {
         private fun listenForThemeChanges() {
             findListPref("foreground__theme_preference").setOnPreferenceChangeListener { _, newValue ->
                 AppCompatDelegate.setDefaultNightMode((newValue as String).toInt())
-                true
-            }
-        }
-
-        private fun listenForFontChanges() {
-            // unlike the theme (setDefaultNightMode), there is no automatic recreation for the
-            // font overlay - it's applied by FontApplier in each Activity's onCreate(), so we
-            // have to trigger the recreate ourselves for the change to be visible immediately.
-            findListPref("foreground__font_preference").setOnPreferenceChangeListener { _, _ ->
-                requireActivity().recreate()
                 true
             }
         }

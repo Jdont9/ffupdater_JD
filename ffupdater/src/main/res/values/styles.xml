@@ -6,13 +6,6 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
 
-    <!-- Theme overlay for the "font" setting (ForegroundSettings.fontOption). Applied at runtime
-         via FontApplier.applyTo(activity), before setContentView(). SYSTEM has no overlay. -->
-    <style name="font_overlay__monte_carlo">
-        <item name="android:fontFamily">@font/monte_carlo</item>
-        <item name="fontFamily">@font/monte_carlo</item>
-    </style>
-
     <style name="crash_report__theme" parent="@style/Theme.Material3.DayNight">
         <item name="colorPrimary">@color/crash_report__error_red</item>
         <item name="colorPrimaryDark">@color/crash_report__error_red</item>

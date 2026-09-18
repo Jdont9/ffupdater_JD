@@ -39,7 +39,6 @@ import de.marmaro.krt.ffupdater.network.NetworkUtil.isNetworkMetered
 import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
-import de.marmaro.krt.ffupdater.settings.FontApplier
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
@@ -108,7 +107,6 @@ class DownloadActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        FontApplier.applyTo(this)
         setContentView(R.layout.activity_download)
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

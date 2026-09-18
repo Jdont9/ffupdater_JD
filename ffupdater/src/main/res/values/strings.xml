@@ -118,10 +118,6 @@
     <string name="settings__foreground__download__metered__title">Download updates on metered networks</string>
     <string name="settings__foreground__theme_preference__summary">Choose between light and dark theme</string>
     <string name="settings__foreground__theme_preference__title">Choose theme</string>
-    <string name="settings__foreground__font_preference__summary">Choose the font used across the app</string>
-    <string name="settings__foreground__font_preference__title">Choose font</string>
-    <string name="settings__foreground__font_preference__system">System (default)</string>
-    <string name="settings__foreground__font_preference__monte_carlo">Monte Carlo</string>
     <string name="settings__foreground__update_check__metered__summary">Allow update checks on metered networks such as mobile data.</string>
     <string name="settings__foreground__update_check__metered__title">Update checks on metered networks</string>
     <string name="settings__foreground_category__summary">Settings when the user interface is visible.</string>
