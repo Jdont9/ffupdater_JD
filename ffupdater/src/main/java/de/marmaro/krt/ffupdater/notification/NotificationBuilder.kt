@@ -221,6 +221,8 @@ object NotificationBuilder {
         )
         val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
         intent.data = Uri.parse("package:${BuildConfig.APPLICATION_ID}")
+        // make the intent explicit (avoid an implicit PendingIntent that another app could intercept)
+        intent.resolveActivity(context.packageManager)?.let { intent.component = it }
         showNotification(context, channel, notification, intent)
     }
 
@@ -264,7 +266,7 @@ object NotificationBuilder {
             .setContentText(notification.text).setOnlyAlertOnce(true).setAutoCancel(true)
 
         if (intent != null) {
-            val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid12S31()) FLAG_IMMUTABLE else 0)
+            val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid6M23()) FLAG_IMMUTABLE else 0)
             notificationBuilder.setContentIntent(PendingIntent.getActivity(context, notification.id, intent, flags))
         }
         action?.let { notificationBuilder.addAction(it) }

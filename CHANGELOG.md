@@ -7,6 +7,8 @@ For the upstream project's own history, see its repository.
 ## Unreleased
 - Re-added Firefox Klar (removed in 82.0.0), using the original upstream implementation
   (Mozilla archive, package `org.mozilla.klar`) with English and French descriptions.
+- Fixed CodeQL alert "Use of implicit PendingIntents": the battery-optimization notification intent is now
+  made explicit, and notification PendingIntents are immutable from Android 6 (was Android 12).
 
 ## 84.0.1 (183)
 - Added French translations for Vanadium, WebLibre and TrichromeLibrary (previously English-only).
