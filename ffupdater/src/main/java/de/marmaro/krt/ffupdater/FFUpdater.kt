@@ -62,6 +62,7 @@ class FFUpdater : Application() {
     private fun cleanupUnusedApkFiles() {
         CoroutineScope(Job() + Dispatchers.Main).launch {
             StorageCleaner.deleteApksOfNotInstalledApps(applicationContext)
+            StorageCleaner.deleteOrphanedTempFiles(applicationContext)
         }
     }
 

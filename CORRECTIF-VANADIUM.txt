@@ -33,3 +33,10 @@ Fichiers
 - ffupdater/src/main/java/.../app/impl/TrichromeLibrary.kt
 
 Rebuild / réinstalle. Autorise les notifications JDupdater si Android le demande.
+
+5) Téléchargements temporaires jamais nettoyés (ffupdater #787)
+   Si l'app est tuée pendant un téléchargement, les fichiers <UUID>apk restaient
+   dans Android/data/.../files/Download.
+   - FileDownloader.kt : fichier temporaire nommé <UUID>.part (le point manquait)
+   - StorageCleaner.kt : deleteOrphanedTempFiles() supprime les fichiers <UUID>[.apk|.zip|.part|apk|zip] de plus d'1 h
+   - FFUpdater.kt : appelé au démarrage
