@@ -9,6 +9,7 @@ import de.marmaro.krt.ffupdater.app.impl.FFUpdater
 import de.marmaro.krt.ffupdater.app.impl.FairEmail
 import de.marmaro.krt.ffupdater.app.impl.FennecFdroid
 import de.marmaro.krt.ffupdater.app.impl.FirefoxBeta
+import de.marmaro.krt.ffupdater.app.impl.FirefoxKlar
 import de.marmaro.krt.ffupdater.app.impl.FirefoxNightly
 import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease
 import de.marmaro.krt.ffupdater.app.impl.Iceraven
@@ -33,6 +34,7 @@ enum class App {
     FENNEC_FDROID,
     FFUPDATER,
     FIREFOX_BETA,
+    FIREFOX_KLAR,
     FIREFOX_NIGHTLY,
     FIREFOX_RELEASE,
     ICERAVEN,
@@ -57,6 +59,7 @@ enum class App {
             FENNEC_FDROID -> FennecFdroid
             FFUPDATER -> FFUpdater
             FIREFOX_BETA -> FirefoxBeta
+            FIREFOX_KLAR -> FirefoxKlar
             FIREFOX_NIGHTLY -> FirefoxNightly
             FIREFOX_RELEASE -> FirefoxRelease
             ICERAVEN -> Iceraven

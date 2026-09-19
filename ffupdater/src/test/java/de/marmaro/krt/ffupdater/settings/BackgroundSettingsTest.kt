@@ -203,6 +203,7 @@ class BackgroundSettingsTest : BaseTest() {
                 "FENNEC_FDROID",
                 "FFUPDATER",
                 "FIREFOX_BETA",
+                "FIREFOX_KLAR",
                 "FIREFOX_NIGHTLY",
                 "FIREFOX_RELEASE",
                 "ICERAVEN",

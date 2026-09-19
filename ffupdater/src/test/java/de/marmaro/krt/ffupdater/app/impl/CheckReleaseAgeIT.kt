@@ -47,6 +47,7 @@ class CheckReleaseAgeIT {
             TestData(FennecFdroid, 60),
             TestData(FFUpdater, 60),
             TestData(FirefoxBeta, 21),
+            TestData(FirefoxKlar, 60),
             TestData(FirefoxNightly, 7),
             TestData(FirefoxRelease, 60),
             TestData(K9Mail, 60),

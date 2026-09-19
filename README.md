@@ -15,6 +15,7 @@ Software from Mozilla or based on Firefox:
   [Firefox for Android Beta](https://play.google.com/store/apps/details?id=org.mozilla.firefox_beta),
   [Firefox Nightly](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
   ([GitHub Repository](https://github.com/mozilla-mobile/firefox-android))
+- [Firefox Klar](https://play.google.com/store/apps/details?id=org.mozilla.klar)
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)

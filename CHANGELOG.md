@@ -4,6 +4,10 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## Unreleased
+- Re-added Firefox Klar (removed in 82.0.0), using the original upstream implementation
+  (Mozilla archive, package `org.mozilla.klar`) with English and French descriptions.
+
 ## 84.0.1 (183)
 - Added French translations for Vanadium, WebLibre and TrichromeLibrary (previously English-only).
 - Added a Settings option for Vanadium's `prebuilt/` subfolder, independent from the branch setting

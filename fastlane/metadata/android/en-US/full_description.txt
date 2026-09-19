@@ -2,7 +2,7 @@ Installs and updates the following browsers:
 
 Browsers from Mozilla or based on Firefox:
 - Fennec F-Droid
-- Firefox Browser, Firefox for Android Beta, Firefox Nightly
+- Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
 - Thunderbird for Android, Thunderbird for Android Beta

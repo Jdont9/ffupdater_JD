@@ -52,6 +52,7 @@
         <package android:name="org.mozilla.fennec_fdroid" />
         <package android:name="org.mozilla.firefox" />
         <package android:name="org.mozilla.firefox_beta" />
+        <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.rocket" />
         <package android:name="net.thunderbird.android" />
         <package android:name="net.thunderbird.android.beta" />
