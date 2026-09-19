@@ -265,7 +265,7 @@ object NotificationBuilder {
             .setStyle(Notification.BigTextStyle().bigText(notification.text)).setContentTitle(notification.title)
             .setContentText(notification.text).setOnlyAlertOnce(true).setAutoCancel(true)
 
-        if (intent != null) {
+        if (intent != null && (intent.component != null || intent.`package` != null)) {
             val flags = FLAG_UPDATE_CURRENT + (if (DeviceSdkTester.supportsAndroid6M23()) FLAG_IMMUTABLE else 0)
             notificationBuilder.setContentIntent(PendingIntent.getActivity(context, notification.id, intent, flags))
         }
