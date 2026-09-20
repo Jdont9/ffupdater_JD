@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="main_activity__theme" parent="@style/Theme.Material3.DayNight.NoActionBar">
         <item name="colorSurface">@color/colorPrimary</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
+        <!-- Icônes de la barre d'état en blanc (fond bleu) en thème clair comme en thème sombre -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <!-- Barre du haut : titre, icônes et menu ⋮ en blanc, quel que soit le thème -->
+    <style name="main_activity__toolbar_overlay" parent="ThemeOverlay.Material3.Dark">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorOnSurface">@android:color/white</item>
+        <item name="colorOnSurfaceVariant">@android:color/white</item>
     </style>
 
     <style name="crash_report__theme" parent="@style/Theme.Material3.DayNight">
