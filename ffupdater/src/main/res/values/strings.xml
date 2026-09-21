@@ -242,7 +242,7 @@
     <string name="notification__uncaught_exception__text">Click to view the error report.</string>
     <string name="app_installer__failed_to_validate_signature_of_download">Failed to validate the signature of the download.</string>
     <string name="app_installer__failed_to_verify_signature_of_installed_app">Failed to check installed app.</string>
-    <string name="ffupdater__different_signature_message">This version of FFUpdater has been signed by F-Droid, so only F-Droid can distribute updates. To get updates faster, uninstall FFUpdater and install the developer signed version. With this version FFUpdater can update itself without waiting for F-Droid.</string>
+    <string name="ffupdater__different_signature_message">This copy of JDupdater is signed with a different key than the official JDupdater releases, so it cannot update itself. To get updates, uninstall it and install the signed APK from the GitHub Releases page of the project.</string>
     <string name="installer__method__title">Installer method</string>
     <string name="cromite__title">Cromite</string>
     <string name="cromite__description">Cromite is a Chromium fork based on Bromite with built-in support for ad blocking and an eye for privacy.</string>

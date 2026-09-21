@@ -28,8 +28,8 @@ object FingerprintValidator {
      */
     suspend fun checkApkFile(packageManager: PackageManager, file: File, app: AppBase): FingerprintValidatorResult {
         return withContext(Dispatchers.Default) {
-            val signature = PackageManagerUtil.getPackageArchiveInfo(packageManager, file.absolutePath)
-            verifyPackageInfo(signature, app)
+            val signatures = PackageManagerUtil.getPackageArchiveSignatures(packageManager, file.absolutePath)
+            verifySignatures(signatures, app)
         }
     }
 
@@ -44,17 +44,26 @@ object FingerprintValidator {
      * @see [Another example](https://gist.github.com/scottyab/b849701972d57cf9562e)
      */
     suspend fun checkInstalledApp(packageManager: PackageManager, app: AppBase): FingerprintValidatorResult {
-        val signature = PackageManagerUtil.getInstalledAppInfo(packageManager, app)
-        return verifyPackageInfo(signature, app)
+        val signatures = PackageManagerUtil.getInstalledAppSignatures(packageManager, app)
+        return verifySignatures(signatures, app)
     }
 
+    /**
+     * The app is valid if the stored (pinned) certificate is the signing certificate or one of the older
+     * certificates in the signing certificate lineage. The lineage is cryptographically verified by Android:
+     * a new signing key can only be part of it if the owner of the old key authorized it (key rotation).
+     * Therefore, a developer who rotated the signing key does not break the updates.
+     *
+     * @param signatures certificate history: oldest first, the current signing certificate is the last entry
+     * @return the stored fingerprint if it is valid, otherwise the fingerprint of the current certificate
+     */
     @Throws(CertificateException::class, NoSuchAlgorithmException::class)
-    private suspend fun verifyPackageInfo(signature: Signature, appDetail: AppBase): FingerprintValidatorResult {
-        val fingerprint = getFingerprintOfSignature(signature)
-        return FingerprintValidatorResult(
-            isValid = (fingerprint == appDetail.signatureHash),
-            hexString = fingerprint
-        )
+    private suspend fun verifySignatures(signatures: List<Signature>, appDetail: AppBase): FingerprintValidatorResult {
+        val fingerprints = signatures.map { getFingerprintOfSignature(it) }
+        if (appDetail.signatureHash in fingerprints) {
+            return FingerprintValidatorResult(isValid = true, hexString = appDetail.signatureHash)
+        }
+        return FingerprintValidatorResult(isValid = false, hexString = fingerprints.last())
     }
 
     private suspend fun getFingerprintOfSignature(signature: Signature): String {

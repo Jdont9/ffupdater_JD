@@ -73,6 +73,16 @@ object FileDownloader {
 
     // https://www.cygonna.com/2024/02/use-okhttp-to-download-file-and-show.html
     suspend fun downloadFile(url: String, file: File, progress: Channel<DownloadStatus>) {
+        // The counter is decremented in "finally", so it is also balanced on errors and cancellation.
+        markDownloadAsStarted()
+        try {
+            downloadFileInternal(url, file, progress)
+        } finally {
+            markDownloadAsFinished()
+        }
+    }
+
+    private suspend fun downloadFileInternal(url: String, file: File, progress: Channel<DownloadStatus>) {
         val body = performHttpRequest(url, "GET", null)
         val size = body.contentLength()
         val temp = File(file.parentFile, "${UUID.randomUUID()}.part") // temp file only for download (see StorageCleaner)
@@ -297,8 +307,26 @@ object FileDownloader {
         return createDnsOverHttpsResolver(customServer.host, customServer.ips)
     }
 
-    private var numberOfRunningDownloads = AtomicInteger(0)
+    private val numberOfRunningDownloads = AtomicInteger(0)
+
+    @Volatile
     private var lastChange = System.currentTimeMillis()
+
+    private fun markDownloadAsStarted() {
+        numberOfRunningDownloads.incrementAndGet()
+        lastChange = System.currentTimeMillis()
+    }
+
+    private fun markDownloadAsFinished() {
+        // never go below zero, even if something unexpected happens
+        numberOfRunningDownloads.updateAndGet { if (it > 0) it - 1 else 0 }
+        lastChange = System.currentTimeMillis()
+    }
+
+    /**
+     * The one-hour limit protects against a counter that is stuck after an unexpected failure
+     * (see also [OkHttpClient.Builder.callTimeout] which is one hour too).
+     */
     fun areDownloadsCurrentlyRunning() =
         (numberOfRunningDownloads.get() != 0) && ((System.currentTimeMillis() - lastChange) < 3600_000)
 

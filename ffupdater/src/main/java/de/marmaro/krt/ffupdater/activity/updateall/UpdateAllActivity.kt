@@ -4,15 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.lifecycleScope
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
@@ -25,6 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.cancellation.CancellationException
+import de.marmaro.krt.ffupdater.utils.applySystemBarInsetsAsMargins
 
 @Keep
 class UpdateAllActivity : AppCompatActivity() {
@@ -35,13 +31,7 @@ class UpdateAllActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_updateall)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        setOnApplyWindowInsetsListener(findViewById(R.id.updateall_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
-            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                setMargins(leftMargin, topMargin + bars.top, rightMargin, bottomMargin + bars.bottom)
-            }
-            insets
-        }
+        findViewById<View>(R.id.updateall_activity__main_layout).applySystemBarInsetsAsMargins(top = true, bottom = true)
 
         installer = AppInstallerFactory.createForegroundAppInstaller(this)
         lifecycle.addObserver(installer)

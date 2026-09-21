@@ -21,38 +21,46 @@ import java.io.FileNotFoundException
 @Keep
 object PackageManagerUtil {
 
+    /**
+     * Returns the certificates of the APK file: the certificate history (oldest first, the current signing
+     * certificate is the last entry). The list contains more than one entry when the developer rotated the
+     * signing key (APK Signature Scheme v3) and the APK proves this rotation with a signing certificate lineage.
+     */
     @Suppress("DEPRECATION")
     @MainThread
     @Throws(FileNotFoundException::class, IllegalStateException::class)
-    suspend fun getPackageArchiveInfo(pm: PackageManager, path: String): Signature {
+    suspend fun getPackageArchiveSignatures(pm: PackageManager, path: String): List<Signature> {
         return withContext(Dispatchers.Default) {
             val file = File(path)
             check(file.exists()) { "File '$path' does not exists." }
-            val signatures = mutableListOf<() -> Signature?>()
+            val signatures = mutableListOf<() -> List<Signature>?>()
             if (DeviceSdkTester.supportsAndroid13T33()) {
-                signatures.add { extractSignature(pm.getPackageArchiveInfo(path, getPackageInfoFlags())) }
+                signatures.add { extractSignatures(pm.getPackageArchiveInfo(path, getPackageInfoFlags())) }
             }
             if (DeviceSdkTester.supportsAndroid9P28()) {
-                signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)) }
+                signatures.add { extractSignatures(pm.getPackageArchiveInfo(path, GET_SIGNING_CERTIFICATES)) }
             }
-            signatures.add { extractSignature(pm.getPackageArchiveInfo(path, GET_SIGNATURES)) }
+            signatures.add { extractSignatures(pm.getPackageArchiveInfo(path, GET_SIGNATURES)) }
             signatures.firstNotNullOf { it() }
         }
     }
 
+    /**
+     * Same as [getPackageArchiveSignatures], but for the installed app.
+     */
     @Suppress("DEPRECATION")
     @SuppressLint("PackageManagerGetSignatures")
-    suspend fun getInstalledAppInfo(pm: PackageManager, app: AppBase): Signature {
+    suspend fun getInstalledAppSignatures(pm: PackageManager, app: AppBase): List<Signature> {
         return withContext(Dispatchers.Default) {
             try {
-                val signatures = mutableListOf<() -> Signature?>()
+                val signatures = mutableListOf<() -> List<Signature>?>()
                 if (DeviceSdkTester.supportsAndroid13T33()) {
-                    signatures.add { extractSignature(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
+                    signatures.add { extractSignatures(pm.getPackageInfo(app.packageName, getPackageInfoFlags())) }
                 }
                 if (DeviceSdkTester.supportsAndroid9P28()) {
-                    signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
+                    signatures.add { extractSignatures(pm.getPackageInfo(app.packageName, GET_SIGNING_CERTIFICATES)) }
                 }
-                signatures.add { extractSignature(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
+                signatures.add { extractSignatures(pm.getPackageInfo(app.packageName, GET_SIGNATURES)) }
                 signatures.firstNotNullOf { it() }
             } catch (e: PackageManager.NameNotFoundException) {
                 throw RuntimeException("app.packageName is not whitelisted in AndroidManifest.xml", e)
@@ -66,34 +74,39 @@ object PackageManagerUtil {
     }
 
     @Suppress("DEPRECATION")
-    private fun extractSignature(packageInfo: PackageInfo?): Signature? {
+    private fun extractSignatures(packageInfo: PackageInfo?): List<Signature>? {
         if (DeviceSdkTester.supportsAndroid9P28()) {
             packageInfo?.signingInfo?.let {
-                return extractSignature(it)
+                return extractSignatures(it)
             }
         }
 
         packageInfo?.signatures?.let {
-            return extractSignature(it)
+            return extractSignatures(it)
         }
         return null
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
     @Throws(IllegalStateException::class)
-    private fun extractSignature(signingInfo: SigningInfo): Signature {
+    private fun extractSignatures(signingInfo: SigningInfo): List<Signature> {
         check(!signingInfo.hasMultipleSigners()) { "Multiple signers are not allowed." }
-        val signatures = signingInfo.signingCertificateHistory
-        check(signatures.isNotEmpty()) { "Signatures must not be empty." }
-        check(signatures.size == 1) { "Found multiple signatures." }
-        return checkNotNull(signatures[0])
+        // The history is NOT a list of multiple signers: it contains the current signing certificate and (after a
+        // key rotation) the older certificates from which the current one proved to be the legitimate successor.
+        val history = signingInfo.signingCertificateHistory
+        check(history != null && history.isNotEmpty()) { "Signatures must not be empty." }
+        return history.map { checkNotNull(it) }
     }
 
+    /**
+     * Android before 9 (API 28) has no signing certificate lineage, so more than one signature means
+     * that multiple signers signed the APK. This is not supported.
+     */
     @Throws(IllegalStateException::class)
-    private fun extractSignature(signatures: Array<Signature>): Signature {
+    private fun extractSignatures(signatures: Array<Signature>): List<Signature> {
         check(signatures.isNotEmpty()) { "Signatures must not be empty." }
         check(signatures.size == 1) { "Found multiple signatures." }
-        return signatures[0]
+        return listOf(signatures[0])
     }
 
     suspend fun getInstalledAppVersionName(pm: PackageManager, packageName: String): String? {

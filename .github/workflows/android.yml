@@ -27,8 +27,8 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
-      - name: Build the app (skip unit tests so a flaky/outdated release-age test doesn't block the APK)
-        run: ./gradlew clean assembleDebug assembleRelease
+      - name: Build the release APK (this workflow does not run the tests)
+        run: ./gradlew clean assembleRelease
       - name: Install Build Tools 29.0.3 (needed by the APK signing step below)
         run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;29.0.3"
       - name: Sign Release APK
@@ -40,20 +40,12 @@ jobs:
           alias: ${{ secrets.KEYSTORE_ALIAS }}
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
-      - name: Rename output APKs to JDupdater-*
+      - name: Rename output APK to JDupdater-release.apk
         id: rename
         run: |
           mkdir -p renamed
-          cp ffupdater/build/outputs/apk/debug/*.apk renamed/JDupdater-debug.apk
           cp "${{ steps.sign_app.outputs.signedReleaseFile }}" renamed/JDupdater-release.apk
-          echo "debug_apk=renamed/JDupdater-debug.apk" >> "$GITHUB_OUTPUT"
           echo "release_apk=renamed/JDupdater-release.apk" >> "$GITHUB_OUTPUT"
-      - name: Upload built debug APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: JDupdater-debug-apk
-          path: ${{ steps.rename.outputs.debug_apk }}
-          if-no-files-found: error
       - name: Upload signed release APK
         uses: actions/upload-artifact@v4
         with:
@@ -64,7 +56,5 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            ${{ steps.rename.outputs.release_apk }}
-            ${{ steps.rename.outputs.debug_apk }}
+          files: ${{ steps.rename.outputs.release_apk }}
           generate_release_notes: true

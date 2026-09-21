@@ -7,6 +7,7 @@
     <color name="install_activity__red_background_for_text">#A81A1A</color>
     <color name="install_activity__success_green">#33691E</color>
     <color name="install_activity__warning_orange">#EF6C00</color>
+    <color name="app_card__update_badge_background">#EF6C00</color>
     <color name="main_activity__cardview_background_color">@color/cardview_dark_background</color>
     <color name="main_activity__cardview_stroke_color">#3A4352</color>
     <color name="cardview_options__no_auto_updates__background_tint_color">#163466</color>

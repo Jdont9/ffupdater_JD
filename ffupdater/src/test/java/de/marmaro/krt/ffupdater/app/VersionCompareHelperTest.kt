@@ -30,6 +30,17 @@ class VersionCompareHelperTest {
     }
 
     @Test
+    fun isAvailableVersionHigher_versionSchemaChanged_torBrowser_returnTrue() {
+        assertTrue(VersionCompareHelper.isAvailableVersionHigher("128.0.5", "14.0.1"))
+    }
+
+    @Test
+    fun isAvailableVersionHigher_installedMajorVersionIsMuchNewer_returnFalse() {
+        // e.g. a user tracks an older branch: no downgrade must be offered
+        assertFalse(VersionCompareHelper.isAvailableVersionHigher("153.0.8010.52.0", "140.0.7339.51.0"))
+    }
+
+    @Test
     fun isAvailableVersionHigher_installedVersionIsNewer_brave_returnTrue() {
         assertFalse(VersionCompareHelper.isAvailableVersionHigher("1.20.103", "1.18.12"))
     }

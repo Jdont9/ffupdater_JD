@@ -14,7 +14,8 @@
         android:background="@color/colorPrimary"
         android:fitsSystemWindows="true"
         android:theme="@style/main_activity__toolbar_overlay"
-        app:liftOnScroll="false">
+        app:liftOnScroll="false"
+        app:statusBarForeground="@color/colorPrimary">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/materialToolbar"

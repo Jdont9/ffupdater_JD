@@ -6,17 +6,12 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -54,6 +49,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.cancellation.CancellationException
+import de.marmaro.krt.ffupdater.utils.applySystemBarInsetsAsMargins
 
 
 /**
@@ -112,13 +108,7 @@ class DownloadActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         // I did not understand Android edge-to-edge completely,
         // but this should prevent elements hidden behind the system bars.
-        setOnApplyWindowInsetsListener(findViewById(R.id.download_activity__main_layout)) { v: View, insets: WindowInsetsCompat ->
-            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                setMargins(leftMargin, topMargin + bars.top, rightMargin, bottomMargin + bars.bottom)
-            }
-            insets
-        }
+        findViewById<View>(R.id.download_activity__main_layout).applySystemBarInsetsAsMargins(top = true, bottom = true)
 
         val appFromExtras = intent.extras?.getString(EXTRA_APP_NAME)
         // check if this activity was unintentionally started again after finishing the download

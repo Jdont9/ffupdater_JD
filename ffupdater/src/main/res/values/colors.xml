@@ -13,6 +13,8 @@
     <color name="install_activity__red_background_for_text">#FFCDD2</color>
     <color name="install_activity__success_green">#8BC34A</color>
     <color name="install_activity__warning_orange">#FF9800</color>
+    <!-- white text on this background needs a contrast of at least 4.5:1 -->
+    <color name="app_card__update_badge_background">#BF360C</color>
     <color name="main_activity__cardview_background_color">@color/cardview_light_background</color>
     <color name="app_icon_background_pink">#B01F7D</color>
     <color name="main_activity__cardview_stroke_color">#D5D9E0</color>

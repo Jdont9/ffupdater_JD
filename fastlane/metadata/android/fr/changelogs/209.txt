@@ -1,0 +1,7 @@
+Version 86.0.0 (209)
+- Correction du thème clair : la barre d'outils et les icônes de la barre d'état sont de nouveau lisibles
+- Correction des applis ayant changé de clé de signature qui étaient rejetées
+- Correction des garde-fous de téléchargement en cours et des marges qui grandissaient autour des barres système
+- Ajout des 39 traductions françaises manquantes
+- Ne propose plus de rétrogradation quand la version majeure installée est bien plus récente
+- Suppression de dépendances et de ressources inutilisées

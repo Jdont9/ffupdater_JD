@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.text.format.DateUtils
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
@@ -20,10 +19,7 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -62,6 +58,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.cancellation.CancellationException
+import de.marmaro.krt.ffupdater.utils.applySystemBarInsetsAsMargins
 
 @Keep
 class MainActivity : AppCompatActivity() {
@@ -71,18 +68,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // The toolbar is always blue (also in the light theme), so the status bar icons must always be light.
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
         AppCompatDelegate.setDefaultNightMode(ForegroundSettings.themePreference)
         requestForNotificationPermissionIfNecessary()
         askForIgnoringBatteryOptimizationIfNecessary()
         // I did not understand Android edge-to-edge completely,
         // but this should prevent elements hidden behind the system bars.
-        setOnApplyWindowInsetsListener(findViewById(R.id.swipeContainer)) { v: View, insets: WindowInsetsCompat ->
-            val bars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                setMargins(leftMargin, topMargin, rightMargin, bottomMargin + bars.bottom)
-            }
-            insets
-        }
+        findViewById<View>(R.id.swipeContainer).applySystemBarInsetsAsMargins(top = false, bottom = true)
 
         val swipeContainer = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener(userRefreshAppList)

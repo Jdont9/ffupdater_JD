@@ -6,6 +6,6 @@
 - Only system certificate authorities are trusted. But this can be disabled in the settings to allow other
   apps to inspect the application's network traffic.
 - Prevent command injection in the RootInstaller.kt by validating and sanitizing commands.
-- Git commits will be signed with the ssh-ed25519 key:
-  AAAAC3NzaC1lZDI1NTE5AAAAIJE17LRw9gdAka03KYwdFj88b3sDEODRBlIY1smsvOMx [public key](ffupdater_git_signing_key_ed25519.pub)
-- APK will be signed with the key [apk_signature](../dev/signatures/apk_signature.txt)
+- The APK of this fork (JDupdater) is signed with the key whose SHA-256 fingerprint is listed in
+  [apk_signature](../dev/signatures/apk_signature.txt). It is the same fingerprint that the app uses to verify
+  its own updates (see `FFUpdater.kt`).

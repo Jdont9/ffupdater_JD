@@ -1,0 +1,7 @@
+Version 86.0.0 (209)
+- Fix the light theme: the toolbar and the status bar icons are readable again
+- Fix apps that rotated their signing key being rejected
+- Fix the safeguards for running downloads and growing margins around the system bars
+- Add the 39 missing French translations
+- No longer offer downgrades when the installed major version is much newer
+- Remove unused dependencies and resources
