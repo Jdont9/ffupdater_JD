@@ -23,6 +23,7 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageManagerHidden
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import androidx.core.os.BundleCompat
 import androidx.annotation.Keep
 import androidx.annotation.MainThread
 import de.marmaro.krt.ffupdater.BuildConfig
@@ -206,11 +207,7 @@ open class SessionInstaller(private val foreground: Boolean) : AppInstaller {
 
     @Throws(IllegalArgumentException::class)
     private fun createConfirmInstallationIntent(bundle: Bundle): Intent {
-        val originalIntent = if (DeviceSdkTester.supportsAndroid13T33()) {
-            bundle.getParcelable(Intent.EXTRA_INTENT, Intent::class.java)
-        } else {
-            bundle.getParcelable(Intent.EXTRA_INTENT) as Intent?
-        }
+        val originalIntent = BundleCompat.getParcelable(bundle, Intent.EXTRA_INTENT, Intent::class.java)
         requireNotNull(originalIntent)
 
         // create new Intent to hide the "UnsafeIntentLaunchViolation"

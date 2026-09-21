@@ -1,8 +1,29 @@
 # Changelog (JDupdater fork)
 
+**English** | [Français](CHANGELOG.fr.md)
+
 This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
+
+## 86.0.1 (210)
+**CI**
+- The Android workflow signs the APK itself with `apksigner` (instead of the unmaintained
+  `r0adkll/sign-android-release@v1`, which used Node 20, the deprecated `set-output` command and old
+  build tools 29.0.3) and fails if the signing certificate is not the one expected by the self-update check.
+  `actions/checkout`, `actions/upload-artifact` and `softprops/action-gh-release` were updated to their
+  Node 24 versions.
+
+**Cleanup**
+- Fixed the Kotlin compiler warnings: removed the unused deprecated functions in `PowerSaveModeReceiver`,
+  the unused parameter of `RootInstaller` (`appImpl`), the status code of `UserInteractionIsRequiredException`
+  is now part of its message, `SessionInstaller` uses `BundleCompat` instead of the deprecated
+  `Bundle.getParcelable` and the pointless `inline` of `setVisibleOrGone` is gone.
+
+**Documentation**
+- Added a French README ([README.fr.md](README.fr.md)) and a French changelog
+  ([CHANGELOG.fr.md](CHANGELOG.fr.md)). Both are linked at the top of the English files, so they are
+  reachable from the GitHub repository page.
 
 ## 86.0.0 (209)
 **Fixes**

@@ -2,6 +2,8 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+**English** | [Français](README.fr.md)
+
 # JDupdater
 
 > **This is a personal fork of [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater)**, maintained by me for my own devices. It adds support for GrapheneOS Vanadium/TrichromeLibrary and removes a few browsers I don't use. Large parts of this fork (new app integrations, CI/build fixes, this README section, etc.) were written with the help of the AI assistant Claude (Anthropic) rather than entirely by hand. Use at your own risk; it's not affiliated with or endorsed by the upstream FFUpdater project. This fork isn't published on F-Droid; grab the APK from the [Releases page](https://github.com/Jdont9/ffupdater_JD/releases) instead.
@@ -124,6 +126,8 @@ This is a personal, single-maintainer fork - the upstream project's [Weblate tra
 [Maintainer](docs/maintainer.md)
 
 [My goals](GOALS.md)
+
+[Changelog](CHANGELOG.md) ([Français](CHANGELOG.fr.md))
 
 ## Git repositories
 

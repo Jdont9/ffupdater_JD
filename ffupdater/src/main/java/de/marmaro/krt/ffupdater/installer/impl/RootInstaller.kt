@@ -21,13 +21,13 @@ class RootInstaller : AppInstaller {
 
     override suspend fun startInstallation(context: Context, file: File, appImpl: AppBase): InstallResult {
         return CertificateVerifier(context, appImpl, file).verifyCertificateBeforeAndAfterInstallation {
-            installApkFile(context, file, appImpl)
+            installApkFile(context, file)
         }
     }
 
-    private suspend fun installApkFile(context: Context, file: File, appImpl: AppBase) {
+    private suspend fun installApkFile(context: Context, file: File) {
         restartInternalShellToGetAlwaysRootPermission()
-        fileIsSafeOrThrow(context, file, appImpl)
+        fileIsSafeOrThrow(context, file)
         failIfRootPermissionIsMissing()
         val size = file.length().toInt()
         val sessionId = createInstallationSession(size)
@@ -40,7 +40,7 @@ class RootInstaller : AppInstaller {
     }
 
     @Throws(IllegalArgumentException::class)
-    private fun fileIsSafeOrThrow(context: Context, file: File, appImpl: AppBase) {
+    private fun fileIsSafeOrThrow(context: Context, file: File) {
         require(!hasDangerousCharacter(file.canonicalPath)) { "File path has dangerous characters: ${file.canonicalPath}" }
         require(!hasDangerousCharacter(file.name)) { "File name has dangerous characters: ${file.name}" }
 

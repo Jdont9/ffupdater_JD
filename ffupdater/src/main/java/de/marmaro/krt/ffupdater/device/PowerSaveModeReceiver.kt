@@ -53,30 +53,6 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
         }
     }
 
-    @Deprecated("remove")
-    fun isPowerSaveModeEnabledForShortTime(): Boolean {
-        if (!powerManager.isPowerSaveMode) {
-            return false
-        }
-        val timestamp = getTimeDurationOfEnabledPowerSaveMode()
-        if (timestamp.isZero) {
-            return false
-        }
-        return timestamp <= thresholdBetweenShortAndLongTime
-    }
-
-    @Deprecated("remove")
-    fun isPowerSaveModeEnabledForLongerTime(): Boolean {
-        if (!powerManager.isPowerSaveMode) {
-            return false
-        }
-        val timestamp = getTimeDurationOfEnabledPowerSaveMode()
-        if (timestamp.isZero) {
-            return false
-        }
-        return timestamp > thresholdBetweenShortAndLongTime
-    }
-
     override fun onReceive(context: Context?, intent: Intent) {
         if (intent.action != PowerManager.ACTION_POWER_SAVE_MODE_CHANGED) {
             return
@@ -96,7 +72,6 @@ object PowerSaveModeReceiver : BroadcastReceiver() {
                 .apply()
     }
 
-    @Deprecated("remove")
     private fun getTimeDurationOfEnabledPowerSaveMode(): Duration {
         val timestamp = preferences.getLong(ATTRIBUTE_NAME, 0)
         if (timestamp == 0L) {

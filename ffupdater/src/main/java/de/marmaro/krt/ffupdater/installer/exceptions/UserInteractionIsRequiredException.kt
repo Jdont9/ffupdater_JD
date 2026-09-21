@@ -7,6 +7,6 @@ import de.marmaro.krt.ffupdater.R
 @Keep
 class UserInteractionIsRequiredException(errorCode: Int, context: Context) :
     InstallationFailedException(
-        "Installation failed because user interaction is required.",
+        "Installation failed because user interaction is required (status code $errorCode).",
         context.getString(R.string.session_installer__require_user_interaction)
     )

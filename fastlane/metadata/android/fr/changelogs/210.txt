@@ -1,0 +1,5 @@
+Version 86.0.1 (210)
+- Signature de l'APK en CI avec apksigner et vérification du certificat
+- Mise à jour des actions de la CI vers Node 24
+- Correction des avertissements du compilateur Kotlin
+- Ajout d'un README et d'un journal des modifications en français

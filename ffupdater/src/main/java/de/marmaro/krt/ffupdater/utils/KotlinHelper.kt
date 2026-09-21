@@ -64,7 +64,7 @@ inline fun View.goneAfterExecution(block: () -> Unit) {
     }
 }
 
-inline fun View.setVisibleOrGone(visible: Boolean) {
+fun View.setVisibleOrGone(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
 }
 

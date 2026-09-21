@@ -1,0 +1,5 @@
+Version 86.0.1 (210)
+- Sign the release APK in the CI with apksigner and check the certificate
+- Update the CI actions to Node 24
+- Fix the Kotlin compiler warnings
+- Add a French README and changelog
