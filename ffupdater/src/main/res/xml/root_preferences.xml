@@ -145,7 +145,7 @@
             app:title="@string/settings__b_f__delete_cache_if_install_successful" />
 
         <SwitchPreferenceCompat
-            app:defaultValue="false"
+            app:defaultValue="true"
             app:dependency="background__installation__enabled"
             app:key="background__delete_cache_if_install_failed"
             app:singleLineTitle="false"

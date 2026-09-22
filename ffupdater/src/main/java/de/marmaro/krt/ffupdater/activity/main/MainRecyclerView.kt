@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import de.marmaro.krt.ffupdater.R
 import de.marmaro.krt.ffupdater.app.App
+import de.marmaro.krt.ffupdater.app.ReleaseAgeHelper
 import de.marmaro.krt.ffupdater.app.entity.InstalledAppStatus
 import de.marmaro.krt.ffupdater.app.impl.AppBase
 import de.marmaro.krt.ffupdater.crash.CrashReportActivity
@@ -151,6 +152,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         val installedVersion: TextView = itemView.findViewWithTag("appInstalledVersion")
         val availableVersion: TextView = itemView.findViewWithTag("appAvailableVersion")
         val statusBadge: TextView = itemView.findViewWithTag("appStatusBadge")
+        val obsoleteBadge: TextView = itemView.findViewWithTag("appObsoleteBadge")
         val downloadButton: ImageButton = itemView.findViewWithTag("appDownloadButton")
     }
 
@@ -172,6 +174,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         }
         configureDownloadButton(view, appImpl)
         configureStatusBadge(view, appImpl)
+        configureObsoleteBadge(view, appImpl)
         configureInfoButton(view, appImpl, activity.supportFragmentManager)
         setCardColor(view, appImpl)
     }
@@ -234,6 +237,15 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         // setCardColor() which flags EOL / wrong signature / excluded / not-installed-by-us apps.
         val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
         view.statusBadge.visibility = if (metadata?.isUpdateAvailable == true) View.VISIBLE else View.GONE
+    }
+
+    private fun configureObsoleteBadge(view: AppHolder, appImpl: AppBase) {
+        // Flags an installed app whose latest known release is old (see ReleaseAgeHelper), so the user
+        // notices even without opening the "i" dialog. Independent of appImpl.isEol(): that one is a
+        // permanent, manually curated flag, this one reacts automatically to how old the release actually is.
+        val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
+        val isStale = metadata != null && ReleaseAgeHelper.isStale(metadata.latestVersion)
+        view.obsoleteBadge.visibility = if (isStale) View.VISIBLE else View.GONE
     }
 
 

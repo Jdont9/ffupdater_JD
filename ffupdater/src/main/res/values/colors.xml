@@ -15,6 +15,8 @@
     <color name="install_activity__warning_orange">#FF9800</color>
     <!-- white text on this background needs a contrast of at least 4.5:1 -->
     <color name="app_card__update_badge_background">#BF360C</color>
+    <!-- neutral grey: informational, not an error/urgent like the update badge -->
+    <color name="app_card__obsolete_badge_background">#5A5A5A</color>
     <color name="main_activity__cardview_background_color">@color/cardview_light_background</color>
     <color name="app_icon_background_pink">#B01F7D</color>
     <color name="main_activity__cardview_stroke_color">#D5D9E0</color>

@@ -5,20 +5,16 @@ Navigateurs de Mozilla ou basés sur Firefox :
 - Firefox Browser, Firefox pour Android Beta, Firefox Nightly, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
-- Thunderbird for Android, Thunderbird for Android Beta
 - WebLibre
 
 Navigateurs plus performants que Google Chrome :
 - Cromite
 - Chromium
 - Navigateur DuckDuckGo
-- Vivaldi
 - Vanadium (le Chromium durci de GrapheneOS ; le composant TrichromeLibrary requis est installé
   automatiquement en même temps)
 
 Autres applications :
-- FairEmail
-- K-9 Mail
 - Orbot
 
 JDupdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou rootés, JDupdater peut également mettre à jour les applications sans interaction de l'utilisateur.

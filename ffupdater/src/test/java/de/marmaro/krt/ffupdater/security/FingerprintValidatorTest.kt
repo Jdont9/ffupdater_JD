@@ -96,7 +96,7 @@ class FingerprintValidatorTest : BaseTest() {
             packageManager.getPackageArchiveInfo(file.absolutePath, GET_SIGNATURES)
         } returns packageInfo
 
-        val actual = runBlocking { FingerprintValidator.checkApkFile(packageManager, file, App.VIVALDI.findImpl()) }
+        val actual = runBlocking { FingerprintValidator.checkApkFile(packageManager, file, App.WEBLIBRE.findImpl()) }
         assertFalse(actual.isValid)
     }
 

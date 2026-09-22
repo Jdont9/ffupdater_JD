@@ -1,0 +1,5 @@
+Version 86.1.0 (211)
+- Retrait de Vivaldi (pas entièrement open source) et des applis mail (FairEmail, K-9 Mail, Thunderbird, Thunderbird Beta)
+- Ajout d'un badge « Obsolète » sur les applis installées sans nouvelle version depuis 90 jours ou plus
+- Déplacement des applis non installées sans nouvelle version depuis 90 jours ou plus vers la section « Navigateurs en fin de vie »
+- Correction des APK de mise à jour de JDupdater jamais supprimés après un échec d'installation en arrière-plan

@@ -87,5 +87,5 @@ object BackgroundSettings {
         get() = preferences.getBoolean("background__delete_cache_if_install_successful", true)
 
     val isDeleteUpdateIfInstallFailed
-        get() = preferences.getBoolean("background__delete_cache_if_install_failed", false)
+        get() = preferences.getBoolean("background__delete_cache_if_install_failed", true)
 }

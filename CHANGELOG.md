@@ -6,6 +6,36 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.1.0 (211)
+**Removed**
+- Removed Vivaldi: it is only partially open source (the Android/desktop UI is proprietary, only the
+  Chromium core is open).
+- Removed FairEmail, K-9 Mail, Thunderbird and Thunderbird Beta: they are email clients, not browsers.
+  (Orbot stays: it isn't a browser either, but it's actively maintained and was already listed under
+  "Other applications", not the browser categories.)
+
+**Added**
+- Installed apps whose latest known release is 90+ days old now show a grey "Outdated" badge on their card,
+  next to the existing blue "Update" badge, so you notice even without opening the app's info dialog.
+- The "Add app" screen already had an unused "End-of-life browser" section (`DisplayCategory.EOL`). Not-yet-
+  installed apps whose latest known release is 90+ days old are now shown there automatically instead of
+  their usual category (same 90-day rule as the badge above), rather than needing to be hardcoded into that
+  category by hand. Apps tracked by branch instead of dated releases (Vanadium, TrichromeLibrary) are never
+  affected, since their release has no publish date to measure an age from.
+
+**Fixed**
+- Fixed cached self-update APKs (`FFUPDATER_<...>.apk` in `Android/data/de.marmaro.krt.ffupdater/files/download`)
+  never being deleted: silently self-installing JDupdater always requires user interaction (no root/Shizuku),
+  so `background__delete_cache_if_install_failed` (off by default) kept every failed self-update download
+  forever, and downloads started from the notification/`DownloadActivity` never cleaned up older cached
+  versions at all (only `AppUpdater`, the background path, did). `DownloadActivity` now deletes cached APKs
+  of older versions of the app being downloaded before starting a new download, regardless of those settings.
+  Existing leftover files must still be deleted once by hand (e.g. with a file manager); this only prevents
+  new ones from piling up.
+  This affects every app, not just JDupdater: a failed background install (unusual for regular browsers,
+  which usually only need Android 12+/root/Shizuku to install silently in the first place) no longer leaves
+  its cache behind either. You can still turn it back off per app category in Settings.
+
 ## 86.0.1 (210)
 **CI**
 - The Android workflow signs the APK itself with `apksigner` (instead of the unmaintained

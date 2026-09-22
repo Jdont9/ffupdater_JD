@@ -21,9 +21,6 @@ Software from Mozilla or based on Firefox:
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
-- [Thunderbird for Android](https://play.google.com/store/apps/details?id=net.thunderbird.android),
-  [Thunderbird for Android Beta](https://play.google.com/store/apps/details?id=net.thunderbird.android.beta)
-  ([GitHub Repository](https://github.com/thunderbird/thunderbird-android/))
 - [WebLibre](https://github.com/FaFre/WebLibre) (built on Mozilla's Gecko engine, not a Firefox fork)
 
 Browser which are better than Google Chrome:
@@ -31,15 +28,12 @@ Browser which are better than Google Chrome:
 - [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
-- [Vivaldi](https://vivaldi.com/download/) ([Incomplete Source Code](https://vivaldi.com/source/))
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;
   the required TrichromeLibrary component is installed/updated automatically alongside it, no separate
   step needed)
 
 Other applications:
 
-- [FairEmail](https://github.com/M66B/FairEmail)
-- [K-9 Mail](https://k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
 
 JDupdater checks for updates in the background and downloads them as well. Apps can be updated without user

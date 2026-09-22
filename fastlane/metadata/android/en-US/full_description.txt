@@ -5,20 +5,16 @@ Browsers from Mozilla or based on Firefox:
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Klar
 - Iceraven
 - Tor Browser, Tor Browser Alpha
-- Thunderbird for Android, Thunderbird for Android Beta
 - WebLibre
 
 Browsers which are better than Google Chrome:
 - Cromite
 - Chromium
 - DuckDuckGo Browser
-- Vivaldi
 - Vanadium (GrapheneOS's hardened Chromium; the required TrichromeLibrary component is installed
   automatically alongside it)
 
 Other applications:
-- FairEmail
-- K-9 Mail
 - Orbot
 
 JDupdater checks for updates in the background and downloads them as well. On Android 12+ or root devices, JDupdater can also update the apps without user interaction.

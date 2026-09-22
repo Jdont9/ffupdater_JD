@@ -17,5 +17,4 @@ The apps are downloaded from these locations:
 - Orbot: <https://api.github.com/repos/kiwibrowser/guardianproject/orbot>
 - Tor Browser: <https://www.torproject.org/download>
 - Tor Browser Alpha: <https://www.torproject.org/download/alpha/>
-- Vivaldi: <https://vivaldi.com/download/>
 - Thorium: <https://api.github.com/repos/Alex313031/Thorium-Android/releases/latest>

@@ -6,6 +6,41 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.1.0 (211)
+**Retraits**
+- Retrait de Vivaldi : il n'est que partiellement open source (l'interface Android/desktop est propriétaire,
+  seul le cœur Chromium est ouvert).
+- Retrait de FairEmail, K-9 Mail, Thunderbird et Thunderbird Beta : ce sont des clients mail, pas des
+  navigateurs. (Orbot reste : ce n'est pas non plus un navigateur, mais il est activement maintenu et était
+  déjà listé sous « Autres applications », pas dans les catégories de navigateurs.)
+
+**Ajouts**
+- Les applis installées dont la dernière version connue date de 90 jours ou plus affichent maintenant un
+  badge gris « Obsolète » sur leur carte, à côté du badge bleu « MàJ » existant, pour que ce soit visible
+  sans avoir à ouvrir la fiche d'information de l'appli.
+- L'écran « Ajouter une appli » avait déjà une section « Navigateurs en fin de vie » inutilisée
+  (`DisplayCategory.EOL`). Les applis pas encore installées dont la dernière version connue date de 90 jours
+  ou plus y sont maintenant affichées automatiquement au lieu de leur catégorie habituelle (même règle des
+  90 jours que le badge ci-dessus), sans avoir à les coder en dur dans cette catégorie. Les applis suivies
+  par branche plutôt que par versions datées (Vanadium, TrichromeLibrary) ne sont jamais concernées, faute
+  de date de publication pour calculer un âge.
+
+**Corrections**
+- Correction des APK de mise à jour de JDupdater mis en cache (`FFUPDATER_<...>.apk` dans
+  `Android/data/de.marmaro.krt.ffupdater/files/download`) qui n'étaient jamais supprimés : l'auto-installation
+  silencieuse de JDupdater nécessite toujours une confirmation de l'utilisateur (sans root ni Shizuku), donc
+  `background__delete_cache_if_install_failed` (désactivé par défaut) gardait pour toujours chaque
+  téléchargement de mise à jour échoué, et les téléchargements lancés depuis la notification/`DownloadActivity`
+  ne nettoyaient jamais les anciennes versions mises en cache (seul `AppUpdater`, le chemin en arrière-plan, le
+  faisait). `DownloadActivity` supprime maintenant les APK en cache des anciennes versions de l'appli en cours
+  de téléchargement avant de démarrer un nouveau téléchargement, quels que soient ces réglages.
+  Les fichiers déjà accumulés doivent encore être supprimés une fois à la main (par ex. avec un gestionnaire
+  de fichiers) ; ceci empêche seulement que de nouveaux s'accumulent.
+  Cela concerne toutes les applis, pas seulement JDupdater : une installation en arrière-plan qui échoue
+  (rare pour les navigateurs classiques, qui ont de toute façon besoin d'Android 12+/root/Shizuku pour
+  s'installer silencieusement) ne laisse plus non plus son cache derrière elle. Vous pouvez toujours
+  redésactiver ce réglage dans les préférences.
+
 ## 86.0.1 (210)
 **CI**
 - Le workflow Android signe désormais l'APK lui-même avec `apksigner` (à la place de

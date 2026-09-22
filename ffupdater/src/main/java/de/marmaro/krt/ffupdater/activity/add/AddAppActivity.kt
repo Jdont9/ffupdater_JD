@@ -20,11 +20,15 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_SECURITY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
+import de.marmaro.krt.ffupdater.app.ReleaseAgeHelper
 import de.marmaro.krt.ffupdater.device.DeviceAbiExtractor
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.cancellation.CancellationException
 
 @Keep
 class AddAppActivity : AppCompatActivity() {
@@ -55,18 +59,39 @@ class AddAppActivity : AppCompatActivity() {
 
     @UiThread
     private suspend fun addAppsToUserInterface() {
-        val installedApps = App.values()
+        val notInstalledApps = App.values()
             .map { it.findImpl() }
             .filter { it.installableByUser }
             .filter { DeviceAbiExtractor.supportsOneOf(it.supportedAbis) }
             .filter { !it.isInstalledWithoutFingerprintVerification(applicationContext.packageManager) }
 
+        // An app whose latest known release is old (see ReleaseAgeHelper) is shown under the EOL section
+        // below instead of its usual category, even though nothing had to hardcode it there - same
+        // condition as the "Outdated" badge shown for installed apps on the main screen.
+        val staleApps = notInstalledApps
+            .map { app ->
+                lifecycleScope.async(Dispatchers.IO) {
+                    val isStale = try {
+                        ReleaseAgeHelper.isStale(app.findStatusOrUseOldCache(applicationContext).latestVersion)
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        false // network/parsing failure: don't move the app on unreliable information
+                    }
+                    app.app to isStale
+                }
+            }
+            .awaitAll()
+            .filter { it.second }
+            .map { it.first }
+            .toSet()
+
         val items = mutableListOf<AddRecyclerView.ItemWrapper>()
 
         for (displayCategory in values()) {
-            val categoryApps = installedApps
-                .filter { displayCategory in it.displayCategory }
-                .filter { if (displayCategory == EOL) true else (EOL !in it.displayCategory) }
+            val categoryApps = notInstalledApps
+                .filter { displayCategory in it.displayCategory || (displayCategory == EOL && it.app in staleApps) }
+                .filter { if (displayCategory == EOL) true else (EOL !in it.displayCategory && it.app !in staleApps) }
                 .map { AddRecyclerView.WrappedApp(it.app) }
             if (categoryApps.isEmpty()) {
                 continue

@@ -17,9 +17,6 @@ Logiciels de Mozilla ou basés sur Firefox :
 - [Iceraven](https://github.com/fork-maintainers/iceraven-browser)
 - [Tor Browser](https://www.torproject.org/download),
   [Tor Browser Alpha](https://www.torproject.org/download/alpha/)
-- [Thunderbird pour Android](https://play.google.com/store/apps/details?id=net.thunderbird.android),
-  [Thunderbird pour Android Beta](https://play.google.com/store/apps/details?id=net.thunderbird.android.beta)
-  ([dépôt GitHub](https://github.com/thunderbird/thunderbird-android/))
 - [WebLibre](https://github.com/FaFre/WebLibre) (construit sur le moteur Gecko de Mozilla, pas un fork de Firefox)
 
 Navigateurs qui valent mieux que Google Chrome :
@@ -27,15 +24,12 @@ Navigateurs qui valent mieux que Google Chrome :
 - [Cromite](https://github.com/uazo/cromite)
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
-- [Vivaldi](https://vivaldi.com/download/) ([code source incomplet](https://vivaldi.com/source/))
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (le Chromium durci de GrapheneOS ;
   le composant TrichromeLibrary requis est installé/mis à jour automatiquement avec lui, sans étape
   séparée)
 
 Autres applications :
 
-- [FairEmail](https://github.com/M66B/FairEmail)
-- [K-9 Mail](https://k9mail.app)
 - [Orbot](https://github.com/guardianproject/orbot)
 
 JDupdater vérifie les mises à jour en arrière-plan et les télécharge également. Les applis peuvent être mises

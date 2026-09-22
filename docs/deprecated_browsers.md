@@ -1,5 +1,13 @@
 # Deprecated browsers
 
+## Vivaldi, FairEmail, K-9 Mail, Thunderbird for Android / Beta
+
+22.09.2026: Removed from this fork.
+
+- Vivaldi is only partially open source (its Android/desktop UI is proprietary), which doesn't fit the
+  criteria for this fork.
+- FairEmail, K-9 Mail and Thunderbird are email clients, not browsers.
+
 ## Bromite / Bromite System WebView
 
 04.07.2023: The latest release is from 19.12.2022 and therefore too old (https://github.com/bromite/bromite).

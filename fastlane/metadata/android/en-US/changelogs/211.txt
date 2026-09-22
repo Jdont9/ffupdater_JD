@@ -1,0 +1,5 @@
+Version 86.1.0 (211)
+- Remove Vivaldi (not fully open source) and the email apps (FairEmail, K-9 Mail, Thunderbird, Thunderbird Beta)
+- Add an "Outdated" badge on installed apps with no release in 90+ days
+- Move not-yet-installed apps with no release in 90+ days to the "End-of-life browser" section
+- Fix cached self-update APKs never being deleted after a failed background install

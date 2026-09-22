@@ -209,6 +209,13 @@ class DownloadActivity : AppCompatActivity() {
         showWarningIfNotEnoughStorageIsAvailable()
 
         val status = fetchDownloadInformation() ?: return
+        // Delete cached APKs of older versions now, regardless of the "delete cache after
+        // install" settings below (those only cover the version being installed right now).
+        // Without this, an app whose background self-install always requires user interaction
+        // (e.g. JDupdater itself without root/Shizuku) would keep every failed self-update
+        // download forever, because the background job's own cleanup (AppUpdater) never
+        // runs for downloads started from this foreground screen.
+        appImpl.deleteFileCacheExceptLatest(applicationContext, status.latestVersion)
         executeDownloadProcess(status).ifFalse { return }
         installAppWithResultProcessing(status)
     }

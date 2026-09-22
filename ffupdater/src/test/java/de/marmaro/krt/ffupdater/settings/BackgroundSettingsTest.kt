@@ -36,7 +36,7 @@ class BackgroundSettingsTest : BaseTest() {
             Arguments.of(App.FIREFOX_BETA, "FIREFOX_BETA"),
             Arguments.of(App.FIREFOX_NIGHTLY, "FIREFOX_NIGHTLY"),
             Arguments.of(App.FIREFOX_RELEASE, "FIREFOX_RELEASE"),
-            Arguments.of(App.VIVALDI, "VIVALDI"),
+            Arguments.of(App.WEBLIBRE, "WEBLIBRE"),
         )
     }
 
@@ -191,40 +191,29 @@ class BackgroundSettingsTest : BaseTest() {
 
     @Test
     fun `excludedAppsFromBackgroundUpdateCheck with all apps`() {
+        // every currently valid app name, PLUS some names of apps that were removed from this fork over time
+        // (Bromite, Kiwi, Lockwise/Firefox Lockwise, Mulch, Mull, ungoogled-chromium, Vivaldi, the mail apps, ...):
+        // stale/unknown names must be silently ignored instead of crashing.
+        val allCurrentAppNames = App.values().map { it.name }.toSet()
+        val alsoStaleNames = setOf(
+            "BROMITE",
+            "BROMITE_SYSTEMWEBVIEW",
+            "FAIREMAIL",
+            "K9MAIL",
+            "KIWI",
+            "LOCKWISE",
+            "MULCH",
+            "MULCH_SYSTEMWEBVIEW",
+            "MULL",
+            "MULL_FROM_REPO",
+            "THUNDERBIRD",
+            "THUNDERBIRD_BETA",
+            "UNGOOGLED_CHROMIUM",
+            "VIVALDI",
+        )
         sharedPreferences.edit().putStringSet(
             "background__update_check__excluded_apps",
-            setOf(
-                "BROMITE",
-                "BROMITE_SYSTEMWEBVIEW",
-                "CHROMIUM",
-                "CROMITE",
-                "DUCKDUCKGO_ANDROID",
-                "FAIREMAIL",
-                "FENNEC_FDROID",
-                "FFUPDATER",
-                "FIREFOX_BETA",
-                "FIREFOX_KLAR",
-                "FIREFOX_NIGHTLY",
-                "FIREFOX_RELEASE",
-                "ICERAVEN",
-                "K9MAIL",
-                "KIWI",
-                "LOCKWISE",
-                "MULCH",
-                "MULCH",
-                "MULL",
-                "MULCH_SYSTEMWEBVIEW",
-                "MULL_FROM_REPO",
-                "ORBOT",
-                "THUNDERBIRD",
-                "THUNDERBIRD_BETA",
-                "TOR_BROWSER",
-                "TOR_BROWSER_ALPHA",
-                "TRICHROME_LIBRARY",
-                "UNGOOGLED_CHROMIUM",
-                "VANADIUM",
-                "VIVALDI",
-            )
+            allCurrentAppNames + alsoStaleNames
         ).commit()
         assertEquals(
             App.values().toList().sorted(),

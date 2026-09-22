@@ -27,6 +27,7 @@
     <string name="notification__download_running__title">Downloading app updates</string>
     <string name="app_card__download_the_app">download the app</string>
     <string name="app_card__update_badge">Update</string>
+    <string name="app_card__obsolete_badge">Outdated</string>
     <string name="notification__eol_apps__channel_description">Notification channel for warnings about outdated apps.</string>
     <string name="notification__eol_apps__channel_name">Outdated apps notification</string>
     <string name="notification__eol_apps__text">You have outdated apps which should not be used anymore: %1$s</string>
@@ -153,9 +154,6 @@
     <string name="notification__update_available__channel_name">"%1$s" update notification</string>
     <string name="update_notification__text">Click to install update</string>
     <string name="update_notification__title">Update for %1$s available</string>
-    <string name="vivaldi__description">Discover a blazingly fast Internet browser! Vivaldi is a new, free, and private web browser built with flexibility in mind. It comes packed with useful features including a built-in AdBlocker (pop-up blocker), tracking protection, and private translation. Browser options like proper desktop-style tabs, dark/light Themes, and layout choices help you make it yours.</string>
-    <string name="vivaldi__title">Vivaldi Browser</string>
-    <string name="vivaldi__warning">- Vivaldi is only partially open source.\n- It also uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="weblibre__title">WebLibre</string>
     <string name="weblibre__description">WebLibre is an independent privacy-focused browser for Android built on Mozilla\'s Gecko engine and Mozilla Android Components. It is not a Firefox fork - it combines strong privacy defaults with tab containers, isolated tabs, built-in Tor and proxy routing, Firefox-compatible extensions, and a local-first, on-device search engine.</string>
     <string name="weblibre__warning">- Under active development with frequent updates; some rough edges are possible.</string>
@@ -256,13 +254,6 @@
     <string name="vanadium__description">Vanadium is GrapheneOS\'s privacy and security hardened fork of Chromium. The required TrichromeLibrary component is automatically installed/updated alongside Vanadium - no separate step needed.</string>
     <string name="vanadium__warning">- TrichromeLibrary (a required shared library) is automatically installed/updated together with Vanadium - just select or update Vanadium as normal.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.\n- Vanadium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
     <string name="main_activity__unexpected_error">Unexpected error occurred.</string>
-    <string name="k9mail__title">K-9 Mail</string>
-    <string name="k9mail__description">Full-featured email client</string>
-    <string name="thunderbird__title">Thunderbird</string>
-    <string name="thunderbird_beta__title">Thunderbird Beta</string>
-    <string name="thunderbird__description">Thunderbird is a powerful, privacy-focused email app. Effortlessly manage multiple email accounts from one app, with a Unified Inbox option for maximum productivity. Built on open-source technology and supported by a dedicated team of developers alongside a global community of volunteers, Thunderbird never treats your private data as a product. Supported solely by financial contributions from our users, so you never have to see ads mixed in with your emails again.</string>
-    <string name="fairemail__title">FairEmail</string>
-    <string name="fairemail__description">Fully featured, open source, privacy friendly email app for Android</string>
     <string name="cardview_dialog__self_description_label">Self description:</string>
     <string name="cardview_dialog__warnings_label">Warnings:</string>
     <string name="cardview_dialog__auto_bg_update">Automatic background update</string>
@@ -271,7 +262,6 @@
     <string name="cardview_dialog__different_signature">FFUpdater can not update this app because the APK signature is different. You can fix it by uninstalling the app and reinstalling it with FFUpdater. However, this will delete all your data in the app. So remember to back up your data beforehand.</string>
     <string name="cardview_dialog__eol">This app should no longer be used:</string>
     <string name="cardview_dialog__not_installed_by_ffupdater">This app was not installed or updated by FFUpdater. To avoid conflicts with other applications, automatic updating is disabled.</string>
-    <string name="fairemail__warning">- Updating the "Google Play Store" version of FairEmail with FFUpdater can lead to problems, like e.g. a not functional OAuth/Google Mail support. Do not ask the FairEmail author for assistance with problems caused by FFUpdater.</string>
     <string name="foreground__hidden_apps__summary">Hidden apps will be hidden in the UI and will not be updated automatically.</string>
     <string name="foreground__hidden_apps__title">Hidden apps</string>
     <string name="cardview_dialog__hide">Hide</string>
