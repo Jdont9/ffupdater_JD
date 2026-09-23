@@ -151,6 +151,7 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         val infoButton: ImageButton = itemView.findViewWithTag("appInfoButton")
         val installedVersion: TextView = itemView.findViewWithTag("appInstalledVersion")
         val availableVersion: TextView = itemView.findViewWithTag("appAvailableVersion")
+        val availableVersionDate: TextView = itemView.findViewWithTag("appAvailableVersionDate")
         val statusBadge: TextView = itemView.findViewWithTag("appStatusBadge")
         val obsoleteBadge: TextView = itemView.findViewWithTag("appObsoleteBadge")
         val downloadButton: ImageButton = itemView.findViewWithTag("appDownloadButton")
@@ -196,26 +197,51 @@ class MainRecyclerView(private val activity: MainActivity) : RecyclerView.Adapte
         if (error != null) {
             view.availableVersion.setText(error.message)
             view.availableVersion.setOnClickListener { startCrashActivity(error) }
+            view.availableVersionDate.text = ""
+            view.availableVersionDate.visibility = View.GONE
         } else {
             val metadata = appAndUpdateStatus.getOrDefault(appImpl.app, null)
-            view.availableVersion.text = getDisplayAvailableVersionWithAge(metadata)
+            val (version, date) = getDisplayAvailableVersionWithAge(metadata)
+            view.availableVersion.text = version
+            // views are recycled: clear the crash-report click listener a previous bind may have set
+            view.availableVersion.setOnClickListener(null)
+            if (date != null) {
+                view.availableVersionDate.text = date
+                view.availableVersionDate.visibility = View.VISIBLE
+            } else {
+                view.availableVersionDate.text = ""
+                view.availableVersionDate.visibility = View.GONE
+            }
         }
-        view.availableVersion.visibility = if (appImpl.app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
+        val visible = if (appImpl.app in appsWithWrongFingerprint) View.GONE else View.VISIBLE
+        view.availableVersion.visibility = visible
+        if (visible == View.GONE) {
+            view.availableVersionDate.visibility = View.GONE
+        }
     }
 
-    private fun getDisplayAvailableVersionWithAge(metadata: InstalledAppStatus?): String {
+    /**
+     * Returns the available version text and, separately, a short relative-age string ("il y a 4 h",
+     * "5 sept.") to put in its own (smaller) line below - so the card never has to wrap a single long
+     * "version (date)" string in the middle of the date, which used to look broken. Returns null for the
+     * date when there is nothing to show (no publish date, or it couldn't be parsed).
+     */
+    private fun getDisplayAvailableVersionWithAge(metadata: InstalledAppStatus?): Pair<String, String?> {
         val version = metadata?.displayVersion ?: "..."
-        val dateString = metadata?.latestVersion?.publishDate ?: return version
+        val dateString = metadata?.latestVersion?.publishDate ?: return version to null
         val date = try {
             ZonedDateTime.parse(dateString, DateTimeFormatter.ISO_ZONED_DATE_TIME)
         } catch (e: DateTimeException) {
-            return version
+            return version to null
         }
         val unixMillis = DateUtils.SECOND_IN_MILLIS * date.toEpochSecond()
         val min = Duration.ofMinutes(1).toMillis()
         val max = Duration.ofDays(100).toMillis()
-        val relative = DateUtils.getRelativeDateTimeString(activity, unixMillis, min, max, 0)
-        return "$version ($relative)"
+        val relative = DateUtils.getRelativeDateTimeString(
+            activity, unixMillis, min, max,
+            DateUtils.FORMAT_ABBREV_RELATIVE or DateUtils.FORMAT_ABBREV_MONTH
+        ).toString()
+        return version to relative
     }
 
     private fun startCrashActivity(error: ExceptionWrapper) {

@@ -6,6 +6,18 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.1.1 (212)
+**Fixed**
+- Fixed the "Available" line on the main screen wrapping awkwardly mid-date on longer version numbers or
+  older releases (e.g. "Disponible : 153.0.8010.52.0 (Il y a 4 jours, 23:19)" breaking across two lines).
+  The relative age now sits on its own (smaller) line below the version, and uses a shorter, abbreviated
+  format ("il y a 4 h" / "5 sept." instead of "il y a 4 heures, 13:16" / "5 sept., 16:47").
+- Fixed Firefox Nightly's card showing a raw, unformatted build timestamp in square brackets (e.g.
+  `[2026-09-22T21:13:42]`) next to both the installed and available version, on top of the already-shown
+  relative age - which made its card wrap onto 3-4 lines and get cut off, unlike every other app. This
+  internal build time (used only to tell apart two Nightly builds sharing the same version text) is no
+  longer shown on the card.
+
 ## 86.1.0 (211)
 **Removed**
 - Removed Vivaldi: it is only partially open source (the Android/desktop UI is proprietary, only the

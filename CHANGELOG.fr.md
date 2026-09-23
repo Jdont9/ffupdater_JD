@@ -6,6 +6,19 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.1.1 (212)
+**Corrections**
+- Correction de la ligne « Disponible » de l'écran principal qui se coupait maladroitement en plein milieu
+  de la date pour les numéros de version longs ou les versions plus anciennes (ex. « Disponible :
+  153.0.8010.52.0 (Il y a 4 jours, 23:19) » qui débordait sur deux lignes). La date relative est maintenant
+  sur sa propre ligne (plus petite) sous la version, avec un format plus court et abrégé (« il y a 4 h » /
+  « 5 sept. » au lieu de « il y a 4 heures, 13:16 » / « 5 sept., 16:47 »).
+- Correction de la carte de Firefox Nightly qui affichait un horodatage de build brut, non formaté, entre
+  crochets (ex. `[2026-09-22T21:13:42]`) à côté de la version installée et de la version disponible, en plus
+  de la date relative déjà affichée - ce qui faisait déborder sa carte sur 3-4 lignes et coupait le texte,
+  contrairement à toutes les autres applis. Cet horodatage interne (utilisé seulement pour distinguer deux
+  builds Nightly qui partagent le même numéro de version) n'est désormais plus affiché sur la carte.
+
 ## 86.1.0 (211)
 **Retraits**
 - Retrait de Vivaldi : il n'est que partiellement open source (l'interface Android/desktop est propriétaire,
