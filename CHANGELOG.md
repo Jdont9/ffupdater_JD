@@ -6,6 +6,19 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.1.2 (213)
+**Fixed**
+- The "project page" link shown at the top of the app info dialog ("i" button) pointed to a Mozilla
+  marketing page (`mozilla.org/firefox/browsers/mobile/android/`) instead of the actual source code for
+  Firefox Release, Firefox Beta and Firefox Nightly. It now points to the real repository,
+  `github.com/mozilla-firefox/firefox`.
+- Firefox Klar's project page pointed to `github.com/mozilla-mobile/firefox-android`, which was archived on
+  2024-06-17 when Fenix/Focus/Klar and Android Components were merged into the unified mozilla-central repo.
+  It now points to the same current repository as above.
+- Tor Browser and Tor Browser Alpha's project page pointed to a torproject.org download page instead of the
+  source. It now points to the actual source repository,
+  `gitlab.torproject.org/tpo/applications/tor-browser`.
+
 ## 86.1.1 (212)
 **Fixed**
 - Fixed the "Available" line on the main screen wrapping awkwardly mid-date on longer version numbers or

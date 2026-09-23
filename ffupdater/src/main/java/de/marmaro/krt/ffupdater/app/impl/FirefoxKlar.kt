@@ -30,7 +30,9 @@ object FirefoxKlar : AppBase() {
     override val supportedAbis = ARM32_ARM64_X86_X64
 
     override val signatureHash = "6203a473be36d64ee37f87fa500edbc79eab930610ab9b9fa4ca7d5c1f1b4ffc"
-    override val projectPage = "https://github.com/mozilla-mobile/firefox-android"
+    // mozilla-mobile/firefox-android was archived on 2024-06-17: Fenix/Focus/Klar and Android Components
+    // moved into the unified mozilla-central repo, now mirrored to GitHub here.
+    override val projectPage = "https://github.com/mozilla-firefox/firefox"
     override val displayCategory = listOf(FROM_MOZILLA)
     override val hostnameForInternetCheck = "https://archive.mozilla.org"
 
