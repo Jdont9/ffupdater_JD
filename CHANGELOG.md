@@ -6,6 +6,16 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.2.0 (214)
+**Changed**
+- The main screen used to feel slow to open because the cache of "latest known version per app" only
+  lived in memory. Android kills the app's background process often (not just on reboot), so that cache
+  was empty almost every time the app was reopened, forcing a fresh network check for every app before the
+  list could settle. This cache is now also mirrored to disk, so a cold start can reuse a recent (< 1h) or
+  older (< 2 days) result instantly instead of re-fetching every app over the network again. The freshness
+  thresholds themselves are unchanged - this only avoids re-fetching data that was already fetched
+  recently, from a previous run of the app.
+
 ## 86.1.2 (213)
 **Fixed**
 - The "project page" link shown at the top of the app info dialog ("i" button) pointed to a Mozilla

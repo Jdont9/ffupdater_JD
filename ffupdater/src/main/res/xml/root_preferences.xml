@@ -13,6 +13,32 @@
 
         <SwitchPreferenceCompat
             app:defaultValue="true"
+            app:key="foreground__update_check__use_cache_when_metered_blocked"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__update_check__use_cache_when_metered_blocked__summary"
+            app:title="@string/settings__foreground__update_check__use_cache_when_metered_blocked__title" />
+
+        <ListPreference
+            app:defaultValue="60"
+            app:entries="@array/background__update_check__interval__entries"
+            app:entryValues="@array/background__update_check__interval__values"
+            app:key="foreground__update_check__cache_duration"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__update_check__cache_duration__summary"
+            app:title="@string/settings__foreground__update_check__cache_duration__title" />
+
+        <ListPreference
+            app:defaultValue="2880"
+            app:dependency="foreground__update_check__use_cache_when_metered_blocked"
+            app:entries="@array/background__update_check__interval__entries"
+            app:entryValues="@array/background__update_check__interval__values"
+            app:key="foreground__update_check__offline_cache_duration"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__update_check__offline_cache_duration__summary"
+            app:title="@string/settings__foreground__update_check__offline_cache_duration__title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
             app:dependency="foreground__update_check__metered"
             app:key="foreground__download__metered"
             app:singleLineTitle="false"

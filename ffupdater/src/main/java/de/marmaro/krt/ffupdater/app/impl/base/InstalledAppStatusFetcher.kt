@@ -29,15 +29,15 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
     }
 
     suspend fun findStatusOrUseRecentCache(context: Context): InstalledAppStatus {
-        return findStatusAndCacheIt(context, LatestVersionCache.getRecent(app))
+        return findStatusAndCacheIt(context, LatestVersionCache.getRecent(context, app))
     }
 
     suspend fun findStatusOrUseOldCache(context: Context): InstalledAppStatus {
-        return findStatusAndCacheIt(context, LatestVersionCache.getOld(app))
+        return findStatusAndCacheIt(context, LatestVersionCache.getOld(context, app))
     }
 
     suspend fun tryGetOldCache(context: Context): InstalledAppStatus? {
-        val cachedVersion = LatestVersionCache.getOld(app) ?: return null
+        val cachedVersion = LatestVersionCache.getOld(context, app) ?: return null
         return convertToInstalledAppStatus(context, cachedVersion)
     }
 
@@ -54,7 +54,7 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
             val (latestVersion, duration) = MeasureExecutionTime.measureMs {
                 fetchLatestUpdate(context.applicationContext)
             }
-            LatestVersionCache.cache(app, latestVersion)
+            LatestVersionCache.cache(context, app, latestVersion)
             Log.i(LOG_TAG, "InstalledAppStatusFetcher: Found ${app.name} ${latestVersion.version} (${duration}ms).")
             return convertToInstalledAppStatus(context, latestVersion)
         } catch (e: CancellationException) {

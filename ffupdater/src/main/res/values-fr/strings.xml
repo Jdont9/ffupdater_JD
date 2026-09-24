@@ -68,6 +68,7 @@
     <string name="installed_version">Installé : %1$s</string>
     <string name="main_activity__github_api_limit_exceeded"><u>La limite de GitHub-API est dépassée. Réessayez l\'heure suivante.</u></string>
     <string name="main_activity__no_unmetered_network">Pas de réseau non mesuré</string>
+    <string name="main_activity__no_unmetered_network_showing_cache">Pas de réseau non mesuré - affichage des dernières versions connues</string>
     <string name="main_activity__temporary_network_issue"><u>Problème de réseau temporaire. Réessayez plus tard.</u></string>
     <string name="ok">D\'accord</string>
     <string name="request_installation_permission_dialog__abort">Abandonner</string>
@@ -106,6 +107,12 @@
     <string name="settings__foreground__theme_preference__title">Choisissez un thème</string>
     <string name="settings__foreground__update_check__metered__summary">Autorisez les vérifications de mise à jour sur les réseaux avec compteur, comme les données mobiles.</string>
     <string name="settings__foreground__update_check__metered__title">Contrôles de mise à jour sur les réseaux de compteurs</string>
+    <string name="settings__foreground__update_check__use_cache_when_metered_blocked__summary">Quand une vérification ne peut pas atteindre le réseau - aucune connexion du tout, ou « Contrôles de mise à jour sur les réseaux de compteurs » ci-dessus est désactivé et vous n\'êtes pas en Wi-Fi - affiche les dernières versions connues (jusqu\'à 2 jours) au lieu d\'une erreur.</string>
+    <string name="settings__foreground__update_check__use_cache_when_metered_blocked__title">Afficher les versions en cache hors ligne</string>
+    <string name="settings__foreground__update_check__cache_duration__summary">Durée pendant laquelle une vérification réussie est réutilisée avant de revérifier. Une durée plus courte donne des résultats plus à jour mais utilise plus de réseau ; une durée plus longue ouvre l\'appli plus vite et consomme moins de données.</string>
+    <string name="settings__foreground__update_check__cache_duration__title">Durée du cache de vérification</string>
+    <string name="settings__foreground__update_check__offline_cache_duration__summary">Ancienneté maximale d\'un résultat en cache encore utilisable comme repli (réglage ci-dessus) quand le réseau est totalement inaccessible.</string>
+    <string name="settings__foreground__update_check__offline_cache_duration__title">Durée du cache de repli hors ligne</string>
     <string name="settings__foreground_category__summary">Paramètres lorsque l\'interface utilisateur est visible.</string>
     <string name="settings__foreground_category__title">Premier plan</string>
     <string name="settings__installer_category__title">Général</string>

@@ -6,6 +6,17 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.2.0 (214)
+**Changements**
+- L'écran principal pouvait sembler lent à s'ouvrir car le cache « dernière version connue de chaque appli »
+  ne vivait qu'en mémoire. Android tue souvent le processus en arrière-plan (pas seulement au redémarrage),
+  donc ce cache était vide presque à chaque réouverture de l'appli, ce qui forçait une vérification réseau
+  complète de chaque appli avant que la liste ne se stabilise. Ce cache est désormais aussi recopié sur le
+  disque : un démarrage à froid peut donc réutiliser instantanément un résultat récent (< 1 h) ou plus ancien
+  (< 2 jours) au lieu de tout retélécharger. Les seuils de fraîcheur eux-mêmes n'ont pas changé - ça évite
+  seulement de re-télécharger des données déjà récupérées récemment, lors d'une précédente ouverture de
+  l'appli.
+
 ## 86.1.2 (213)
 **Corrections**
 - Le lien « page du projet » affiché en haut de la fiche d'information de l'appli (bouton « i ») pointait

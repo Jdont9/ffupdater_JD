@@ -82,6 +82,7 @@
     <string name="installed_version">Installed: %1$s</string>
     <string name="main_activity__github_api_limit_exceeded">"<u>GitHub-API limit exceeded. Retry next hour.</u>"</string>
     <string name="main_activity__no_unmetered_network">No unmetered network</string>
+    <string name="main_activity__no_unmetered_network_showing_cache">No unmetered network - showing last known versions</string>
     <string name="main_activity__temporary_network_issue">"<u>Temporary network issue. Retry later.</u>"</string>
     <string name="main_activity__an_error_occurred">"<u>An error occurred. Retry later.</u>"</string>
     <string name="ok">OK</string>
@@ -123,6 +124,12 @@
     <string name="settings__foreground__theme_preference__title">Choose theme</string>
     <string name="settings__foreground__update_check__metered__summary">Allow update checks on metered networks such as mobile data.</string>
     <string name="settings__foreground__update_check__metered__title">Update checks on metered networks</string>
+    <string name="settings__foreground__update_check__use_cache_when_metered_blocked__summary">When an update check can\'t reach the network - no connection at all, or "Update checks on metered networks" above is off and you\'re not on Wi-Fi - show the last known versions (up to 2 days old) instead of an error.</string>
+    <string name="settings__foreground__update_check__use_cache_when_metered_blocked__title">Show cached versions when offline</string>
+    <string name="settings__foreground__update_check__cache_duration__summary">How long a successful update check is reused before checking again. A shorter duration means more up-to-date results but more network use; a longer one opens the app faster and uses less data.</string>
+    <string name="settings__foreground__update_check__cache_duration__title">Update check cache duration</string>
+    <string name="settings__foreground__update_check__offline_cache_duration__summary">How old a cached result is still allowed to be when shown as a fallback (setting above) because the network couldn\'t be reached at all.</string>
+    <string name="settings__foreground__update_check__offline_cache_duration__title">Offline fallback cache duration</string>
     <string name="settings__foreground_category__summary">Settings when the user interface is visible.</string>
     <string name="settings__foreground_category__title">Foreground</string>
     <string name="settings__installer_category__title">Installer</string>

@@ -5,6 +5,7 @@ import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatDelegate
 import de.marmaro.krt.ffupdater.app.App
 import de.marmaro.krt.ffupdater.device.DeviceSdkTester
+import java.time.Duration
 
 @Keep
 object ForegroundSettings {
@@ -19,6 +20,31 @@ object ForegroundSettings {
 
     val isUpdateCheckOnMeteredAllowed
         get() = preferences.getBoolean("foreground__update_check__metered", true)
+
+    // Only relevant when isUpdateCheckOnMeteredAllowed is false (i.e. "wifi only" for update checks) and
+    // the device is currently on a metered connection: instead of showing an error for every app, reuse
+    // the on-disk cache (up to 2 days old) so the list still shows something useful until Wi-Fi is back.
+    val isUseCacheWhenMeteredBlocked
+        get() = preferences.getBoolean("foreground__update_check__use_cache_when_metered_blocked", true)
+
+    // How long a successful update check is reused before checking again "for real". Same unit/format
+    // (minutes, as a String) as background__update_check__interval.
+    val recentCacheDuration: Duration
+        get() {
+            val minutes = preferences.getString("foreground__update_check__cache_duration", null)?.toLongOrNull()
+            return Duration.ofMinutes(minutes ?: 60L)
+        }
+
+    // How far back a cached result may be reused as a fallback when the network can't be reached at all
+    // (no connection, or blocked by isUpdateCheckOnMeteredAllowed above). Kept separate from
+    // recentCacheDuration above: that one controls when to skip a check that would otherwise succeed,
+    // this one controls how stale a "better than nothing" result is still allowed to be.
+    val offlineCacheDuration: Duration
+        get() {
+            val minutes =
+                preferences.getString("foreground__update_check__offline_cache_duration", null)?.toLongOrNull()
+            return Duration.ofMinutes(minutes ?: 2880L)
+        }
 
     val isDownloadOnMeteredAllowed
         get() = preferences.getBoolean("foreground__download__metered", true)

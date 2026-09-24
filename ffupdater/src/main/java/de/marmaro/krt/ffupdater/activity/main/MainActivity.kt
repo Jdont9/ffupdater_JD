@@ -210,7 +210,11 @@ class MainActivity : AppCompatActivity() {
 
     private suspend fun fetchLatestUpdates(apps: List<App>) {
         if (isNetworkMeterStatusOk()) {
-            showErrorUnmeteredNetwork(apps)
+            if (ForegroundSettings.isUseCacheWhenMeteredBlocked) {
+                showCachedOrErrorForMeteredNetwork(apps)
+            } else {
+                showErrorUnmeteredNetwork(apps)
+            }
             return
         }
 
@@ -234,6 +238,35 @@ class MainActivity : AppCompatActivity() {
         showBriefMessage(R.string.main_activity__no_unmetered_network)
     }
 
+    // Update checks are blocked by the "wifi only" setting while off Wi-Fi: rather than showing an error
+    // for every app, fall back to whatever was last saved to disk (up to 2 days old, see
+    // LatestVersionCache) so the list still shows something useful. Apps that have never been cached still
+    // show the usual error, since there is nothing to fall back to for them.
+    private suspend fun showCachedOrErrorForMeteredNetwork(apps: List<App>) {
+        val e = NoUnmeteredNetworkException("Unmetered network is necessary but not available.")
+        var anyCacheShown = false
+        apps.forEach { app ->
+            val cached = withContext(Dispatchers.IO) { app.findImpl().tryGetOldCache(applicationContext) }
+            recyclerViewMutex.withLock {
+                if (cached != null) {
+                    anyCacheShown = true
+                    recyclerView.notifyAppChange(app, cached)
+                    recyclerView.notifyClearedErrorForApp(app)
+                } else {
+                    recyclerView.notifyErrorForApp(app, R.string.main_activity__no_unmetered_network, e)
+                }
+            }
+        }
+        recyclerViewMutex.withLock {
+            recyclerView.sortAppsByUpdateAvailabilityAndName()
+        }
+        if (anyCacheShown) {
+            showBriefMessage(R.string.main_activity__no_unmetered_network_showing_cache)
+        } else {
+            showBriefMessage(R.string.main_activity__no_unmetered_network)
+        }
+    }
+
     private suspend fun updateMetadataOf(app: App): InstalledAppStatus? {
         try {
             recyclerViewMutex.withLock {
@@ -251,6 +284,19 @@ class MainActivity : AppCompatActivity() {
             throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Failed to update the metadata of ${app.name}", e)
+            // No recent (<1h) cache and the network call itself failed (no connection at all, DNS
+            // failure, timeout, ...): fall back to the older on-disk cache (<2 days) instead of a bare
+            // error, same as when the "wifi only" setting blocks the check outright.
+            if (e is NetworkException && ForegroundSettings.isUseCacheWhenMeteredBlocked) {
+                val cached = withContext(Dispatchers.IO) { app.findImpl().tryGetOldCache(applicationContext) }
+                if (cached != null) {
+                    recyclerViewMutex.withLock {
+                        recyclerView.notifyAppChange(app, cached)
+                        recyclerView.notifyClearedErrorForApp(app)
+                    }
+                    return cached
+                }
+            }
             val textId = when (e) {
                 is ApiRateLimitExceededException -> R.string.main_activity__github_api_limit_exceeded
                 is NetworkException -> R.string.main_activity__temporary_network_issue

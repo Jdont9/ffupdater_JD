@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.time.Duration
 
 @ExtendWith(MockKExtension::class)
 class ForegroundSettingsTest : BaseTest() {
@@ -32,6 +33,41 @@ class ForegroundSettingsTest : BaseTest() {
             "foreground__update_check__metered",
             true
         ) { ForegroundSettings.isUpdateCheckOnMeteredAllowed }
+    }
+
+    @Test
+    fun isUseCacheWhenMeteredBlocked() {
+        SettingsTestHelper.testBooleanSetting(
+            sharedPreferences,
+            "foreground__update_check__use_cache_when_metered_blocked",
+            true
+        ) { ForegroundSettings.isUseCacheWhenMeteredBlocked }
+    }
+
+    @Test
+    fun recentCacheDuration() {
+        assertEquals(Duration.ofMinutes(60), ForegroundSettings.recentCacheDuration, "Default value is incorrect")
+
+        sharedPreferences.edit().putString("foreground__update_check__cache_duration", "15").apply()
+        assertEquals(Duration.ofMinutes(15), ForegroundSettings.recentCacheDuration)
+
+        sharedPreferences.edit().putString("foreground__update_check__cache_duration", "1440").apply()
+        assertEquals(Duration.ofDays(1), ForegroundSettings.recentCacheDuration)
+    }
+
+    @Test
+    fun offlineCacheDuration() {
+        assertEquals(
+            Duration.ofDays(2),
+            ForegroundSettings.offlineCacheDuration,
+            "Default value is incorrect"
+        )
+
+        sharedPreferences.edit().putString("foreground__update_check__offline_cache_duration", "10080").apply()
+        assertEquals(Duration.ofDays(7), ForegroundSettings.offlineCacheDuration)
+
+        sharedPreferences.edit().putString("foreground__update_check__offline_cache_duration", "60").apply()
+        assertEquals(Duration.ofHours(1), ForegroundSettings.offlineCacheDuration)
     }
 
     @Test
