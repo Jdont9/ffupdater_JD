@@ -408,8 +408,15 @@ class DownloadActivity : AppCompatActivity() {
             // App.VANADIUM that rebuilds a "download TrichromeLibrary, then chain to Vanadium" intent -
             // calling it here would loop back to (re-)downloading TrichromeLibrary instead of actually
             // starting the download of the chained app (Vanadium) itself.
+            //
+            // IMPORTANT: DownloadActivity is launchMode="singleTop", so this startActivity() call does
+            // NOT create a new Activity instance - it is delivered to onNewIntent() on this SAME
+            // instance, which already resets the UI/state and launches a new lifecycleScope coroutine
+            // to install `next`. Do NOT call finish() here: doing so destroys this instance and cancels
+            // that just-started coroutine (silently, via CancellationException) before it can do
+            // anything, which is why manual updates used to install TrichromeLibrary and then silently
+            // stop instead of continuing on to Vanadium.
             startActivity(createDirectIntent(this, next))
-            finish()
         }
     }
 
