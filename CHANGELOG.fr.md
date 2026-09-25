@@ -6,6 +6,17 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.2.2 (216)
+**Corrections**
+- Les versions en cache s'affichaient aussi sur la liste des applis installées, alors qu'elles ne
+  devraient concerner que la liste « ajouter une appli » (applis non installées). Pire, tirer vers le bas
+  pour rafraîchir la liste des applis installées relançait la même vérification basée sur le cache, donc
+  ça pouvait continuer d'afficher un résultat périmé au lieu de vraiment rafraîchir. La liste des applis
+  installées (y compris le pull-to-refresh) effectue désormais toujours une vraie vérification en direct.
+  Un résultat en cache n'y est encore affiché qu'en tout dernier recours, quand l'appel réseau lui-même
+  échoue (pas de connexion, échec DNS, etc.), comme avant. La liste « ajouter une appli » n'est pas
+  concernée et continue d'utiliser le cache selon la configuration des Réglages.
+
 ## 86.2.0 (214)
 **Changements**
 - L'écran principal pouvait sembler lent à s'ouvrir car le cache « dernière version connue de chaque appli »

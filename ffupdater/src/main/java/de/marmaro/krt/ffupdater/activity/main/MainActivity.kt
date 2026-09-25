@@ -272,8 +272,12 @@ class MainActivity : AppCompatActivity() {
             recyclerViewMutex.withLock {
                 recyclerView.notifyAppChange(app, null)
             }
+            // The installed-apps list must always reflect a real, current check - cached versions are
+            // only appropriate on the "add app" (not-installed) list. This also fixes pull-to-refresh,
+            // which previously re-ran this same recent-cache-based check and could silently return the
+            // stale cached result instead of actually refreshing.
             val updateStatus = withContext(Dispatchers.IO) {
-                app.findImpl().findStatusOrUseRecentCache(applicationContext)
+                app.findImpl().findStatusForceCheck(applicationContext)
             }
             recyclerViewMutex.withLock {
                 recyclerView.notifyAppChange(app, updateStatus)
@@ -284,9 +288,10 @@ class MainActivity : AppCompatActivity() {
             throw e // CancellationException is normal and should not treat as error
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Failed to update the metadata of ${app.name}", e)
-            // No recent (<1h) cache and the network call itself failed (no connection at all, DNS
-            // failure, timeout, ...): fall back to the older on-disk cache (<2 days) instead of a bare
-            // error, same as when the "wifi only" setting blocks the check outright.
+            // The real network call failed (no connection at all, DNS failure, timeout, ...): fall back
+            // to the older on-disk cache (<2 days, "Durée du cache de repli hors ligne") instead of a
+            // bare error, same as when the "wifi only" setting blocks the check outright. This is the
+            // only place cached versions are allowed to appear on the installed-apps list.
             if (e is NetworkException && ForegroundSettings.isUseCacheWhenMeteredBlocked) {
                 val cached = withContext(Dispatchers.IO) { app.findImpl().tryGetOldCache(applicationContext) }
                 if (cached != null) {

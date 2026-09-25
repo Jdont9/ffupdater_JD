@@ -6,6 +6,16 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.2.2 (216)
+**Fixed**
+- Cached versions were being shown on the installed-apps list too, not just on the "add app" (not
+  installed) list where that's intended. Worse, pulling down to refresh on the installed-apps list re-ran
+  the same cache-based check, so it could silently keep showing a stale result instead of actually
+  refreshing. The installed-apps list (including pull-to-refresh) now always performs a real, live check.
+  A cached result is still shown there only as a last-resort fallback when the network call itself fails
+  (no connection, DNS failure, etc.), same as before. The "add app" list is unaffected and continues to
+  use the cache as configured in Settings.
+
 ## 86.2.0 (214)
 **Changed**
 - The main screen used to feel slow to open because the cache of "latest known version per app" only

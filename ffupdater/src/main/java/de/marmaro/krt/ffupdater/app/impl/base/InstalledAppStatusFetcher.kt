@@ -32,6 +32,16 @@ interface InstalledAppStatusFetcher : InstalledVersionFetcher, LatestVersionFetc
         return findStatusAndCacheIt(context, LatestVersionCache.getRecent(context, app))
     }
 
+    // Always performs a real network check, ignoring the "recent cache" shortcut, so the result is
+    // guaranteed to be fresh. Used for the installed-apps list, where cached versions should never be
+    // shown as if they were current - both on a normal open of that screen and (especially) when the
+    // user explicitly pulls to refresh. The fetched result is still written to LatestVersionCache
+    // afterwards, so other screens (e.g. the "add app" list) and the background worker can benefit from
+    // it as their own cache setting allows.
+    suspend fun findStatusForceCheck(context: Context): InstalledAppStatus {
+        return findStatusAndCacheIt(context, null)
+    }
+
     suspend fun findStatusOrUseOldCache(context: Context): InstalledAppStatus {
         return findStatusAndCacheIt(context, LatestVersionCache.getOld(context, app))
     }
