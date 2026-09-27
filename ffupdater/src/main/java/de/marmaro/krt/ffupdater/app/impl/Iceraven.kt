@@ -63,11 +63,15 @@ object Iceraven : AppBase() {
     }
 
     private fun findFileSuffix(): String {
+        // As of Iceraven 2.46.0+, assets are named "iceraven-<version>-<abi>.apk"
+        // (the old "browser-<abi>-forkRelease.apk" scheme is no longer used).
+        // Note: upstream no longer publishes an x86 APK; x86 devices will fail
+        // to find a suitable asset until/unless that changes.
         val fileSuffix = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "browser-armeabi-v7a-forkRelease.apk"
-            ABI.ARM64_V8A -> "browser-arm64-v8a-forkRelease.apk"
-            ABI.X86 -> "browser-x86-forkRelease.apk"
-            ABI.X86_64 -> "browser-x86_64-forkRelease.apk"
+            ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
+            ABI.ARM64_V8A -> "arm64-v8a.apk"
+            ABI.X86 -> "x86.apk"
+            ABI.X86_64 -> "x86_64.apk"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
         return fileSuffix
