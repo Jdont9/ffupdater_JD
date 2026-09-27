@@ -45,11 +45,11 @@ object Iceraven : AppBase() {
     @MainThread
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
-        val fileSuffix = findFileSuffix()
+        val fileSuffixes = findFileSuffixes()
         val result = GithubConsumer.findLatestRelease(
             repository = GithubConsumer.GithubRepo("fork-maintainers", "iceraven-browser", 0),
             isValidRelease = { !it.isPreRelease },
-            isSuitableAsset = { it.name.endsWith(fileSuffix) },
+            isSuitableAsset = { asset -> fileSuffixes.any { asset.name.endsWith(it) } },
             requireReleaseDescription = false,
         )
         val version = result.tagName.replace("iceraven-", "")
@@ -62,18 +62,24 @@ object Iceraven : AppBase() {
         )
     }
 
-    private fun findFileSuffix(): String {
-        // As of Iceraven 2.46.0+, assets are named "iceraven-<version>-<abi>.apk"
-        // (the old "browser-<abi>-forkRelease.apk" scheme is no longer used).
-        // Note: upstream no longer publishes an x86 APK; x86 devices will fail
-        // to find a suitable asset until/unless that changes.
-        val fileSuffix = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
-            ABI.ARMEABI_V7A -> "armeabi-v7a.apk"
-            ABI.ARM64_V8A -> "arm64-v8a.apk"
-            ABI.X86 -> "x86.apk"
-            ABI.X86_64 -> "x86_64.apk"
+    private fun findFileSuffixes(): List<String> {
+        // Iceraven has used two different asset naming schemes:
+        //   - old:  browser-<abi>-forkRelease.apk   (releases up to ~2.45.0)
+        //   - new:  iceraven-<version>-<abi>.apk     (releases from ~2.46.0 onward)
+        // We match on both so detection keeps working whichever scheme is in use,
+        // including if the maintainer ever reverts to the old one.
+        // Note: as of 2.49.0 upstream no longer publishes an x86 APK; x86 devices
+        // will fail to find a suitable asset until/unless that changes.
+        val abiName = when (DeviceAbiExtractor.findBestAbi(supportedAbis, DeviceSettingsHelper.prefer32BitApks)) {
+            ABI.ARMEABI_V7A -> "armeabi-v7a"
+            ABI.ARM64_V8A -> "arm64-v8a"
+            ABI.X86 -> "x86"
+            ABI.X86_64 -> "x86_64"
             else -> throw IllegalArgumentException("ABI is not supported")
         }
-        return fileSuffix
+        return listOf(
+            "browser-$abiName-forkRelease.apk", // old naming scheme
+            "$abiName.apk", // new naming scheme
+        )
     }
 }
