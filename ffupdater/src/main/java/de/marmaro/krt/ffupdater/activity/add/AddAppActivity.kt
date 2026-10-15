@@ -18,6 +18,7 @@ import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.EOL
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.FROM_MOZILLA
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_PRIVACY_BROWSER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.GOOD_SECURITY_BROWSER
+import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.MY_OTHER_APPS
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.OTHER
 import de.marmaro.krt.ffupdater.app.entity.DisplayCategory.values
 import de.marmaro.krt.ffupdater.app.ReleaseAgeHelper
@@ -103,6 +104,7 @@ class AddAppActivity : AppCompatActivity() {
                 GOOD_PRIVACY_BROWSER -> getString(R.string.add_app_activity__title_good_privacy_browsers)
                 GOOD_SECURITY_BROWSER -> getString(R.string.add_app_activity__title_good_security_browsers)
                 BETTER_THAN_GOOGLE_CHROME -> getString(R.string.add_app_activity__title_better_than_google_chrome)
+                MY_OTHER_APPS -> getString(R.string.add_app_activity__title_my_other_apps)
                 OTHER -> getString(R.string.add_app_activity__title_other_applications)
                 EOL -> getString(R.string.add_app_activity__title_end_of_live_browser)
             }

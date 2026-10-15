@@ -36,6 +36,11 @@ Other applications:
 
 - [Orbot](https://github.com/guardianproject/orbot)
 
+My other applications (shown in their own "My other applications" section of the "Add app" screen, installed
+and updated from their GitHub Releases like everything else):
+
+- [JD Audiobook Reader](https://github.com/Jdont9/JDAudiobook) - a simple, fast audiobook player for Android
+
 JDupdater checks for updates in the background and downloads them as well. Apps can be updated without user
 interaction with:
 

@@ -6,6 +6,15 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.2.5 (219)
+**Added**
+- New "My other applications" section on the "Add app" screen, for the maintainer's own apps. It first
+  contains **JD Audiobook Reader** (`fr.jd.audiobooks`, [Jdont9/JDAudiobook](https://github.com/Jdont9/JDAudiobook)).
+  The latest version is read from that repository's GitHub Releases (tag `vX.Y.Z`, asset
+  `JDAudiobook-X.Y.Z.apk`, pre-releases ignored), and the downloaded APK is only installed if it is signed
+  with the maintainer's certificate (SHA-256 `6dd976dd...c1b6`). Requires Android 8.0 or newer, like the app itself.
+- The app package is now declared in the manifest's `<queries>` so installed copies are detected on Android 11+.
+
 ## 86.2.2 (216)
 **Fixed**
 - Cached versions were being shown on the installed-apps list too, not just on the "add app" (not

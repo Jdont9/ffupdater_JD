@@ -6,6 +6,17 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.2.5 (219)
+**Ajouts**
+- Nouvelle section « Mes autres applications » sur l'écran « Ajouter une appli », pour les applis du
+  mainteneur. Elle contient pour l'instant **JD Audiobook Reader** (`fr.jd.audiobooks`,
+  [Jdont9/JDAudiobook](https://github.com/Jdont9/JDAudiobook)). La dernière version est lue depuis les
+  Releases GitHub de ce dépôt (tag `vX.Y.Z`, fichier `JDAudiobook-X.Y.Z.apk`, pré-versions ignorées), et l'APK
+  téléchargé n'est installé que s'il est signé avec le certificat du mainteneur (SHA-256 `6dd976dd...c1b6`).
+  Nécessite Android 8.0 ou plus récent, comme l'appli elle-même.
+- Le paquet de l'appli est maintenant déclaré dans les `<queries>` du manifeste, pour que les copies
+  installées soient détectées sur Android 11+.
+
 ## 86.2.2 (216)
 **Corrections**
 - Les versions en cache s'affichaient aussi sur la liste des applis installées, alors qu'elles ne

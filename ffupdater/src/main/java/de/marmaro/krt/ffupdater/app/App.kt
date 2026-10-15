@@ -12,6 +12,7 @@ import de.marmaro.krt.ffupdater.app.impl.FirefoxKlar
 import de.marmaro.krt.ffupdater.app.impl.FirefoxNightly
 import de.marmaro.krt.ffupdater.app.impl.FirefoxRelease
 import de.marmaro.krt.ffupdater.app.impl.Iceraven
+import de.marmaro.krt.ffupdater.app.impl.JDAudiobook
 import de.marmaro.krt.ffupdater.app.impl.Ironfox
 import de.marmaro.krt.ffupdater.app.impl.Orbot
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
@@ -33,6 +34,7 @@ enum class App {
     FIREFOX_RELEASE,
     ICERAVEN,
     IRONFOX,
+    JD_AUDIOBOOK,
     ORBOT,
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
@@ -53,6 +55,7 @@ enum class App {
             FIREFOX_RELEASE -> FirefoxRelease
             ICERAVEN -> Iceraven
             IRONFOX -> Ironfox
+            JD_AUDIOBOOK -> JDAudiobook
             ORBOT -> Orbot
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha

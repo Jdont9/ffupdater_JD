@@ -10,5 +10,6 @@ enum class DisplayCategory {
     GOOD_SECURITY_BROWSER, // can be combined with other categories
     BETTER_THAN_GOOGLE_CHROME, // this category alone is good enough
     EOL, // can be combined with other categories
+    MY_OTHER_APPS, // the maintainer's own apps (not browsers), shown in their own section
     OTHER
 }

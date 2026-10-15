@@ -198,7 +198,10 @@
     <string name="tor_browser__description">Le navigateur Tor pour Android est le seul navigateur mobile officiellement supporté par le projet Tor, les développeurs des outils les plus forts pour la confidentialité et la liberté en ligne dans le monde.</string>
     <string name="add_app_activity__label">Ajouter une nouvelle application</string>
     <string name="crash_report_activity__label">Reporteur de Crash</string>
+    <string name="jd_audiobook__title">JD Audiobook Reader</string>
+    <string name="jd_audiobook__description">Un lecteur de livres audio simple et rapide pour Android, qui lit vos fichiers (MP3, M4B…) directement depuis un dossier de votre téléphone. Sans compte, sans publicité, sans pistage. Développé par le même auteur que ce fork.</string>
     <string name="add_app_activity__title_other_applications">Autres applications</string>
+    <string name="add_app_activity__title_my_other_apps">Mes autres applications</string>
     <string name="add_app_activity__title_end_of_live_browser">Navigateurs en fin de vie</string>
     <string name="settings__background__update_check__when_device_idle__unsupported">Cette option n\'est disponible que sur Android Marshmallow ou plus récent.</string>
     <string name="fennecfdroid__description">Fennec F-Droid est basé sur la dernière version de Firefox. Les données propriétaires et la télémétrie sont retirés, mais il se connecte quand même à des services divers de Mozilla et Google qui peuvent traquer les utilisateurs.</string>
