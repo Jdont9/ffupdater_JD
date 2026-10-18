@@ -6,6 +6,17 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.2.6 (220)
+**Changements**
+- Vanadium : GrapheneOS ne le sépare plus en une bibliothèque partagée plus un navigateur, et a renommé le
+  fichier en `VanadiumBrowser.apk`. JDupdater télécharge désormais par défaut cet APK unique et n'installe
+  plus TrichromeLibrary au préalable (elle est aussi ignorée par les mises à jour en arrière-plan et
+  « tout mettre à jour »).
+- L'ancien comportement (`TrichromeChrome.apk` + `TrichromeLibrary.apk`, bibliothèque installée en premier)
+  est conservé via un nouvel interrupteur « Mode Trichrome historique » dans les réglages avancés de
+  Vanadium (désactivé par défaut), au cas où une branche en aurait encore besoin. Les réglages de branche et
+  de sous-dossier prebuilt s'appliquent aux deux modes.
+
 ## 86.2.5 (219)
 **Ajouts**
 - Nouvelle section « Mes autres applications » sur l'écran « Ajouter une appli », pour les applis du

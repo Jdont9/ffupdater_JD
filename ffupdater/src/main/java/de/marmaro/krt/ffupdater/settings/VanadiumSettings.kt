@@ -27,6 +27,19 @@ object VanadiumSettings {
     const val DEFAULT_BRANCH = "17"
     const val DEFAULT_PREBUILT_PATH = "arm64-multilib"
 
+    /**
+     * GrapheneOS stopped splitting Vanadium into a shared library plus a browser APK: the browser is now a
+     * single standalone APK named [NEW_APK_NAME]. That is the default. The old "Trichrome" layout
+     * ([LEGACY_BROWSER_APK_NAME] + [LEGACY_LIBRARY_APK_NAME], the library installed first) is kept behind this
+     * setting in case a branch still ships it or the new layout causes trouble.
+     */
+    val useLegacyTrichromeMode: Boolean
+        get() = preferences.getBoolean("vanadium__legacy_trichrome_mode", false)
+
+    const val NEW_APK_NAME = "VanadiumBrowser.apk"
+    const val LEGACY_BROWSER_APK_NAME = "TrichromeChrome.apk"
+    const val LEGACY_LIBRARY_APK_NAME = "TrichromeLibrary.apk"
+
     val androidBranch: String
         get() {
             val value = preferences.getString("vanadium__android_branch", DEFAULT_BRANCH)

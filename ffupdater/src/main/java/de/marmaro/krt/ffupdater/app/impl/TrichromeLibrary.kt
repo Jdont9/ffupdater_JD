@@ -19,7 +19,12 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
 /**
  * GrapheneOS Vanadium prebuilt: https://gitlab.com/grapheneos/platform_external_vanadium
  *
- * Vanadium is shipped as a Trichrome set: a shared library APK (this app) plus the browser APK
+ * LEGACY MODE ONLY: GrapheneOS no longer needs this library (the browser is now the single standalone
+ * VanadiumBrowser.apk). It is only active when [VanadiumSettings.useLegacyTrichromeMode] is on; otherwise
+ * every status method below reports "not installed", so the background updater and "update all" never
+ * touch it.
+ *
+ * Vanadium used to be shipped as a Trichrome set: a shared library APK (this app) plus the browser APK
  * (see [Vanadium]). The library MUST be installed (or updated) BEFORE the browser APK, otherwise
  * installation of the browser fails. FFUpdater enforces this ordering during background updates via
  * [App.installationChronology] (this app's enum entry is declared before VANADIUM), but if you install
@@ -77,7 +82,7 @@ object TrichromeLibrary : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val branch = VanadiumSettings.androidBranch
-        val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/TrichromeLibrary.apk"
+        val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/${VanadiumSettings.LEGACY_LIBRARY_APK_NAME}"
         val commit = GitLabBranchConsumer.findLatestCommitOfBranch(PROJECT_PATH, branch, pathInRepo)
         val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, pathInRepo)
         return LatestVersion(
@@ -91,14 +96,17 @@ object TrichromeLibrary : AppBase() {
 
     // See "INSTALL-STATUS PIGGYBACKING" in the class doc above.
     override suspend fun isInstalled(context: Context): InstallationStatus {
+        if (!VanadiumSettings.useLegacyTrichromeMode) return InstallationStatus.NOT_INSTALLED
         return Vanadium.isInstalled(context)
     }
 
     override suspend fun isInstalledWithoutFingerprintVerification(packageManager: PackageManager): Boolean {
+        if (!VanadiumSettings.useLegacyTrichromeMode) return false
         return Vanadium.isInstalledWithoutFingerprintVerification(packageManager)
     }
 
     override suspend fun getInstalledVersion(packageManager: PackageManager): Version? {
+        if (!VanadiumSettings.useLegacyTrichromeMode) return null
         return Vanadium.getInstalledVersion(packageManager)
     }
 }

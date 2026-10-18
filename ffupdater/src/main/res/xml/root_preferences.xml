@@ -248,6 +248,13 @@
         app:isPreferenceVisible="false"
         app:title="@string/settings__vanadium_category__title">
 
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="vanadium__legacy_trichrome_mode"
+            app:singleLineTitle="false"
+            app:summary="@string/vanadium__legacy_trichrome_mode__summary"
+            app:title="@string/vanadium__legacy_trichrome_mode__title" />
+
         <EditTextPreference
             app:defaultValue="@string/vanadium__android_branch__default"
             app:dialogMessage="@string/vanadium__android_branch__dialog_message"

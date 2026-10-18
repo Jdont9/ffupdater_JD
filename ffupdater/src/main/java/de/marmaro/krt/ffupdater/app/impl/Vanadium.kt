@@ -17,10 +17,12 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
 /**
  * GrapheneOS Vanadium prebuilt: https://gitlab.com/grapheneos/platform_external_vanadium
  *
- * IMPORTANT: this app depends on [TrichromeLibrary] being installed first (same certificate family,
- * shared native code). Trying to install this APK before the library APK will make installation fail.
- * FFUpdater enforces the ordering during background updates via [App.installationChronology]. If you
- * install manually for the first time, install TrichromeLibrary first.
+ * Two modes, selected by [VanadiumSettings.useLegacyTrichromeMode]:
+ * - default (new layout): a single standalone APK, "VanadiumBrowser.apk". No library is needed.
+ * - legacy mode (kept just in case): "TrichromeChrome.apk", which depends on [TrichromeLibrary] being
+ *   installed first (same certificate family, shared native code). Trying to install this APK before the
+ *   library APK makes installation fail. FFUpdater enforces the ordering via [App.installationChronology]
+ *   for background updates and via the chaining in DownloadActivity.createIntent() for manual ones.
  *
  * [packageName] and [signatureHash] were confirmed from a real downloaded APK (v152.0.7977.54.0):
  * both Vanadium and TrichromeLibrary are signed with the same "CN=GrapheneOS" certificate.
@@ -64,7 +66,12 @@ object Vanadium : AppBase() {
     @Throws(NetworkException::class)
     override suspend fun fetchLatestUpdate(context: Context): LatestVersion {
         val branch = VanadiumSettings.androidBranch
-        val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/TrichromeChrome.apk"
+        val apkName = if (VanadiumSettings.useLegacyTrichromeMode) {
+            VanadiumSettings.LEGACY_BROWSER_APK_NAME
+        } else {
+            VanadiumSettings.NEW_APK_NAME
+        }
+        val pathInRepo = "prebuilt/${VanadiumSettings.prebuiltPath}/$apkName"
         val commit = GitLabBranchConsumer.findLatestCommitOfBranch(PROJECT_PATH, branch, pathInRepo)
         val downloadUrl = GitLabBranchConsumer.buildRawFileUrl(PROJECT_PATH, branch, pathInRepo)
         return LatestVersion(

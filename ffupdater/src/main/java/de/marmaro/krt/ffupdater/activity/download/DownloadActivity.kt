@@ -35,6 +35,7 @@ import de.marmaro.krt.ffupdater.network.exceptions.NetworkNotSuitableException
 import de.marmaro.krt.ffupdater.network.file.DownloadStatus
 import de.marmaro.krt.ffupdater.notification.NotificationRemover
 import de.marmaro.krt.ffupdater.settings.ForegroundSettings
+import de.marmaro.krt.ffupdater.settings.VanadiumSettings
 import de.marmaro.krt.ffupdater.storage.StorageUtil
 import de.marmaro.krt.ffupdater.storage.SystemFileManager
 import de.marmaro.krt.ffupdater.utils.goneAfterExecution
@@ -479,7 +480,7 @@ class DownloadActivity : AppCompatActivity() {
         /**
          * Create a new InstallActivity which have to check if app is up-to-date.
          *
-         * Special case: Vanadium requires TrichromeLibrary to already be installed/updated with a
+         * Special case (legacy Trichrome mode only): Vanadium requires TrichromeLibrary to already be installed/updated with a
          * matching version, otherwise its own installation fails. Instead of exposing TrichromeLibrary
          * as a separate app the user has to remember to install first (see [App.TRICHROME_LIBRARY]'s
          * visibleToUser = false), selecting or updating Vanadium transparently installs/updates the
@@ -487,7 +488,8 @@ class DownloadActivity : AppCompatActivity() {
          * installAppWithResultProcessing()'s chaining logic.
          */
         fun createIntent(context: Context, app: App): Intent {
-            if (app == App.VANADIUM) {
+            // Only in legacy Trichrome mode: the new standalone VanadiumBrowser.apk needs no library.
+            if (app == App.VANADIUM && VanadiumSettings.useLegacyTrichromeMode) {
                 val intent = Intent(context, DownloadActivity::class.java)
                 intent.putExtra(EXTRA_APP_NAME, App.TRICHROME_LIBRARY.name)
                 intent.putExtra(EXTRA_CHAIN_TO_APP_NAME, App.VANADIUM.name)

@@ -29,8 +29,8 @@ Browser which are better than Google Chrome:
 - [Chromium](https://www.chromium.org/chromium-projects/)
 - [DuckDuckGo Browser](https://github.com/duckduckgo/Android)
 - [Vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) (GrapheneOS's hardened Chromium;
-  the required TrichromeLibrary component is installed/updated automatically alongside it, no separate
-  step needed)
+  now a single standalone `VanadiumBrowser.apk`, no separate library needed; the old
+  Trichrome layout is still available as a "Legacy Trichrome mode" option in the advanced Vanadium settings)
 
 Other applications:
 
