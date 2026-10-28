@@ -6,6 +6,15 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.2.7 (221)
+**Ajouts**
+- **Asclépios AV** (`fr.jd.asclepios`, [Jdont9/Asclepios](https://github.com/Jdont9/Asclepios)) est maintenant
+  listée dans la section « Mes autres applications ». La dernière version est lue depuis les Releases GitHub
+  de ce dépôt (tag `vX.Y.Z`, fichier `asclepios-av_*.apk`, pré-versions ignorées), et l'APK téléchargé n'est installé
+  que s'il est signé avec le certificat du mainteneur (SHA-256 `6dd976dd...c1b6`). Nécessite Android 8.0 ou plus récent.
+- Le paquet de l'appli est déclaré dans les `<queries>` du manifeste pour que les copies installées soient
+  détectées sur Android 11+.
+
 ## 86.2.6 (220)
 **Changements**
 - Vanadium : GrapheneOS ne le sépare plus en une bibliothèque partagée plus un navigateur, et a renommé le

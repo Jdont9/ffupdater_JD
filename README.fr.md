@@ -36,6 +36,7 @@ Mes autres applications (affichées dans leur propre section « Mes autres appli
 « Ajouter une appli », installées et mises à jour depuis leurs Releases GitHub comme le reste) :
 
 - [JD Audiobook Reader](https://github.com/Jdont9/JDAudiobook) - un lecteur de livres audio simple et rapide pour Android
+- [Asclépios AV](https://github.com/Jdont9/Asclepios) - un scanner de malwares en temps réel pour Android (fork de Hypatia)
 
 JDupdater vérifie les mises à jour en arrière-plan et les télécharge également. Les applis peuvent être mises
 à jour sans interaction de l'utilisateur avec :

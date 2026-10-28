@@ -40,6 +40,7 @@ My other applications (shown in their own "My other applications" section of the
 and updated from their GitHub Releases like everything else):
 
 - [JD Audiobook Reader](https://github.com/Jdont9/JDAudiobook) - a simple, fast audiobook player for Android
+- [Asclépios AV](https://github.com/Jdont9/Asclepios) - a realtime malware scanner for Android (fork of Hypatia)
 
 JDupdater checks for updates in the background and downloads them as well. Apps can be updated without user
 interaction with:

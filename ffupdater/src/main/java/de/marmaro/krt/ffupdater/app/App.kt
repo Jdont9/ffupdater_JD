@@ -2,6 +2,7 @@ package de.marmaro.krt.ffupdater.app
 
 import androidx.annotation.Keep
 import de.marmaro.krt.ffupdater.app.impl.AppBase
+import de.marmaro.krt.ffupdater.app.impl.Asclepios
 import de.marmaro.krt.ffupdater.app.impl.Chromium
 import de.marmaro.krt.ffupdater.app.impl.Cromite
 import de.marmaro.krt.ffupdater.app.impl.DuckDuckGoAndroid
@@ -23,6 +24,7 @@ import de.marmaro.krt.ffupdater.app.impl.WebLibre
 
 @Keep
 enum class App {
+    ASCLEPIOS,
     CHROMIUM,
     CROMITE,
     DUCKDUCKGO_ANDROID,
@@ -44,6 +46,7 @@ enum class App {
 
     fun findImpl(): AppBase {
         return when (this) {
+            ASCLEPIOS -> Asclepios
             CHROMIUM -> Chromium
             CROMITE -> Cromite
             DUCKDUCKGO_ANDROID -> DuckDuckGoAndroid
