@@ -25,7 +25,7 @@ jobs:
       EXPECTED_CERT_SHA256: 27c12c604f2b778b8fb2f1e6aefa81f1625a80d87a0fd553c3375e541e5804c3
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Setup Java
         uses: actions/setup-java@v5
         with:
