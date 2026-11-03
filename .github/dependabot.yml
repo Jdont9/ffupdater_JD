@@ -1,0 +1,14 @@
+# Propose chaque mois des mises à jour des dépendances Gradle et des actions GitHub (chaque proposition est compilée
+# et testée par le workflow avant d'être fusionnée).
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directories:
+      - "/"
+      - "/app"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
