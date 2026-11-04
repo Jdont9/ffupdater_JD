@@ -12,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import okhttp3.internal.toImmutableList
 
 @Keep
 object InstalledAppsCache {
@@ -32,12 +31,13 @@ object InstalledAppsCache {
 
     suspend fun getInstalledAppsWithCorrectSignature(context: Context): List<App> {
         initializeCacheIfNecessary(context.applicationContext)
-        return installedCorrectFingerprint.toImmutableList()
+        // OkHttp 5 made okhttp3.internal.toImmutableList inaccessible; toList() is a public copy
+        return installedCorrectFingerprint.toList()
     }
 
     suspend fun getInstalledAppsWithDifferentSignature(context: Context): List<App> {
         initializeCacheIfNecessary(context.applicationContext)
-        return installedDifferentFingerprint.toImmutableList()
+        return installedDifferentFingerprint.toList()
     }
 
     private suspend fun initializeCacheIfNecessary(context: Context) {
