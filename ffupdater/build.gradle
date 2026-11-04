@@ -1,9 +1,8 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
+    // AGP 9 has built-in Kotlin — do not apply kotlin-android / org.jetbrains.kotlin.android
+    id "org.jetbrains.kotlin.plugin.parcelize"
     id "de.mannodermaus.android-junit5"
-    id "kotlin-parcelize"
-    id "org.jetbrains.kotlin.android"
     id "dev.rikka.tools.refine"
 }
 
@@ -63,14 +62,14 @@ dependencies {
 android {
     namespace = "de.marmaro.krt.ffupdater"
 
-    compileSdk 35
+    compileSdk 37
 
     defaultConfig {
         versionCode 221
         //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
         versionName "86.2.7"
         minSdk 21
-        targetSdk 35
+        targetSdk 37
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -83,7 +82,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
 
@@ -96,11 +95,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    packagingOptions {
+    packaging {
         resources {
             excludes += ["META-INF/NOTICE", "META-INF/NOTICE.txt", "META-INF/README", "META-INF/README.txt",
                          "META-INF/LICENSE", "META-INF/LICENSE.txt"]
@@ -133,6 +128,13 @@ android {
         includeInApk = false
         // Disables dependency metadata when building Android App Bundles.
         includeInBundle = false
+    }
+}
+
+// AGP 9: kotlinOptions moved out of android {} → kotlin.compilerOptions
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
     }
 }
 

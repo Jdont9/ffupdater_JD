@@ -12,6 +12,15 @@ on:
       - '.github/workflows/android.yml'
     tags:
       - 'v*'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'ffupdater/**'
+      - 'gradle/**'
+      - 'build.gradle'
+      - 'settings.gradle'
+      - 'gradlew'
+      - '.github/workflows/android.yml'
   workflow_dispatch: {}
 
 jobs:
