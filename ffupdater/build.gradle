@@ -63,14 +63,14 @@ dependencies {
 android {
     namespace = "de.marmaro.krt.ffupdater"
 
-    compileSdk 35
+    compileSdk 37
 
     defaultConfig {
         versionCode 221
         //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
         versionName "86.2.7"
         minSdk 21
-        targetSdk 35
+        targetSdk 37
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -100,7 +100,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    packagingOptions {
+    packaging {
         resources {
             excludes += ["META-INF/NOTICE", "META-INF/NOTICE.txt", "META-INF/README", "META-INF/README.txt",
                          "META-INF/LICENSE", "META-INF/LICENSE.txt"]
