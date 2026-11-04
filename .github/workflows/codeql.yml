@@ -49,12 +49,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        if: matrix.language == 'java-kotlin'
-        uses: android-actions/setup-android@v3
-        with:
-          packages: 'platform-tools platforms;android-35 build-tools;35.0.0'
-
       - name: Setup Gradle
         if: matrix.language == 'java-kotlin'
         uses: gradle/actions/setup-gradle@v6
@@ -69,7 +63,9 @@ jobs:
         if: matrix.language == 'java-kotlin'
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleRelease --no-daemon
+          # assembleDebug needs no signing; --no-build-cache --rerun-tasks
+          # ensure CodeQL observes compilation (cache would skip extraction)
+          ./gradlew assembleDebug --no-build-cache --rerun-tasks --no-daemon
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
