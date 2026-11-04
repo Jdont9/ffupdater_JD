@@ -55,7 +55,7 @@ dependencies {
     // Aggregator dependency on JUnit api, engine, and params
     testImplementation "org.junit.jupiter:junit-jupiter:5.11.4"
     testImplementation "org.hamcrest:hamcrest-all:1.3"
-    testImplementation "io.mockk:mockk:1.13.16"
+    testImplementation "io.mockk:mockk:1.14.11"
     testImplementation "io.github.ivanshafran:shared-preferences-mock:1.2.4"
     testImplementation "org.slf4j:slf4j-simple:2.0.16"
 }
