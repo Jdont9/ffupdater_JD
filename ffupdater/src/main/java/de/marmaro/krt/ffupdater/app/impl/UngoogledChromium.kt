@@ -25,7 +25,7 @@ import de.marmaro.krt.ffupdater.settings.DeviceSettingsHelper
 @Keep
 object UngoogledChromium : AppBase() {
     override val app = App.UNGOOGLED_CHROMIUM
-    override val packageName = "org.ungoogled.chromium"
+    override val packageName = "org.ungoogled.chromium.stable"
     override val title = R.string.ungoogled_chromium__title
     override val description = R.string.ungoogled_chromium__description
     override val installationWarning = R.string.ungoogled_chromium__warning

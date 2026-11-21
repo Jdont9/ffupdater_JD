@@ -8,7 +8,7 @@ Pour l'historique du projet amont, consultez son dépôt.
 
 ## 86.2.8 (222)
 **Ajouts**
-- **Ungoogled Chromium** (`org.ungoogled.chromium`,
+- **Ungoogled Chromium** (`org.ungoogled.chromium.stable`,
   [ungoogled-software/ungoogled-chromium-android](https://github.com/ungoogled-software/ungoogled-chromium-android))
   est maintenant listé dans la catégorie « Mieux que Google Chrome », avec la même icône que Chromium. La dernière
   version est lue depuis les Releases GitHub de ce dépôt (tag `X.Y.Z.W-N`, fichier `ChromePublic_arm64.apk` ou
@@ -20,11 +20,10 @@ Pour l'historique du projet amont, consultez son dépôt.
 - Textes français et anglais (titre, description, avertissements) pour la nouvelle appli.
 
 **Changements**
+- Ungoogled Chromium n'est plus signalé comme application non prise en charge (fin de vie) dans la notification d'avertissement.
 - Correctif de compilation : le plugin Android Gradle `9.5.0` était introuvable, il passe en `9.5.1` (version stable actuelle).
 - Correction du plantage au démarrage (`NoSuchMethodException: WorkDatabase_Impl.<init>`) causé par R8 qui supprimait
   le constructeur de la base WorkManager/Room ; ajout des règles de conservation correspondantes.
-- L'ancien paquet `org.ungoogled.chromium.stable` continue d'être signalé comme non pris en charge
-  (avertissement de fin de vie), car les versions actuelles utilisent le nouveau paquet `org.ungoogled.chromium`.
 
 ## 86.2.7 (221)
 **Ajouts**

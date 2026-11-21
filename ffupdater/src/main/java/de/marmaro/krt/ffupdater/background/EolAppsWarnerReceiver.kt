@@ -49,7 +49,6 @@ class EolAppsWarnerReceiver : BroadcastReceiver() {
             "Bromite" to "org.bromite.bromite",
             "Bromite SystemWebView" to "org.bromite.webview",
             "Lockwise" to "mozilla.lockbox",
-            "UngoogledChromium" to "org.ungoogled.chromium.stable",
             "Mulch" to "us.spotco.mulch",
             "Mulch (SystemWebView)" to "us.spotco.mulch_wv",
             "Mull" to "us.spotco.fennec_dos",
