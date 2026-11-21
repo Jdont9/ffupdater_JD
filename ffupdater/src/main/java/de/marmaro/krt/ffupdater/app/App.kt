@@ -19,6 +19,7 @@ import de.marmaro.krt.ffupdater.app.impl.Orbot
 import de.marmaro.krt.ffupdater.app.impl.TorBrowser
 import de.marmaro.krt.ffupdater.app.impl.TorBrowserAlpha
 import de.marmaro.krt.ffupdater.app.impl.TrichromeLibrary
+import de.marmaro.krt.ffupdater.app.impl.UngoogledChromium
 import de.marmaro.krt.ffupdater.app.impl.Vanadium
 import de.marmaro.krt.ffupdater.app.impl.WebLibre
 
@@ -41,6 +42,7 @@ enum class App {
     TOR_BROWSER,
     TOR_BROWSER_ALPHA,
     TRICHROME_LIBRARY, // must keep a lower ordinal than VANADIUM: installationChronology installs it first
+    UNGOOGLED_CHROMIUM,
     VANADIUM,
     WEBLIBRE;
 
@@ -63,6 +65,7 @@ enum class App {
             TOR_BROWSER -> TorBrowser
             TOR_BROWSER_ALPHA -> TorBrowserAlpha
             TRICHROME_LIBRARY -> TrichromeLibrary
+            UNGOOGLED_CHROMIUM -> UngoogledChromium
             VANADIUM -> Vanadium
             WEBLIBRE -> WebLibre
         }

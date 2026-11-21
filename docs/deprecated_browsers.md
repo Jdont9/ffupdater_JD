@@ -13,7 +13,12 @@
 04.07.2023: The latest release is from 19.12.2022 and therefore too old (https://github.com/bromite/bromite).
 I wish the developers all the best and hope they are doing well.
 
-## Ungoogled Chromium
+## Ungoogled Chromium (old package)
+
+21.11.2026: Ungoogled Chromium is supported again (new package `org.ungoogled.chromium`, built by the new
+maintainer, see https://github.com/ungoogled-software/ungoogled-chromium-android). Only the old package
+`org.ungoogled.chromium.stable` stays deprecated, as described below.
+
 
 26.04.2022: The developer wrote
 in https://github.com/ungoogled-software/ungoogled-chromium-android/issues/123:

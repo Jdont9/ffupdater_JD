@@ -260,6 +260,10 @@
     <string name="cromite__description">Cromite is a Chromium fork based on Bromite with built-in support for ad blocking and an eye for privacy.</string>
     <string name="cromite__warning">- Cromite uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.</string>
 
+    <string name="ungoogled_chromium__title">Ungoogled Chromium</string>
+    <string name="ungoogled_chromium__description">Ungoogled Chromium is Chromium without any dependency on Google web services, with extra tweaks for privacy, control and transparency (most of them must be enabled manually). Browser only; builds for ARM 32-bit and 64-bit, Android 10 or newer.</string>
+    <string name="ungoogled_chromium__warning">- Ungoogled Chromium uses the technical foundation of Google Chrome and thus indirectly supports the monopoly position of the Chromium render engine.\n- It is not meant for people facing government-level adversaries (journalists, activists); use Tor Browser for that.</string>
+
     <string name="trichrome_library__title">TrichromeLibrary (for Vanadium)</string>
     <string name="trichrome_library__description">Shared library component required by Vanadium (GrapheneOS\'s hardened Chromium browser). It contains no user-facing app of its own and is installed/updated automatically alongside Vanadium.</string>
     <string name="trichrome_library__warning">- This is a dependency, not a browser. It is installed/updated automatically whenever Vanadium is.\n- Vanadium is built and hardened for GrapheneOS; running it on other Android builds loses part of its hardening.</string>

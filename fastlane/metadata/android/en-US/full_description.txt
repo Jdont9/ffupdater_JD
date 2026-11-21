@@ -11,6 +11,7 @@ Browsers which are better than Google Chrome:
 - Cromite
 - Chromium
 - DuckDuckGo Browser
+- Ungoogled Chromium
 - Vanadium (GrapheneOS's hardened Chromium; the required TrichromeLibrary component is installed
   automatically alongside it)
 

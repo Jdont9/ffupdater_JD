@@ -7,6 +7,7 @@ The apps are downloaded from these locations:
 - Bromite, Bromite SystemWebView: <https://api.github.com/repos/bromite/bromite/releases/latest>
 - Cromite: <https://api.github.com/repos/uazo/cromite/releases/latest>
 - Chromium: <https://storage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Android%2F>
+- Ungoogled Chromium: <https://api.github.com/repos/ungoogled-software/ungoogled-chromium-android/releases/latest>
 - DuckDuckGo Browser: <https://api.github.com/repos/duckduckgo/Android/releases/latest>
 - Fennec F-Droid: <https://f-droid.org/repo/org.mozilla.fennec_fdroid_XXXXXXX.apk>
 - Firefox Browser, Firefox for Android Beta, Firefox Nightly, Firefox Focus, Firefox Focus Beta, Firefox

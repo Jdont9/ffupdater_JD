@@ -6,6 +6,23 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.2.8 (222)
+**Ajouts**
+- **Ungoogled Chromium** (`org.ungoogled.chromium`,
+  [ungoogled-software/ungoogled-chromium-android](https://github.com/ungoogled-software/ungoogled-chromium-android))
+  est maintenant listé dans la catégorie « Mieux que Google Chrome », avec la même icône que Chromium. La dernière
+  version est lue depuis les Releases GitHub de ce dépôt (tag `X.Y.Z.W-N`, fichier `ChromePublic_arm64.apk` ou
+  `ChromePublic_arm.apk` selon l'appareil, pré-versions ignorées), et l'APK téléchargé n'est installé que s'il est
+  signé avec le certificat d'ungoogled-software (SHA-256 `08b87408...1d2f87`). Nécessite Android 10 ou plus
+  récent ; il n'existe pas de version x86/x64.
+- Le paquet de l'appli est déclaré dans les `<queries>` du manifeste pour que les copies installées soient
+  détectées sur Android 11+.
+- Textes français et anglais (titre, description, avertissements) pour la nouvelle appli.
+
+**Changements**
+- L'ancien paquet `org.ungoogled.chromium.stable` continue d'être signalé comme non pris en charge
+  (avertissement de fin de vie), car les versions actuelles utilisent le nouveau paquet `org.ungoogled.chromium`.
+
 ## 86.2.7 (221)
 **Ajouts**
 - **Asclépios AV** (`fr.jd.asclepios`, [Jdont9/Asclepios](https://github.com/Jdont9/Asclepios)) est maintenant

@@ -11,6 +11,7 @@ Navigateurs plus performants que Google Chrome :
 - Cromite
 - Chromium
 - Navigateur DuckDuckGo
+- Ungoogled Chromium
 - Vanadium (le Chromium durci de GrapheneOS ; le composant TrichromeLibrary requis est installé
   automatiquement en même temps)
 
