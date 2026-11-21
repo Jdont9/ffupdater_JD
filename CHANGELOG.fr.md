@@ -20,6 +20,7 @@ Pour l'historique du projet amont, consultez son dépôt.
 - Textes français et anglais (titre, description, avertissements) pour la nouvelle appli.
 
 **Changements**
+- Correctif de compilation : le plugin Android Gradle `9.5.0` était introuvable, il passe en `9.5.1` (version stable actuelle).
 - L'ancien paquet `org.ungoogled.chromium.stable` continue d'être signalé comme non pris en charge
   (avertissement de fin de vie), car les versions actuelles utilisent le nouveau paquet `org.ungoogled.chromium`.
 
