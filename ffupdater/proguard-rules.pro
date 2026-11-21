@@ -11,3 +11,10 @@
 -dontobfuscate
 -keep class de.marmaro.krt.ffupdater.** {*; }
 -keepattributes SourceFile,LineNumberTable
+
+# R8 (AGP 9) strips the no-arg constructor of the Room databases that are created by reflection
+# -> "NoSuchMethodException: androidx.work.impl.WorkDatabase_Impl.<init> []" at startup
+-keep class * extends androidx.room.RoomDatabase { <init>(...); }
+-keep class androidx.work.impl.WorkDatabase_Impl { <init>(...); }
+-keep class androidx.work.impl.** { *; }
+-keep class androidx.startup.** { *; }

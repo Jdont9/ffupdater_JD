@@ -20,6 +20,8 @@ For the upstream project's own history, see its repository.
 
 **Changed**
 - Build fix: Android Gradle Plugin `9.5.0` could not be resolved, now `9.5.1` (current stable release).
+- Fix crash at startup (`NoSuchMethodException: WorkDatabase_Impl.<init>`) caused by R8 stripping the WorkManager/Room
+  database constructor; added the matching keep rules.
 - The old `org.ungoogled.chromium.stable` package is still reported as unsupported (end-of-life warning), since
   the current builds use the new `org.ungoogled.chromium` package.
 

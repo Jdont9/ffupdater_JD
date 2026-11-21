@@ -21,6 +21,8 @@ Pour l'historique du projet amont, consultez son dépôt.
 
 **Changements**
 - Correctif de compilation : le plugin Android Gradle `9.5.0` était introuvable, il passe en `9.5.1` (version stable actuelle).
+- Correction du plantage au démarrage (`NoSuchMethodException: WorkDatabase_Impl.<init>`) causé par R8 qui supprimait
+  le constructeur de la base WorkManager/Room ; ajout des règles de conservation correspondantes.
 - L'ancien paquet `org.ungoogled.chromium.stable` continue d'être signalé comme non pris en charge
   (avertissement de fin de vie), car les versions actuelles utilisent le nouveau paquet `org.ungoogled.chromium`.
 
