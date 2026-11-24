@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **English** | [Français](README.fr.md)
@@ -38,8 +38,10 @@ Other applications:
 
 - [Orbot](https://github.com/guardianproject/orbot)
 
-My other applications (shown in their own "My other applications" section of the "Add app" screen, installed
-and updated from their GitHub Releases like everything else):
+My other applications (hidden by default; turn on **Settings > Foreground > "Show the maintainer's other apps"**
+to show them in their own "My other applications" section of the "Add app" screen. They are installed and
+updated from their GitHub Releases like everything else. Apps that are already installed stay in the list and
+keep being updated even if the option is off):
 
 - [JD Audiobook Reader](https://github.com/Jdont9/JDAudiobook) - a simple, fast audiobook player for Android
 - [Asclépios AV](https://github.com/Jdont9/Asclepios) - a realtime malware scanner for Android (fork of Hypatia)
@@ -59,9 +61,23 @@ interaction with:
   hours, JDupdater will not perform any background update checks. However, if it remains on for longer,
   JDupdater will check for updates in the background, but it will not download them in the background.
 
-## How to contribute
+## Advanced settings
 
-This is a personal, single-maintainer fork - the upstream project's [Weblate translation project](https://hosted.weblate.org/projects/ffupdater) and [contribution guide](HOW_TO_CONTRIBUTE.md) apply to [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater), not to this fork. Contributing translations there helps the original project, not this one.
+Some settings are hidden by default because most people never need them. They only concern **Vanadium**:
+
+- **How to unlock them:** on the main screen, tap the "JDupdater" title in the toolbar **5 times within 3
+  seconds**. A message confirms "Advanced Vanadium settings unlocked", and a new "Vanadium" section appears at
+  the bottom of the settings. Repeating the same gesture hides it again (the values you set are kept).
+- **Legacy Trichrome mode** (off by default): by default JDupdater downloads the single `VanadiumBrowser.apk`.
+  Turn this on to use the old layout instead (`TrichromeChrome.apk` plus the `TrichromeLibrary.apk` shared
+  library, installed first). Only useful if a branch still ships the old files.
+- **GrapheneOS branch** (default `17`): the branch of
+  [grapheneos/platform_external_vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) Vanadium is
+  downloaded from. GrapheneOS opens a new branch for every new Android release (e.g. `17`, `16-qpr2`), so change
+  it here when it moves on.
+- **Prebuilt subfolder** (default `arm64`): the folder under `prebuilt/` of that branch which contains
+  the APK(s). It has changed between branches before (e.g. `arm64-multilib` on branch 17), so change it here if
+  needed.
 
 ## Source Code Contributors
 
@@ -95,6 +111,7 @@ This is a personal, single-maintainer fork - the upstream project's [Weblate tra
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kewisch"><img src="https://avatars.githubusercontent.com/u/607198?v=4?s=100" width="100px;" alt="Philipp Kewisch"/><br /><sub><b>Philipp Kewisch</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=kewisch" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kazushi3"><img src="https://avatars.githubusercontent.com/u/57816457?v=4?s=100" width="100px;" alt="kazushi3"/><br /><sub><b>kazushi3</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=kazushi3" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://lisa-yuki.de"><img src="https://avatars.githubusercontent.com/u/86305405?v=4?s=100" width="100px;" alt="Lisa"/><br /><sub><b>Lisa</b></sub></a><br /><a href="https://github.com/Tobi823/ffupdater/commits?author=BloxerExists" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Jdont9"><img src="https://github.com/Jdont9.png?size=100" width="100px;" alt="Jdont9"/><br /><sub><b>Jdont9</b></sub></a><br /><a href="https://github.com/Jdont9/ffupdater_JD/commits?author=Jdont9" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
@@ -140,6 +157,7 @@ This is a personal, single-maintainer fork - the upstream project's [Weblate tra
 
 ````
 FFUpdater -- Updater for privacy friendly browser
+Copyright (C) 2026 Jdont9 https://github.com/Jdont9
 Copyright (C) 2019-2023 Tobias Hellmann https://github.com/Tobi823
 Copyright (C) 2015-2019 Boris Kraut <krt@nurfuerspam.de>
 

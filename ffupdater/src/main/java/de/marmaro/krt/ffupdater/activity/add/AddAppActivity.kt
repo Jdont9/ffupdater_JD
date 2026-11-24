@@ -63,6 +63,8 @@ class AddAppActivity : AppCompatActivity() {
         val notInstalledApps = App.values()
             .map { it.findImpl() }
             .filter { it.installableByUser }
+            // the maintainer's own apps are only offered when the user opted in (Settings > Foreground)
+            .filter { ForegroundSettings.showMyOtherApps || MY_OTHER_APPS !in it.displayCategory }
             .filter { DeviceAbiExtractor.supportsOneOf(it.supportedAbis) }
             .filter { !it.isInstalledWithoutFingerprintVerification(applicationContext.packageManager) }
 

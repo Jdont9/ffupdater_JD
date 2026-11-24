@@ -6,6 +6,26 @@ Ce fichier ne couvre que les changements faits dans ce fork personnel depuis sa 
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (fork créé à partir de la version amont 81.0.0 / 179).
 Pour l'historique du projet amont, consultez son dépôt.
 
+## 86.3.0 (223)
+**Ajouts**
+- Nouveau réglage **Réglages > Premier plan > « Afficher les autres applications du mainteneur »** (désactivé par
+  défaut). Les applications du mainteneur (JD Audiobook Reader, Asclépios AV) ne sont plus imposées à tout le
+  monde : la section « Mes autres applications » de l'écran « Ajouter une appli » reste masquée tant que
+  l'interrupteur n'est pas activé. Les applications déjà installées restent visibles sur l'écran principal et
+  continuent d'être mises à jour quel que soit le réglage.
+- README : nouvelle section « Réglages avancés ». Les réglages Vanadium masqués (Mode Trichrome historique,
+  branche GrapheneOS, sous-dossier prebuilt) se débloquent en touchant 5 fois en 3 secondes le titre
+  « JDupdater » de la barre d'outils sur l'écran principal (le même geste les masque à nouveau).
+- Textes français et anglais du nouveau réglage, et un test unitaire.
+
+**Changements**
+- Vanadium : le « Sous-dossier prebuilt » par défaut (réglages avancés Vanadium) est maintenant `arm64` au lieu de
+  `arm64-multilib`. Si vous aviez déjà enregistré une valeur, elle est conservée.
+- Description fastlane : Vanadium n'annonce plus l'installation automatique de TrichromeLibrary, et les « autres
+  applications » optionnelles sont mentionnées.
+- README : suppression de la section « Comment contribuer » du projet amont, ajout du mainteneur (Jdont9) aux
+  contributeurs du code source et à l'en-tête de licence.
+
 ## 86.2.8 (222)
 **Ajouts**
 - **Ungoogled Chromium** (`org.ungoogled.chromium.stable`,

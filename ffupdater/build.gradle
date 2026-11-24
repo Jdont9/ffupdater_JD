@@ -65,9 +65,9 @@ android {
     compileSdk 37
 
     defaultConfig {
-        versionCode 222
+        versionCode 223
         //  (incompatible changes) . (backwards compatible functionality) . (backwards compatible bug fixes)
-        versionName "86.2.8"
+        versionName "86.3.0"
         minSdk 21
         targetSdk 37
         vectorDrawables.useSupportLibrary = true

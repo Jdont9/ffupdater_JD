@@ -45,6 +45,15 @@ class ForegroundSettingsTest : BaseTest() {
     }
 
     @Test
+    fun showMyOtherApps() {
+        SettingsTestHelper.testBooleanSetting(
+            sharedPreferences,
+            "foreground__show_my_other_apps",
+            false
+        ) { ForegroundSettings.showMyOtherApps }
+    }
+
+    @Test
     fun recentCacheDuration() {
         assertEquals(Duration.ofMinutes(60), ForegroundSettings.recentCacheDuration, "Default value is incorrect")
 

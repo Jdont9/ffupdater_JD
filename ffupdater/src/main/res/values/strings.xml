@@ -120,6 +120,8 @@
     <string name="settings__background_category__summary">Settings when the app is working in the background and is invisible to the user.</string>
     <string name="settings__background_category__title">Background</string>
     <string name="settings__foreground__download__metered__title">Download updates on metered networks</string>
+    <string name="settings__foreground__show_my_other_apps__title">Show the maintainer\'s other apps</string>
+    <string name="settings__foreground__show_my_other_apps__summary">Offer the maintainer\'s own apps (JD Audiobook Reader, Asclépios AV) in the \"Add app\" screen. Off by default. Apps that are already installed stay in the list and keep being updated either way.</string>
     <string name="settings__foreground__theme_preference__summary">Choose between light and dark theme</string>
     <string name="settings__foreground__theme_preference__title">Choose theme</string>
     <string name="settings__foreground__update_check__metered__summary">Allow update checks on metered networks such as mobile data.</string>
@@ -207,9 +209,9 @@
     <string name="vanadium__legacy_trichrome_mode__summary">Off (default): download the single VanadiumBrowser.apk. On: use the old layout instead, TrichromeChrome.apk plus the TrichromeLibrary.apk shared library (installed first). Only enable this if the new file is not available on your branch.</string>
     <string name="vanadium__android_branch__title">GrapheneOS branch</string>
     <string name="vanadium__android_branch__dialog_message">The GitLab branch of grapheneos/platform_external_vanadium to download Vanadium from (e.g. \"17\" or \"16-qpr2\"). GrapheneOS opens a new branch for every new Android/OS release; check https://gitlab.com/grapheneos/platform_external_vanadium/-/branches to find the current one and update it here when it changes.</string>
-    <string name="vanadium__prebuilt_path__default">arm64-multilib</string>
+    <string name="vanadium__prebuilt_path__default">arm64</string>
     <string name="vanadium__prebuilt_path__title">Prebuilt subfolder</string>
-    <string name="vanadium__prebuilt_path__dialog_message">The subfolder under prebuilt/ on the selected branch that contains VanadiumBrowser.apk (or, in legacy mode, TrichromeChrome.apk and TrichromeLibrary.apk) (e.g. \"arm64-multilib\" or \"arm64\"). This has changed between branches before, independently of the branch number. Browse https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/&lt;branch&gt;/prebuilt to find the current one.</string>
+    <string name="vanadium__prebuilt_path__dialog_message">The subfolder under prebuilt/ on the selected branch that contains VanadiumBrowser.apk (or, in legacy mode, TrichromeChrome.apk and TrichromeLibrary.apk) (e.g. \"arm64\" or \"arm64-multilib\"). This has changed between branches before, independently of the branch number. Browse https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/&lt;branch&gt;/prebuilt to find the current one.</string>
     <string name="settings__device_category__title">Device</string>
     <string name="device__prefer_32bit_apks__summary">Enable if your device is usually low on memory. FFUpdater will then use 32-bit APKs which usually require less memory.</string>
     <string name="device__prefer_32bit_apks__title">Prefer 32-Bit APKs</string>

@@ -34,8 +34,11 @@ Autres applications :
 
 - [Orbot](https://github.com/guardianproject/orbot)
 
-Mes autres applications (affichées dans leur propre section « Mes autres applications » de l'écran
-« Ajouter une appli », installées et mises à jour depuis leurs Releases GitHub comme le reste) :
+Mes autres applications (masquées par défaut ; activez **Réglages > Premier plan > « Afficher les autres
+applications du mainteneur »** pour les afficher dans leur propre section « Mes autres applications » de l'écran
+« Ajouter une appli ». Elles sont installées et mises à jour depuis leurs Releases GitHub comme le reste. Les
+applications déjà installées restent dans la liste et continuent d'être mises à jour même si l'option est
+désactivée) :
 
 - [JD Audiobook Reader](https://github.com/Jdont9/JDAudiobook) - un lecteur de livres audio simple et rapide pour Android
 - [Asclépios AV](https://github.com/Jdont9/Asclepios) - un scanner de malwares en temps réel pour Android (fork de Hypatia)
@@ -57,16 +60,31 @@ JDupdater vérifie les mises à jour en arrière-plan et les télécharge égale
   revanche, s'il reste activé plus longtemps, JDupdater vérifie les mises à jour en arrière-plan, mais ne les
   télécharge pas en arrière-plan.
 
-## Comment contribuer
+## Réglages avancés
 
-Ceci est un fork personnel avec un seul mainteneur : le [projet de traduction Weblate](https://hosted.weblate.org/projects/ffupdater)
-et le [guide de contribution](HOW_TO_CONTRIBUTE.md) du projet amont s'appliquent à
-[Tobi823/ffupdater](https://github.com/Tobi823/ffupdater), pas à ce fork. Y contribuer des traductions aide
-le projet d'origine, pas celui-ci.
+Certains réglages sont masqués par défaut car la plupart des gens n'en ont jamais besoin. Ils ne concernent que
+**Vanadium** :
+
+- **Comment les débloquer :** sur l'écran principal, touchez le titre « JDupdater » de la barre d'outils **5 fois
+  en moins de 3 secondes**. Un message confirme « Réglages avancés Vanadium débloqués » et une section « Vanadium »
+  apparaît en bas des réglages. Refaire le même geste la masque à nouveau (les valeurs réglées sont conservées).
+- **Mode Trichrome historique** (désactivé par défaut) : par défaut JDupdater télécharge le seul
+  `VanadiumBrowser.apk`. Activez-le pour utiliser l'ancienne organisation (`TrichromeChrome.apk` plus la
+  bibliothèque partagée `TrichromeLibrary.apk`, installée en premier). Utile uniquement si une branche fournit
+  encore les anciens fichiers.
+- **Branche GrapheneOS** (par défaut `17`) : la branche de
+  [grapheneos/platform_external_vanadium](https://gitlab.com/grapheneos/platform_external_vanadium) depuis
+  laquelle Vanadium est téléchargé. GrapheneOS ouvre une nouvelle branche à chaque nouvelle version d'Android
+  (ex. `17`, `16-qpr2`) : changez-la ici quand elle évolue.
+- **Sous-dossier prebuilt** (par défaut `arm64`) : le dossier sous `prebuilt/` de cette branche qui
+  contient le ou les APK. Il a déjà changé entre des branches (ex. `arm64-multilib` sur la branche 17) :
+  modifiez-le ici si besoin.
 
 ## Contributeurs du code source
 
-La liste des contributeurs (héritée du projet amont) se trouve dans le
+- [Jdont9](https://github.com/Jdont9) - mainteneur de ce fork (code 💻)
+
+Le reste de la liste des contributeurs (hérité du projet amont) se trouve dans le
 [README anglais](README.md#source-code-contributors).
 
 ## Documentation supplémentaire
@@ -100,6 +118,7 @@ Le texte de la licence est conservé en anglais (version originale).
 
 ````
 FFUpdater -- Updater for privacy friendly browser
+Copyright (C) 2026 Jdont9 https://github.com/Jdont9
 Copyright (C) 2019-2023 Tobias Hellmann https://github.com/Tobi823
 Copyright (C) 2015-2019 Boris Kraut <krt@nurfuerspam.de>
 

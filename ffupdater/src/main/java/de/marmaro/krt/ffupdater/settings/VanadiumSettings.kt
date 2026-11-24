@@ -9,8 +9,8 @@ import androidx.annotation.Keep
  * branch" from outside the repository (branch names aren't strictly numeric/orderable, e.g. "default"
  * also exists), so it's exposed as a user setting instead of a hardcoded constant.
  *
- * The directory layout under prebuilt/ has also changed between branches before (e.g. "arm64" on branch
- * 16 vs "arm64-multilib" on branch 17), independently of the branch number itself, so it's exposed as
+ * The directory layout under prebuilt/ has also changed between branches before (e.g. "arm64-multilib" on
+ * branch 17 vs "arm64" again by default now), independently of the branch number itself, so it's exposed as
  * its own setting too rather than being tied to the branch.
  */
 @Keep
@@ -25,7 +25,7 @@ object VanadiumSettings {
     }
 
     const val DEFAULT_BRANCH = "17"
-    const val DEFAULT_PREBUILT_PATH = "arm64-multilib"
+    const val DEFAULT_PREBUILT_PATH = "arm64"
 
     /**
      * GrapheneOS stopped splitting Vanadium into a shared library plus a browser APK: the browser is now a

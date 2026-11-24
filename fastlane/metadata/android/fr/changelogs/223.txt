@@ -1,0 +1,3 @@
+Version 86.3.0 (223)
+- Nouveau réglage « Afficher les autres applications du mainteneur » (réglages Premier plan, désactivé par défaut) : les applications du mainteneur ne sont plus proposées dans l'écran « Ajouter une appli » tant que vous ne l'activez pas
+- Vanadium : le sous-dossier prebuilt par défaut est maintenant « arm64 »

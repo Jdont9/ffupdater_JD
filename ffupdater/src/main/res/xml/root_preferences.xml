@@ -65,6 +65,13 @@
             app:singleLineTitle="false"
             app:title="@string/settings__b_f__delete_cache_if_install_failed" />
 
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="foreground__show_my_other_apps"
+            app:singleLineTitle="false"
+            app:summary="@string/settings__foreground__show_my_other_apps__summary"
+            app:title="@string/settings__foreground__show_my_other_apps__title" />
+
         <SwitchPreference
             app:defaultValue="false"
             app:key="foreground__hide_apps_signed_by_different_certificate"

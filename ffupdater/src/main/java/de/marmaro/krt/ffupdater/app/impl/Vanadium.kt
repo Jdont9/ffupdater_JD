@@ -36,8 +36,8 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
  * possible but loses part of its hardening; Cromite is a reasonable alternative on stock/other ROMs.
  *
  * !! Still verify per branch: [VanadiumSettings.prebuiltPath] (see Settings > Vanadium) - the directory
- * layout under prebuilt/ has changed between branches before (e.g. "arm64" on branch 16 vs
- * "arm64-multilib" on branch 17). Update it in Settings when it changes. !!
+ * layout under prebuilt/ has changed between branches before (e.g. "arm64-multilib" on branch 17 vs
+ * "arm64", the current default). Update it in Settings when it changes. !!
  */
 @Keep
 object Vanadium : AppBase() {

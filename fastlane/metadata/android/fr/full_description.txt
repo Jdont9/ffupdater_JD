@@ -12,11 +12,13 @@ Navigateurs plus performants que Google Chrome :
 - Chromium
 - Navigateur DuckDuckGo
 - Ungoogled Chromium
-- Vanadium (le Chromium durci de GrapheneOS ; le composant TrichromeLibrary requis est installé
-  automatiquement en même temps)
+- Vanadium (le Chromium durci de GrapheneOS ; un seul APK autonome, aucune bibliothèque séparée requise)
 
 Autres applications :
 - Orbot
+
+Les applications du mainteneur (JD Audiobook Reader, Asclépios AV) peuvent être proposées dans l'écran « Ajouter une appli »
+via Réglages > Premier plan > « Afficher les autres applications du mainteneur » (désactivé par défaut).
 
 JDupdater vérifie les mises à jour en arrière-plan et les télécharge également. Sur les appareils Android 12+ ou rootés, JDupdater peut également mettre à jour les applications sans interaction de l'utilisateur.
 

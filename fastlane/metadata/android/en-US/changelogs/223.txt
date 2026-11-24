@@ -1,0 +1,3 @@
+Version 86.3.0 (223)
+- New setting "Show the maintainer's other apps" (Foreground settings, off by default): the maintainer's own apps are no longer offered on the "Add app" screen unless you turn it on
+- Vanadium: default prebuilt subfolder is now "arm64"

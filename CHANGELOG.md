@@ -6,6 +6,25 @@ This file only covers changes made in this personal fork since it diverged from
 [Tobi823/ffupdater](https://github.com/Tobi823/ffupdater) (originally forked at upstream version 81.0.0 / 179).
 For the upstream project's own history, see its repository.
 
+## 86.3.0 (223)
+**Added**
+- New setting **Settings > Foreground > "Show the maintainer's other apps"** (off by default). The maintainer's own
+  apps (JD Audiobook Reader, Asclépios AV) are no longer imposed on everyone: the "My other applications"
+  section of the "Add app" screen is empty/hidden unless this switch is turned on. Apps that are already
+  installed stay visible on the main screen and keep being updated whatever the switch says.
+- README: new "Advanced settings" section. The hidden Vanadium settings (Legacy Trichrome mode, GrapheneOS
+  branch, prebuilt subfolder) are unlocked by tapping the "JDupdater" title in the toolbar 5 times within
+  3 seconds on the main screen (same gesture hides them again).
+- French and English texts for the new setting, and a unit test for it.
+
+**Changed**
+- Vanadium: the default "Prebuilt subfolder" (advanced Vanadium settings) is now `arm64` instead of
+  `arm64-multilib`. If you had already saved a value yourself, it is kept.
+- Fastlane store description: Vanadium no longer claims that TrichromeLibrary is installed automatically, and
+  the optional "other apps" are mentioned.
+- README: removed the upstream "How to contribute" section, added the maintainer (Jdont9) to the source code
+  contributors and to the license header.
+
 ## 86.2.8 (222)
 **Added**
 - **Ungoogled Chromium** (`org.ungoogled.chromium.stable`,

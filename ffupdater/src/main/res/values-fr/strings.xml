@@ -103,6 +103,8 @@
     <string name="settings__background_category__summary">Paramètres lorsque l\'application fonctionne en arrière-plan et est invisible pour l\'utilisateur.</string>
     <string name="settings__background_category__title">Contexte</string>
     <string name="settings__foreground__download__metered__title">Télécharger les mises à jour sur les réseaux avec compteur</string>
+    <string name="settings__foreground__show_my_other_apps__title">Afficher les autres applications du mainteneur</string>
+    <string name="settings__foreground__show_my_other_apps__summary">Propose les applications du mainteneur (JD Audiobook Reader, Asclépios AV) dans l\'écran « Ajouter une appli ». Désactivé par défaut. Les applications déjà installées restent dans la liste et continuent d\'être mises à jour dans tous les cas.</string>
     <string name="settings__foreground__theme_preference__summary">Choisissez entre un thème clair et un thème sombre</string>
     <string name="settings__foreground__theme_preference__title">Choisissez un thème</string>
     <string name="settings__foreground__update_check__metered__summary">Autorisez les vérifications de mise à jour sur les réseaux avec compteur, comme les données mobiles.</string>
@@ -186,9 +188,9 @@
     <string name="vanadium__legacy_trichrome_mode__summary">Désactivé (par défaut) : télécharge le seul VanadiumBrowser.apk. Activé : utilise l\'ancienne organisation, TrichromeChrome.apk plus la bibliothèque partagée TrichromeLibrary.apk (installée en premier). À n\'activer que si le nouveau fichier n\'existe pas sur votre branche.</string>
     <string name="vanadium__android_branch__title">Branche GrapheneOS</string>
     <string name="vanadium__android_branch__dialog_message">La branche GitLab de grapheneos/platform_external_vanadium depuis laquelle télécharger Vanadium (ex. \"17\" ou \"16-qpr2\"). GrapheneOS ouvre une nouvelle branche à chaque nouvelle version d\'Android/OS ; consultez https://gitlab.com/grapheneos/platform_external_vanadium/-/branches pour trouver la branche actuelle et mettez-la à jour ici lorsqu\'elle change.</string>
-    <string name="vanadium__prebuilt_path__default">arm64-multilib</string>
+    <string name="vanadium__prebuilt_path__default">arm64</string>
     <string name="vanadium__prebuilt_path__title">Sous-dossier prebuilt</string>
-    <string name="vanadium__prebuilt_path__dialog_message">Le sous-dossier sous prebuilt/ sur la branche sélectionnée qui contient VanadiumBrowser.apk (ou, en mode historique, TrichromeChrome.apk et TrichromeLibrary.apk) (ex. \"arm64-multilib\" ou \"arm64\"). Cela a déjà changé entre certaines branches, indépendamment du numéro de branche. Consultez https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/&lt;branch&gt;/prebuilt pour trouver la valeur actuelle.</string>
+    <string name="vanadium__prebuilt_path__dialog_message">Le sous-dossier sous prebuilt/ sur la branche sélectionnée qui contient VanadiumBrowser.apk (ou, en mode historique, TrichromeChrome.apk et TrichromeLibrary.apk) (ex. \"arm64\" ou \"arm64-multilib\"). Cela a déjà changé entre certaines branches, indépendamment du numéro de branche. Consultez https://gitlab.com/grapheneos/platform_external_vanadium/-/tree/&lt;branch&gt;/prebuilt pour trouver la valeur actuelle.</string>
     <string name="settings__device_category__title">Appareil</string>
     <string name="network__dns_provider__quad9">DNS sur HTTPS : Quad9</string>
     <string name="chromium__title">Chromium</string>

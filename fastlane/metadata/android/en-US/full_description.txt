@@ -12,11 +12,13 @@ Browsers which are better than Google Chrome:
 - Chromium
 - DuckDuckGo Browser
 - Ungoogled Chromium
-- Vanadium (GrapheneOS's hardened Chromium; the required TrichromeLibrary component is installed
-  automatically alongside it)
+- Vanadium (GrapheneOS's hardened Chromium; a single standalone APK, no separate library needed)
 
 Other applications:
 - Orbot
+
+The maintainer's own apps (JD Audiobook Reader, Asclépios AV) can optionally be shown in the "Add app" screen
+via Settings > Foreground > "Show the maintainer's other apps" (off by default).
 
 JDupdater checks for updates in the background and downloads them as well. On Android 12+ or root devices, JDupdater can also update the apps without user interaction.
 

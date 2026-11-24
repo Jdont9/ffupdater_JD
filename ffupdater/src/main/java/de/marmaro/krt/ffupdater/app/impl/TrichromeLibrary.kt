@@ -39,8 +39,8 @@ import de.marmaro.krt.ffupdater.settings.VanadiumSettings
  * e.g. "default" also exists). Update it in Settings > Vanadium when GrapheneOS moves to a new branch.
  *
  * !! Still verify per branch: [VanadiumSettings.prebuiltPath] (see Settings > Vanadium) - the directory
- * layout under prebuilt/ has changed between branches before (e.g. "arm64" on branch 16 vs
- * "arm64-multilib" on branch 17). Update it in Settings when it changes. !!
+ * layout under prebuilt/ has changed between branches before (e.g. "arm64-multilib" on branch 17 vs
+ * "arm64", the current default). Update it in Settings when it changes. !!
  *
  * INSTALL-STATUS PIGGYBACKING: as a static shared library, this package can't be queried through the
  * public PackageManager API once installed (see [isStaticSharedLibrary] and CertificateVerifier.kt),

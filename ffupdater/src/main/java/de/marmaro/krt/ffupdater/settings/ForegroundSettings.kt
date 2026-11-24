@@ -49,6 +49,12 @@ object ForegroundSettings {
     val isDownloadOnMeteredAllowed
         get() = preferences.getBoolean("foreground__download__metered", true)
 
+    // Whether the maintainer's own apps (DisplayCategory.MY_OTHER_APPS) are offered on the "Add app" screen.
+    // Off by default so they are not imposed on users who don't want them. Apps already installed stay
+    // visible and keep being updated either way.
+    val showMyOtherApps
+        get() = preferences.getBoolean("foreground__show_my_other_apps", false)
+
     private val validAndroidThemes = listOf(
         AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
         AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY,
